@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Public can view videos; writes are restricted
+    match /portfolio_videos/{videoId} {
+      allow read: if true;
+      allow write: if request.resource.data.title is string
+                   && request.resource.data.url is string;
+    }
+
+    // Chatbot leads: public can only append new leads, never read or delete past leads
+    match /chatbot_leads/{leadId} {
+      allow create: if request.resource.data.userMessage is string
+                    && request.resource.data.sessionId is string;
+      allow read, update, delete: if false;
+    }
+  }
+}
