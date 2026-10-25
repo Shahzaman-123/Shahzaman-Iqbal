@@ -239,6 +239,27 @@ export default function App() {
         ease: "power2.out",
       });
 
+      gsap.to(".hero-photo-float", {
+        y: -10,
+        duration: 2.5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      gsap.from(".metric-item", {
+        opacity: 0,
+        y: 24,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".metrics-bar",
+          start: "top 88%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
       document.querySelectorAll("section.gsap-reveal").forEach((section) => {
         gsap.to(section, {
           opacity: 1,
@@ -551,14 +572,14 @@ export default function App() {
         </div>
 
         <div className="md:col-span-5 flex justify-center order-1 md:order-2 hero-anim opacity-0 translate-y-10">
-          <div className="relative group">
+          <div className="relative group hero-photo-float">
             {/* Ambient Neon Backlight */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-75 transition duration-700"></div>
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-75 transition duration-700 animate-pulse-slow"></div>
             <div className="relative w-64 h-72 md:w-80 md:h-[390px] rounded-2xl overflow-hidden border border-cyan-500/40 shadow-2xl transition-all duration-300">
               <img
-                src="/profile.png"
+                src="/profile-suit.png"
                 alt="Shahzaman Iqbal"
-                className="w-full h-full object-cover object-top grayscale-[15%] group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-[1.02]"
+                className="w-full h-full object-cover object-top transition-all duration-500 scale-100 group-hover:scale-[1.02] drop-shadow-[0_0_25px_rgba(6,182,212,0.35)]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
             </div>
@@ -567,23 +588,23 @@ export default function App() {
       </main>
 
       {/* Metrics Bar with Neon Accent */}
-      <section className="border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
+      <section className="metrics-bar border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
         <div className="max-w-6xl w-full mx-auto px-6 py-8 flex flex-wrap justify-center sm:justify-between gap-6 text-center">
-          <div className="hover:scale-105 transition-transform duration-300">
+          <div className="metric-item hover:scale-105 transition-transform duration-300">
             <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(6,182,212,0.5)]">29+</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">AI Agents &amp; Workflows</div>
           </div>
-          <div className="hover:scale-105 transition-transform duration-300">
+          <div className="metric-item hover:scale-105 transition-transform duration-300">
             <div className="font-heading text-2xl md:text-3xl font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(6,182,212,0.5)]">n8n + GHL</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Core Architecture</div>
           </div>
-          <div className="hover:scale-105 transition-transform duration-300">
+          <div className="metric-item hover:scale-105 transition-transform duration-300">
             <div className="font-heading text-2xl md:text-3xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)]">Voice AI</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Retell · Vapi · Apollo</div>
           </div>
-          <div className="hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.5)]">Dual Certified</div>
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Anthropic &amp; DataCrumbs</div>
+          <div className="metric-item hover:scale-105 transition-transform duration-300">
+            <div className="font-heading text-2xl md:text-3xl font-bold text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.5)]">Triple Certified</div>
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Anthropic · DataCrumbs · UoL</div>
           </div>
         </div>
       </section>
@@ -872,7 +893,7 @@ export default function App() {
         <div className="space-y-2 mb-10">
           <div className="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold">Verified Credentials &amp; Societies</div>
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Certifications &amp; Technical Masterclasses</h2>
-          <p className="text-slate-400 text-sm max-w-md">Official industry-standard certifications in LLM architecture and advanced workflow orchestration.</p>
+          <p className="text-slate-400 text-sm max-w-md">Official industry-standard certifications in LLM architecture, advanced workflow orchestration, and research methodology.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -932,6 +953,36 @@ export default function App() {
                   View Official Certificate ↗
                 </a>
                 <span className="text-[10px] font-mono text-slate-500">ID: DC-N8N-4190</span>
+              </div>
+            </div>
+          </div>
+
+          {/* University of London Certificate Card */}
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-violet-500/50 flex flex-col justify-between gap-5 h-full">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-mono text-violet-400 font-bold uppercase tracking-wider">University of London &amp; SOAS</span>
+                  <span className="text-[10px] font-mono bg-violet-500/10 text-violet-400 px-2.5 py-1 rounded border border-violet-500/30">Verified</span>
+                </div>
+                <h3 className="font-heading text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
+                  Understanding Research Methods
+                </h3>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Research methodology certification covering research design, methods, and evidence evaluation — completed October 2026 via Coursera, authorized by University of London and SOAS University of London.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <a
+                  href="https://drive.google.com/file/d/1KLbBwI9GSOHqScwo6HCUX7MNY2bBct4b/view?usp=drivesdk"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-violet-400 hover:text-violet-300 transition-colors"
+                >
+                  View Official Certificate ↗
+                </a>
+                <span className="text-[10px] font-mono text-slate-500">ID: W4F27I336ZHS</span>
               </div>
             </div>
           </div>
