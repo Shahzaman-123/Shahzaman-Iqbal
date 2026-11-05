@@ -261,25 +261,26 @@ export default function App() {
       });
 
       // Glitch entrance for the big Portfolio heading (reference video:
-      // letters stretch/smear horizontally as it enters view).
+      // letters slice + offset ghosts, clearly visible ~1.5s, replays on
+      // every scroll-in). Class-driven CSS keyframes (see App.css) — the
+      // previous 0.7s GSAP fromTo was too brief to ever be seen in a still.
       document.querySelectorAll(".glitch-heading").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, scaleX: 2.4, skewX: 16, x: -40 },
-          {
-            opacity: 1,
-            scaleX: 1,
-            skewX: 0,
-            x: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 88%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+        const runGlitch = () => {
+          el.classList.remove("glitch-active");
+          // Force reflow so re-adding the class restarts the keyframes.
+          void el.offsetWidth;
+          el.classList.add("glitch-active");
+          window.clearTimeout(el._glitchTimer);
+          el._glitchTimer = window.setTimeout(() => {
+            el.classList.remove("glitch-active");
+          }, 1600);
+        };
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 88%",
+          onEnter: runGlitch,
+          onEnterBack: runGlitch,
+        });
       });
     }, containerRef);
 
@@ -738,7 +739,7 @@ export default function App() {
       <section id="portfolio" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">Portfolio &amp; Deployments</div>
-          <h2 className="glitch-heading font-heading text-2xl md:text-3xl font-bold text-white">Live Web Applications &amp; Enterprise Workflows</h2>
+          <h2 className="glitch-heading font-heading text-2xl md:text-3xl font-bold text-white" data-text="Live Web Applications & Enterprise Workflows">Live Web Applications &amp; Enterprise Workflows</h2>
           <p className="text-slate-400 text-sm max-w-md">Real client web apps, data pipelines, and multi-agent backend systems.</p>
         </div>
 
@@ -927,14 +928,14 @@ export default function App() {
 
           {/* University of London Certificate Card */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-neon-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-violet-500/50 flex flex-col justify-between gap-5 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-5 h-full">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono text-violet-400 font-bold uppercase tracking-wider">University of London &amp; SOAS</span>
-                  <span className="text-[10px] font-mono bg-violet-500/10 text-violet-400 px-2.5 py-1 rounded border border-violet-500/30">Verified</span>
+                  <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">University of London &amp; SOAS</span>
+                  <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
+                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
                   Understanding Research Methods
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -946,7 +947,7 @@ export default function App() {
                   href="https://drive.google.com/file/d/1KLbBwI9GSOHqScwo6HCUX7MNY2bBct4b/view?usp=drivesdk"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-violet-400 hover:text-violet-300 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   View Official Certificate ↗
                 </a>

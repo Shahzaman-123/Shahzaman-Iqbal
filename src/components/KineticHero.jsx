@@ -192,6 +192,7 @@ export default function KineticHero() {
           {/* ID badge on a lanyard — flies/tumbles in, then swings (reference video) */}
           <div className="kinetic-photo-wrap">
             <div className="kinetic-badge-swing">
+              <div className="kinetic-badge-enter">
               <div className="kinetic-lanyard" aria-hidden="true" />
               <div
                 className="kinetic-badge"
@@ -208,6 +209,7 @@ export default function KineticHero() {
                   <span>PORTFOLIO</span>
                   <span>EST. 2026</span>
                 </div>
+              </div>
               </div>
             </div>
             <div className="kinetic-tag">&#9733; AVAILABLE FOR WORK</div>
