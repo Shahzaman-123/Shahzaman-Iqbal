@@ -7,7 +7,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -36,7 +36,7 @@
 
 /* Text selection & smooth scrolling */
 ::selection {
-  background: rgba(6, 182, 212, 0.35);
+  background: rgba(210, 255, 0, 0.35);
   color: #ffffff;
 }
 

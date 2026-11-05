@@ -11,6 +11,7 @@ import AdminModal from "./components/AdminModal";
 import { parseYouTubeUrl } from "./utils/youtube";
 import WorkflowPipelineVisualizer from "./components/WorkflowPipelineVisualizer";
 import RoiCalculator from "./components/RoiCalculator";
+import KineticHero from "./components/KineticHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,22 +232,6 @@ export default function App() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(".hero-anim", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-      });
-
-      gsap.to(".hero-photo-float", {
-        y: -10,
-        duration: 2.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
-
       gsap.from(".metric-item", {
         opacity: 0,
         y: 24,
@@ -383,7 +368,7 @@ export default function App() {
   return (
     <div
       ref={containerRef}
-      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-900 bg-[#020617] font-sans overflow-x-hidden"
+      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#d2ff00] selection:text-slate-900 bg-[#0a0a0a] font-sans overflow-x-hidden"
     >
       {/* Floating Circular AI Trigger Button */}
       <div className="fixed bottom-6 right-6 z-50">
@@ -538,54 +523,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <main className="max-w-6xl w-full mx-auto px-6 py-14 md:py-24 flex-grow grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-        <div className="md:col-span-7 space-y-8 order-2 md:order-1">
-          <div className="space-y-4 hero-anim opacity-0 translate-y-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-medium tracking-wide uppercase shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-              ⚡ Backend Automation &amp; Workflow Architect
-            </div>
-            <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-              I Engineer the Backend Systems Agencies Run On
-            </h1>
-            <p className="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed">
-              I design and deploy enterprise-grade n8n workflows, GoHighLevel CRM infrastructures, programmatic outbound engines, low-latency AI Voice Agents, and custom web applications.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-4 hero-anim opacity-0 translate-y-10">
-            <a
-              href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%27d%20like%20to%20discuss%20a%20backend%20automation%20project"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.25)] hover:shadow-[0_0_50px_rgba(6,182,212,0.6)] hover:-translate-y-0.5"
-            >
-              Book a Technical Call →
-            </a>
-            <button
-              onClick={() => setIsChatOpen(true)}
-              className="inline-flex items-center gap-2 bg-slate-900/80 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 text-sm font-semibold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.1)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:-translate-y-0.5"
-            >
-              Chat With AI Model
-            </button>
-          </div>
-        </div>
-
-        <div className="md:col-span-5 flex justify-center order-1 md:order-2 hero-anim opacity-0 translate-y-10">
-          <div className="relative group hero-photo-float">
-            {/* Ambient Neon Backlight */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-75 transition duration-700 animate-pulse-slow"></div>
-            <div className="relative w-64 h-72 md:w-80 md:h-[390px] rounded-2xl overflow-hidden border border-cyan-500/40 shadow-2xl transition-all duration-300">
-              <img
-                src="/profile-suit.png"
-                alt="Shahzaman Iqbal"
-                className="w-full h-full object-cover object-top transition-all duration-500 scale-100 group-hover:scale-[1.02] drop-shadow-[0_0_25px_rgba(6,182,212,0.35)]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
-            </div>
-          </div>
-        </div>
-      </main>
+      {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #D2FF00) */}
+      <KineticHero />
 
       {/* Metrics Bar with Neon Accent */}
       <section className="metrics-bar border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
