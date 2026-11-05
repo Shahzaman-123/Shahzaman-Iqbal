@@ -117,7 +117,7 @@ export default function KineticHero() {
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
     const y = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `rotate(3deg) rotateY(${x * 14}deg) rotateX(${-y * 12}deg)`;
+    el.style.transform = `rotate(2deg) rotateY(${x * 14}deg) rotateX(${-y * 12}deg)`;
   };
 
   const handleCardLeave = () => {
@@ -138,8 +138,9 @@ export default function KineticHero() {
 
   return (
     <>
-      {/* Preloader */}
+      {/* Preloader — near-black, spinner, big % counter (like the reference video) */}
       <div className={`kinetic-loader${loading ? "" : " kinetic-loader-done"}`} aria-hidden={!loading}>
+        <div className="kinetic-loader-spinner" aria-hidden="true" />
         <div className="kinetic-loader-num">{progress}%</div>
         <div className="kinetic-loader-lbl">LOADING PORTFOLIO</div>
       </div>
@@ -188,15 +189,26 @@ export default function KineticHero() {
             </div>
           </div>
 
+          {/* ID badge on a lanyard — flies/tumbles in, then swings (reference video) */}
           <div className="kinetic-photo-wrap">
-            <div
-              className="kinetic-photo-card"
-              id="kinetic-photo-card"
-              ref={cardRef}
-              onPointerMove={handleCardMove}
-              onPointerLeave={handleCardLeave}
-            >
-              <img src="/profile-suit.png" alt="Shahzaman Iqbal" />
+            <div className="kinetic-badge-swing">
+              <div className="kinetic-lanyard" aria-hidden="true" />
+              <div
+                className="kinetic-badge"
+                id="kinetic-photo-card"
+                ref={cardRef}
+                onPointerMove={handleCardMove}
+                onPointerLeave={handleCardLeave}
+              >
+                <div className="kinetic-badge-role">DEVELOPER</div>
+                <img src="/profile-suit.png" alt="Shahzaman Iqbal" />
+                <div className="kinetic-badge-name">SHAH ZAMAN IQBAL</div>
+                <div className="kinetic-badge-sub">AUTOMATION DEVELOPER</div>
+                <div className="kinetic-badge-foot">
+                  <span>PORTFOLIO</span>
+                  <span>EST. 2026</span>
+                </div>
+              </div>
             </div>
             <div className="kinetic-tag">&#9733; AVAILABLE FOR WORK</div>
           </div>

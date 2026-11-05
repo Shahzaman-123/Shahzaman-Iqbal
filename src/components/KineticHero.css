@@ -1,11 +1,10 @@
 /* Kinetic Hero — approved Nov 5, 2026 design.
    Dark luxury theme: near-black #0a0a0a, one neon accent #D2FF00,
-   blue #2563eb secondary, film grain, cursor glow. CSS/GSAP-free
+   film grain, cursor glow. CSS/GSAP-free
    motion (keyframes + pointer handlers in KineticHero.jsx). */
 
 :root {
   --kinetic-acc: #d2ff00;
-  --kinetic-blue: #2563eb;
   --kinetic-bg: #0a0a0a;
 }
 
@@ -31,6 +30,18 @@
   letter-spacing: -0.04em;
   line-height: 1;
   color: #fff;
+}
+.kinetic-loader-spinner {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--kinetic-acc);
+  animation: kinetic-spin 0.9s linear infinite;
+  margin-bottom: 22px;
+}
+@keyframes kinetic-spin {
+  to { transform: rotate(360deg); }
 }
 .kinetic-loader-lbl {
   font-size: 11px;
@@ -78,7 +89,7 @@
   display: flex;
   flex-direction: column;
   z-index: 2;
-  background: var(--kinetic-bg);
+  background: transparent;
   color: #f2f2f2;
 }
 
@@ -201,7 +212,7 @@
   border-color: var(--kinetic-acc);
 }
 
-/* ---------- Photo card ---------- */
+/* ---------- ID badge on a lanyard ---------- */
 .kinetic-photo-wrap {
   margin-left: auto;
   position: relative;
@@ -209,30 +220,108 @@
   flex: none;
   perspective: 900px;
 }
-.kinetic-photo-card {
+/* Swings from the top (lanyard anchor). Entrance tumbles in with rotation
+   once the preloader lifts (~1.15s), then settles into a gentle swing. */
+.kinetic-badge-swing {
+  transform-origin: 50% 0;
+  will-change: transform;
+  animation:
+    kinetic-badge-in 1.1s cubic-bezier(0.2, 1.4, 0.3, 1) 1.15s both,
+    kinetic-badge-swing 4.5s ease-in-out 2.35s infinite;
+}
+@keyframes kinetic-badge-in {
+  from { transform: rotate(-32deg) translateY(-70px); opacity: 0; }
+  60% { opacity: 1; }
+  to { transform: rotate(2deg) translateY(0); opacity: 1; }
+}
+@keyframes kinetic-badge-swing {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(-3.5deg); }
+}
+.kinetic-lanyard {
+  width: 26px;
+  height: 130px;
+  margin: 0 auto;
+  background: repeating-linear-gradient(180deg, #0b0b0b 0 14px, #161616 14px 28px);
+  position: relative;
+  box-shadow: inset 0 0 0 1px #262626;
+}
+.kinetic-lanyard::before {
+  content: "SHAHZAMAN IQBAL";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  transform-origin: 0 0;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #777;
+  white-space: nowrap;
+}
+.kinetic-lanyard::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 12px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  background: #111;
+}
+.kinetic-badge {
+  background: #fff;
+  color: #111;
   border-radius: 18px;
-  overflow: hidden;
-  transform: rotate(3deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  padding: 14px 14px 12px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: rotate(2deg);
   transition: transform 0.4s;
-  animation: kinetic-float 5s ease-in-out infinite;
+  will-change: transform;
 }
-@keyframes kinetic-float {
-  0%, 100% { transform: rotate(3deg) translateY(0); }
-  50% { transform: rotate(3deg) translateY(-10px); }
+.kinetic-badge-role {
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: #111;
 }
-.kinetic-photo-card img {
+.kinetic-badge img {
   width: 100%;
-  height: 400px;
+  height: 280px;
   object-fit: cover;
   object-position: top;
   display: block;
-  filter: saturate(1.1) contrast(1.05);
+  border-radius: 10px;
+  margin: 10px auto 8px;
+  background: #ddd;
   transition: transform 0.6s, filter 0.6s;
 }
-.kinetic-photo-card:hover img {
-  transform: scale(1.07);
-  filter: saturate(1.3) contrast(1.1);
+.kinetic-badge:hover img {
+  transform: scale(1.04);
+}
+.kinetic-badge-name {
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+.kinetic-badge-sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #4d7c0f;
+  font-weight: 800;
+  margin-top: 2px;
+}
+.kinetic-badge-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  color: #333;
 }
 .kinetic-tag {
   position: absolute;

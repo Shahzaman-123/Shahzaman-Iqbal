@@ -12,6 +12,7 @@ import { parseYouTubeUrl } from "./utils/youtube";
 import WorkflowPipelineVisualizer from "./components/WorkflowPipelineVisualizer";
 import RoiCalculator from "./components/RoiCalculator";
 import KineticHero from "./components/KineticHero";
+import Starfield from "./components/Starfield";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -258,6 +259,28 @@ export default function App() {
           },
         });
       });
+
+      // Glitch entrance for the big Portfolio heading (reference video:
+      // letters stretch/smear horizontally as it enters view).
+      document.querySelectorAll(".glitch-heading").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, scaleX: 2.4, skewX: 16, x: -40 },
+          {
+            opacity: 1,
+            scaleX: 1,
+            skewX: 0,
+            x: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -370,12 +393,15 @@ export default function App() {
       ref={containerRef}
       className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#d2ff00] selection:text-slate-900 bg-[#0a0a0a] font-sans overflow-x-hidden"
     >
+      {/* Starfield — twinkling stars + shooting stars behind the whole site */}
+      <Starfield />
+
       {/* Floating Circular AI Trigger Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsChatOpen(!isChatOpen)}
           aria-label="Open AI Assistant"
-          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-cyan-600 via-cyan-500 to-cyan-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(6,182,212,0.6)]"
+          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-neon-600 via-neon-500 to-neon-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(210,255,0,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(210,255,0,0.6)]"
         >
           {isChatOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
@@ -386,20 +412,20 @@ export default function App() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a.75.75 0 01-.874-.986 4.453 4.453 0 00.75-2.023C3.805 16.38 3 14.28 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
           )}
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-slate-950"></span>
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-neon-400 rounded-full border-2 border-slate-950"></span>
         </button>
       </div>
 
       {/* AI Assistant Interactive Drawer Modal */}
       {isChatOpen && (
-        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-cyan-500/40 rounded-2xl shadow-[0_0_50px_rgba(6,182,212,0.25)] z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-neon-500/40 rounded-2xl shadow-[0_0_50px_rgba(210,255,0,0.25)] z-50 flex flex-col overflow-hidden">
           {/* Chat Header */}
           <div className="p-4 bg-slate-950/80 border-b border-slate-800 flex justify-between items-center">
             <div className="flex items-center gap-2.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-neon-400 animate-ping"></div>
               <div>
                 <h3 className="font-heading font-bold text-white text-sm">Shahzaman AI Architect</h3>
-                <span className="text-[10px] text-cyan-400 font-mono">
+                <span className="text-[10px] text-neon-400 font-mono">
                   Engine · Shahzaman Neural Agent
                 </span>
               </div>
@@ -419,14 +445,14 @@ export default function App() {
                 <div
                   className={`max-w-[92%] p-3.5 rounded-2xl ${
                     msg.role === "user"
-                      ? "bg-cyan-500 text-slate-950 font-medium rounded-tr-none"
+                      ? "bg-neon-500 text-slate-950 font-medium rounded-tr-none"
                       : "bg-slate-800/80 text-slate-200 border border-slate-700/60 rounded-tl-none"
                   }`}
                 >
                   {msg.role === "user" ? (
                     <p className="whitespace-pre-wrap">{msg.content}</p>
                   ) : (
-                    <div className="prose prose-invert max-w-none text-xs leading-relaxed space-y-2 [&_p]:mb-1.5 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-0.5 [&_strong]:text-cyan-300 [&_table]:w-full [&_table]:my-2 [&_table]:border-collapse [&_table]:border [&_table]:border-slate-700 [&_th]:border [&_th]:border-slate-700 [&_th]:bg-slate-900/80 [&_th]:p-1.5 [&_th]:text-left [&_th]:text-cyan-400 [&_td]:border [&_td]:border-slate-700 [&_td]:p-1.5 [&_code]:bg-slate-950 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-cyan-300">
+                    <div className="prose prose-invert max-w-none text-xs leading-relaxed space-y-2 [&_p]:mb-1.5 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-0.5 [&_strong]:text-neon-300 [&_table]:w-full [&_table]:my-2 [&_table]:border-collapse [&_table]:border [&_table]:border-slate-700 [&_th]:border [&_th]:border-slate-700 [&_th]:bg-slate-900/80 [&_th]:p-1.5 [&_th]:text-left [&_th]:text-neon-400 [&_td]:border [&_td]:border-slate-700 [&_td]:p-1.5 [&_code]:bg-slate-950 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-neon-300">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {msg.content}
                       </ReactMarkdown>
@@ -437,7 +463,7 @@ export default function App() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-800/80 text-cyan-400 border border-slate-700 p-3 rounded-2xl rounded-tl-none animate-pulse">
+                <div className="bg-slate-800/80 text-neon-400 border border-slate-700 p-3 rounded-2xl rounded-tl-none animate-pulse">
                   Shahzaman Architecture Core processing...
                 </div>
               </div>
@@ -461,14 +487,14 @@ export default function App() {
             return (
               <div className="px-3.5 py-1.5 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between gap-2 text-[11px]">
                 <span className="text-slate-400 truncate flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-neon-400 animate-pulse shrink-0"></span>
                   <span className="truncate">Need a custom quote or audit?</span>
                 </span>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/60 px-2.5 py-1 rounded-lg font-semibold transition-all shrink-0 hover:scale-105"
+                  className="inline-flex items-center gap-1 bg-neon-500/10 hover:bg-neon-500/20 text-neon-400 border border-neon-500/30 hover:border-neon-500/60 px-2.5 py-1 rounded-lg font-semibold transition-all shrink-0 hover:scale-105"
                   title="Open WhatsApp chat with prefilled context"
                 >
                   <span>WhatsApp Brief →</span>
@@ -484,12 +510,12 @@ export default function App() {
               placeholder="Ask about n8n workflows, pricing, A2Z Fix, Decoria..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              className="flex-1 bg-slate-900 border border-slate-800 focus:border-cyan-500 focus:outline-none rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500"
+              className="flex-1 bg-slate-900 border border-slate-800 focus:border-neon-500 focus:outline-none rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500"
             />
             <button
               type="submit"
               disabled={isLoading || !inputMessage.trim()}
-              className="bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-colors"
+              className="bg-neon-500 hover:bg-neon-400 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-colors"
             >
               Send
             </button>
@@ -497,18 +523,18 @@ export default function App() {
         </div>
       )}
 
-      {/* Header */}
-      <header className="max-w-6xl w-full mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-800/60">
+      {/* Header — floating pill nav, centred at the top (reference video) */}
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-3xl px-5 py-3 flex justify-between items-center rounded-full border border-slate-800/80 bg-slate-950/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         <div className="font-heading text-xl font-bold tracking-tight text-white flex items-center gap-2">
           <span>Shahzaman</span>
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span className="w-2 h-2 rounded-full bg-neon-400 animate-pulse"></span>
         </div>
         <div className="flex items-center gap-3">
           <a
             href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-cyan-500/10 hover:bg-cyan-500/20 text-xs font-semibold tracking-wide text-cyan-400 uppercase px-4 py-2 rounded-lg border border-cyan-500/30 hover:border-cyan-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]"
+            className="inline-flex items-center justify-center bg-neon-500/10 hover:bg-neon-500/20 text-xs font-semibold tracking-wide text-neon-400 uppercase px-4 py-2 rounded-lg border border-neon-500/30 hover:border-neon-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.15)] hover:shadow-[0_0_30px_rgba(210,255,0,0.3)]"
           >
             LinkedIn
           </a>
@@ -516,12 +542,15 @@ export default function App() {
             href="https://wa.me/923241736180"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_35px_rgba(6,182,212,0.5)]"
+            className="inline-flex items-center justify-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.2)] hover:shadow-[0_0_35px_rgba(210,255,0,0.5)]"
           >
             Book a Call
           </a>
         </div>
       </header>
+
+      {/* Spacer for the fixed floating nav */}
+      <div className="h-[76px] shrink-0" aria-hidden="true" />
 
       {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #D2FF00) */}
       <KineticHero />
@@ -530,19 +559,19 @@ export default function App() {
       <section className="metrics-bar border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
         <div className="max-w-6xl w-full mx-auto px-6 py-8 flex flex-wrap justify-center sm:justify-between gap-6 text-center">
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(6,182,212,0.5)]">29+</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">29+</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">AI Agents &amp; Workflows</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(6,182,212,0.5)]">n8n + GHL</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">n8n + GHL</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Core Architecture</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)]">Voice AI</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">Voice AI</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Retell · Vapi · Apollo</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.5)]">Triple Certified</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">Triple Certified</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Anthropic · DataCrumbs · UoL</div>
           </div>
         </div>
@@ -560,7 +589,7 @@ export default function App() {
               href="https://www.youtube.com/@shahzamaniqbal-v8n"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-red-500/10 border border-red-500/20 hover:border-red-500/70 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] text-red-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               YouTube
             </a>
@@ -568,7 +597,7 @@ export default function App() {
               href="https://www.instagram.com/n8n_developer/?hl=en"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-pink-500/10 border border-pink-500/20 hover:border-pink-500/70 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] text-pink-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               Instagram
             </a>
@@ -576,7 +605,7 @@ export default function App() {
               href="https://www.tiktok.com/@n8ndeveloper"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 hover:border-cyan-500/70 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] text-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               TikTok
             </a>
@@ -584,7 +613,7 @@ export default function App() {
               href="https://www.facebook.com/profile.php?id=61578748077131"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20 hover:border-blue-500/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] text-blue-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               Facebook
             </a>
@@ -592,7 +621,7 @@ export default function App() {
               href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-sky-500/10 border border-sky-500/20 hover:border-sky-500/70 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] text-sky-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               LinkedIn
             </a>
@@ -609,11 +638,11 @@ export default function App() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-500/50 space-y-3 h-full flex flex-col justify-between">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider font-bold">Core Automation</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-cyan-300 transition-colors">n8n &amp; GoHighLevel</h4>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Core Automation</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">n8n &amp; GoHighLevel</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Advanced workflow topologies, snapshot management, nested looping structures, and multi-channel webhook networks.
                 </p>
@@ -622,11 +651,11 @@ export default function App() {
           </div>
 
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-purple-500/50 space-y-3 h-full flex flex-col justify-between">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-purple-400 uppercase tracking-wider font-bold">Voice AI Architecture</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-purple-300 transition-colors">Retell AI &amp; Vapi</h4>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Voice AI Architecture</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Retell AI &amp; Vapi</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Deploying conversational AI voice assistants with hyper-low latency integrations, webhook triggers, and real-time CRM updates.
                 </p>
@@ -635,11 +664,11 @@ export default function App() {
           </div>
 
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-amber-500/50 space-y-3 h-full flex flex-col justify-between">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-amber-400 uppercase tracking-wider font-bold">Outbound &amp; Scraped Data</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-amber-300 transition-colors">Apollo, Dripify &amp; Bright Data</h4>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Outbound &amp; Scraped Data</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Apollo, Dripify &amp; Bright Data</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Automating scalable lead scraping workflows, cross-referencing targeted lead lists, and scaling automatic LinkedIn outreach systems.
                 </p>
@@ -648,11 +677,11 @@ export default function App() {
           </div>
 
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-emerald-500/50 space-y-3 h-full flex flex-col justify-between">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-bold">Custom Code &amp; Web Apps</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-emerald-300 transition-colors">React / Vite / Python / APIs</h4>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Custom Code &amp; Web Apps</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">React / Vite / Python / APIs</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Building responsive web applications, webhook integrations, normalization layers, and high-performance serverless endpoints.
                 </p>
@@ -665,33 +694,33 @@ export default function App() {
       {/* Enterprise System Architecture Topology */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-bold">System Blueprint</div>
+          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">System Blueprint</div>
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">How Enterprise Workflows Execute</h2>
           <p className="text-slate-400 text-sm max-w-lg">A zero-touch orchestrated backend lifecycle connecting webhooks, LLM agents, and CRM syncs.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
-            <div className="text-cyan-400 font-mono text-sm font-bold mb-2">01. INGESTION &amp; VALIDATION</div>
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">01. INGESTION &amp; VALIDATION</div>
             <h4 className="text-white font-semibold text-base mb-2">Multi-Channel Inbound Webhooks</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Receives incoming leads from Meta Ads, website forms, or Apollo webhooks. Executes instant schema parsing, deduplication, and HMAC security validation.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-purple-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
-            <div className="text-purple-400 font-mono text-sm font-bold mb-2">02. LLM LOGIC &amp; ENRICHMENT</div>
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">02. LLM LOGIC &amp; ENRICHMENT</div>
             <h4 className="text-white font-semibold text-base mb-2">Autonomous Agent Evaluation</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Triggers Claude / Groq AI nodes to analyze lead intent, classify budget capacity, fetch Bright Data enrichment records, and prepare personalized outbound pitches.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
-            <div className="text-emerald-400 font-mono text-sm font-bold mb-2">03. DISPATCH &amp; ERROR-PROOFING</div>
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">03. DISPATCH &amp; ERROR-PROOFING</div>
             <h4 className="text-white font-semibold text-base mb-2">CRM Sync &amp; Fallback Alerting</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Updates GoHighLevel pipelines in real-time, initiates voice AI outreach calls via Vapi, and routes instantaneous WhatsApp/Telegram alerts to human closers.
@@ -708,19 +737,19 @@ export default function App() {
       {/* Featured Architecture & Live Web Applications */}
       <section id="portfolio" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-bold">Portfolio &amp; Deployments</div>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Live Web Applications &amp; Enterprise Workflows</h2>
+          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">Portfolio &amp; Deployments</div>
+          <h2 className="glitch-heading font-heading text-2xl md:text-3xl font-bold text-white">Live Web Applications &amp; Enterprise Workflows</h2>
           <p className="text-slate-400 text-sm max-w-md">Real client web apps, data pipelines, and multi-agent backend systems.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card: A2Z FIX */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-500/50 flex flex-col justify-between gap-4 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-cyan-400 tracking-wider font-bold">LIVE WEB APP · REACT + VERCEL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-cyan-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE WEB APP · REACT + VERCEL</div>
+                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
                   A2Z FIX - Mobile Repairing Institute
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -732,22 +761,22 @@ export default function App() {
                   href="https://a2zfix.vercel.app"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   Visit Live Web App →
                 </a>
-                <span className="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded">a2zfix.vercel.app</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">a2zfix.vercel.app</span>
               </div>
             </div>
           </div>
 
           {/* Card: Decoria Store */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-amber-500/50 flex flex-col justify-between gap-4 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-amber-400 tracking-wider font-bold">LIVE E-COMMERCE · REACT + VERCEL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-amber-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE E-COMMERCE · REACT + VERCEL</div>
+                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
                   Decoria Store - Home Decor &amp; Cosmetics
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -759,22 +788,22 @@ export default function App() {
                   href="https://decoria-store.vercel.app"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   Visit Live Web App →
                 </a>
-                <span className="text-[10px] font-mono bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded">decoria-store.vercel.app</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">decoria-store.vercel.app</span>
               </div>
             </div>
           </div>
 
           {/* Card: YouTube Data Extraction */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-purple-500/50 flex flex-col justify-between gap-4 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-purple-400 tracking-wider font-bold">DATA PIPELINE · n8n + JAVASCRIPT</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-purple-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">DATA PIPELINE · n8n + JAVASCRIPT</div>
+                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
                   YouTube Lead Enrichment Pipeline
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -786,22 +815,22 @@ export default function App() {
                   href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20YouTube%20Pipeline%20case%20study"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   Request Technical Blueprint →
                 </a>
-                <span className="text-[10px] font-mono bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded">n8n Workflow</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">n8n Workflow</span>
               </div>
             </div>
           </div>
 
           {/* Card: AI Sales Closer */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-green-500/50 flex flex-col justify-between gap-4 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-green-400 tracking-wider font-bold">CRM AUTOMATION · n8n + GHL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-green-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">CRM AUTOMATION · n8n + GHL</div>
+                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
                   AI Sales Closer + CRM Pipeline
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -813,11 +842,11 @@ export default function App() {
                   href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20AI%20Sales%20Closer%20architecture"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-400 hover:text-green-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   Request Live Architecture →
                 </a>
-                <span className="text-[10px] font-mono bg-green-500/10 text-green-400 px-2.5 py-1 rounded">GHL + Vapi Node</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">GHL + Vapi Node</span>
               </div>
             </div>
           </div>
@@ -830,7 +859,7 @@ export default function App() {
       {/* SEPARATE SECTION: Verified Certifications & Technical Credentials */}
       <section id="certificates" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold">Verified Credentials &amp; Societies</div>
+          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">Verified Credentials &amp; Societies</div>
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Certifications &amp; Technical Masterclasses</h2>
           <p className="text-slate-400 text-sm max-w-md">Official industry-standard certifications in LLM architecture, advanced workflow orchestration, and research methodology.</p>
         </div>
@@ -838,14 +867,14 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Anthropic Certificate Card */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-amber-500/50 flex flex-col justify-between gap-5 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-5 h-full">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Anthropic Academy</span>
-                  <span className="text-[10px] font-mono bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded border border-amber-500/30">Verified</span>
+                  <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">Anthropic Academy</span>
+                  <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
                   Anthropic Certified AI Engineer
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -857,7 +886,7 @@ export default function App() {
                   href="https://drive.google.com/file/d/1kcRNXkWHvI8shllJCkw7EQ2J56low8jE/view?usp=drivesdk"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   View Official Certificate ↗
                 </a>
@@ -868,14 +897,14 @@ export default function App() {
 
           {/* DataCrumbs Certificate Card */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-500/50 flex flex-col justify-between gap-5 h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-5 h-full">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">DataCrumbs</span>
-                  <span className="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded border border-cyan-500/30">Verified</span>
+                  <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">DataCrumbs</span>
+                  <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
                   DataCrumbs N8N Chatbot Lab Masterclass
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
@@ -887,7 +916,7 @@ export default function App() {
                   href="https://drive.google.com/file/d/1bwGK-6CXdQqXbxBsav7jC4HE-Q0onIZ3/view?usp=drivesdk"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-neon-400 hover:text-neon-300 transition-colors"
                 >
                   View Official Certificate ↗
                 </a>
@@ -898,7 +927,7 @@ export default function App() {
 
           {/* University of London Certificate Card */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-neon-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-violet-500/50 flex flex-col justify-between gap-5 h-full">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -934,14 +963,14 @@ export default function App() {
               <div className="text-xs font-semibold text-white">Open Source n8n Community Contributor</div>
               <div className="text-[11px] text-slate-400">Active member of Workflow Automation Architects &amp; Custom Nodes Developers</div>
             </div>
-            <span className="text-cyan-400 text-xs font-mono font-bold">Active Member</span>
+            <span className="text-neon-400 text-xs font-mono font-bold">Active Member</span>
           </div>
           <div className="p-4 rounded-xl bg-slate-900/30 border border-slate-800 flex items-center justify-between">
             <div>
               <div className="text-xs font-semibold text-white">Full-Stack AI Automation Guild</div>
               <div className="text-[11px] text-slate-400">Certified Developer &amp; Autonomous Agent Workflow Contributor</div>
             </div>
-            <span className="text-emerald-400 text-xs font-mono font-bold">Peer Verified</span>
+            <span className="text-neon-400 text-xs font-mono font-bold">Peer Verified</span>
           </div>
         </div>
       </section>
@@ -951,10 +980,10 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-4 space-y-3">
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">About Me</h2>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium w-full">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
               Anthropic Academy Certified
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium w-full">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
               N8N Chatbot Lab Graduate
             </div>
           </div>
@@ -980,29 +1009,29 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-cyan-500/40 transition-colors">
-            <div className="text-xs font-mono text-cyan-400 font-bold">STEP 01</div>
+          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
+            <div className="text-xs font-mono text-neon-400 font-bold">STEP 01</div>
             <h4 className="text-white font-semibold text-base">Discovery &amp; Topology</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Mapping data touchpoints, APIs, trigger events, error scenarios, and output endpoints into an architectural blueprint.
             </p>
           </div>
-          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-purple-500/40 transition-colors">
-            <div className="text-xs font-mono text-purple-400 font-bold">STEP 02</div>
+          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
+            <div className="text-xs font-mono text-neon-400 font-bold">STEP 02</div>
             <h4 className="text-white font-semibold text-base">Workflow Engineering</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Writing custom JS/Python transformation blocks, configuring Webhooks, CRM snapshots, and AI agent logic.
             </p>
           </div>
-          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-amber-500/40 transition-colors">
-            <div className="text-xs font-mono text-amber-400 font-bold">STEP 03</div>
+          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
+            <div className="text-xs font-mono text-neon-400 font-bold">STEP 03</div>
             <h4 className="text-white font-semibold text-base">Stress &amp; Edge Testing</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Running rate-limit tests, edge-case payload validation, and automatic failure fallback channels.
             </p>
           </div>
-          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-emerald-500/40 transition-colors">
-            <div className="text-xs font-mono text-green-400 font-bold">STEP 04</div>
+          <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
+            <div className="text-xs font-mono text-neon-400 font-bold">STEP 04</div>
             <h4 className="text-white font-semibold text-base">Production Deployment</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
               Deploying live webhooks, syncing CRM databases, and handing over complete architectural documentation.
@@ -1023,10 +1052,10 @@ export default function App() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="group relative rounded-2xl transition-all duration-300">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-700 to-cyan-800 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-700 to-neon-800 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col gap-4 h-full">
               <h4 className="font-heading text-white font-bold text-lg">Single Workflow Build</h4>
-              <div className="text-cyan-400 font-bold text-3xl font-heading">
+              <div className="text-neon-400 font-bold text-3xl font-heading">
                 Rs. 10,000 <span className="text-xs text-slate-500 font-normal font-sans">starting</span>
               </div>
               <p className="text-slate-400 text-xs leading-relaxed flex-grow">
@@ -1036,7 +1065,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20a%20Single%20Workflow%20Build"
                 target="_blank"
                 rel="noreferrer"
-                className="text-center bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white text-xs font-semibold py-3 rounded-xl transition-all duration-300"
+                className="text-center bg-slate-800 hover:bg-neon-500 hover:text-slate-950 text-white text-xs font-semibold py-3 rounded-xl transition-all duration-300"
               >
                 Get Started
               </a>
@@ -1044,13 +1073,13 @@ export default function App() {
           </div>
 
           <div className="group relative rounded-2xl transition-all duration-300">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-cyan-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(6,182,212,0.15)]">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.6)]">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(210,255,0,0.15)]">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(210,255,0,0.6)]">
                 For High-Growth Agencies
               </div>
               <h4 className="font-heading text-white font-bold text-lg mt-2">Full System Architecture</h4>
-              <div className="text-cyan-400 font-bold text-3xl font-heading">Custom Quote</div>
+              <div className="text-neon-400 font-bold text-3xl font-heading">Custom Quote</div>
               <p className="text-slate-400 text-xs leading-relaxed flex-grow">
                 Complete multi-workflow networks, CRM orchestration, custom web portal setups, and AI voice/outreach infrastructure scoped and deployed end-to-end.
               </p>
@@ -1058,7 +1087,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20Full%20System%20Architecture"
                 target="_blank"
                 rel="noreferrer"
-                className="text-center bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)]"
+                className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.3)] hover:shadow-[0_0_35px_rgba(210,255,0,0.6)]"
               >
                 Request Architecture Quote
               </a>
@@ -1078,14 +1107,14 @@ export default function App() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-slate-800/80 rounded-xl bg-slate-900/30 hover:border-cyan-500/30 overflow-hidden transition-all duration-200"
+              className="border border-slate-800/80 rounded-xl bg-slate-900/30 hover:border-neon-500/30 overflow-hidden transition-all duration-200"
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full p-4.5 text-left flex justify-between items-center text-sm font-semibold text-white hover:text-cyan-400 transition-colors"
+                className="w-full p-4.5 text-left flex justify-between items-center text-sm font-semibold text-white hover:text-neon-400 transition-colors"
               >
                 <span>{faq.q}</span>
-                <span className="text-cyan-400 text-lg font-mono">{openFaq === index ? "−" : "+"}</span>
+                <span className="text-neon-400 text-lg font-mono">{openFaq === index ? "−" : "+"}</span>
               </button>
               {openFaq === index && (
                 <div className="p-4.5 pt-0 text-xs text-slate-400 leading-relaxed border-t border-slate-800/40">
@@ -1100,8 +1129,8 @@ export default function App() {
       {/* Direct Contact Call to Action */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 text-center gsap-reveal opacity-0 translate-y-10">
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-700"></div>
-          <div className="relative bg-slate-950 border border-cyan-500/40 p-8 sm:p-14 rounded-3xl space-y-6 shadow-2xl">
+          <div className="absolute -inset-1 bg-gradient-to-r from-neon-500 via-neon-600 to-neon-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-700"></div>
+          <div className="relative bg-slate-950 border border-neon-500/40 p-8 sm:p-14 rounded-3xl space-y-6 shadow-2xl">
             <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">
               Ready to Automate Your Manual Operations?
             </h2>
@@ -1113,7 +1142,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20ready%20to%20build%20an%20automation%20system"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:scale-105"
+                className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(210,255,0,0.4)] hover:scale-105"
               >
                 Start Conversation on WhatsApp →
               </a>
@@ -1121,7 +1150,7 @@ export default function App() {
                 href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white text-sm font-semibold px-7 py-3.5 rounded-xl transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 hover:border-neon-500/50 text-white text-sm font-semibold px-7 py-3.5 rounded-xl transition-all duration-300 hover:scale-105"
               >
                 Connect on LinkedIn
               </a>
@@ -1134,16 +1163,16 @@ export default function App() {
       <footer className="max-w-6xl w-full mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-slate-800/60 text-xs text-slate-500">
         <div
           onClick={handleCopyrightClick}
-          className="cursor-pointer select-none transition-colors hover:text-cyan-400 active:scale-95"
+          className="cursor-pointer select-none transition-colors hover:text-neon-400 active:scale-95"
           title="© 2026 Shahzaman Iqbal"
         >
           &copy; 2026 Shahzaman Iqbal. All rights reserved.
         </div>
         <div className="flex gap-6">
-          <a href="https://wa.me/923241736180" className="hover:text-cyan-400 transition-colors">WhatsApp</a>
-          <a href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a" className="hover:text-cyan-400 transition-colors">LinkedIn</a>
-          <a href="https://www.youtube.com/@shahzamaniqbal-v8n" className="hover:text-cyan-400 transition-colors">YouTube</a>
-          <a href="https://www.instagram.com/n8n_developer/?hl=en" className="hover:text-cyan-400 transition-colors">Instagram</a>
+          <a href="https://wa.me/923241736180" className="hover:text-neon-400 transition-colors">WhatsApp</a>
+          <a href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a" className="hover:text-neon-400 transition-colors">LinkedIn</a>
+          <a href="https://www.youtube.com/@shahzamaniqbal-v8n" className="hover:text-neon-400 transition-colors">YouTube</a>
+          <a href="https://www.instagram.com/n8n_developer/?hl=en" className="hover:text-neon-400 transition-colors">Instagram</a>
         </div>
       </footer>
 

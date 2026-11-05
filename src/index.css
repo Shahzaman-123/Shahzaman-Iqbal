@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* Single site accent — neon green #D2FF00 on near-black #0a0a0a.
+   All accent utilities across the site use the `neon-*` scale so the
+   whole site reads as one theme (no blue/cyan/category colours). */
+@theme {
+  --color-neon-200: #efff8a;
+  --color-neon-300: #e2ff4d;
+  --color-neon-400: #d2ff00;
+  --color-neon-500: #b8e600;
+  --color-neon-600: #97bd00;
+  --color-neon-700: #759200;
+  --color-neon-800: #5d7500;
+  --color-neon-950: #3d4d00;
+}
