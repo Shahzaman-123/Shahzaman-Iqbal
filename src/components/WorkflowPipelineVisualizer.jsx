@@ -147,16 +147,16 @@ export default function WorkflowPipelineVisualizer() {
       {/* Simulation Trigger Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
         <div className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-neon-400 animate-pulse"></span>
           <span className="text-xs font-mono text-slate-300">
-            Topology State: <span className="text-cyan-400 font-bold">Zero-Loss Orchestrated Mesh</span>
+            Topology State: <span className="text-neon-400 font-bold">Zero-Loss Orchestrated Mesh</span>
           </span>
         </div>
 
         <button
           onClick={handleSimulateRun}
           disabled={isSimulating}
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-105"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-neon-500 to-neon-600 hover:from-neon-400 hover:to-neon-500 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow-[0_0_20px_rgba(210,255,0,0.3)] hover:scale-105"
         >
           {isSimulating ? (
             <>
@@ -183,17 +183,17 @@ export default function WorkflowPipelineVisualizer() {
               onClick={() => setActiveNodeId(node.id)}
               className={`p-4 rounded-xl text-left border transition-all duration-300 relative group overflow-hidden ${
                 isSelected || isCurrentlySimulating
-                  ? "bg-slate-900 border-cyan-400 shadow-[0_0_25px_rgba(6,182,212,0.35)] scale-[1.02]"
+                  ? "bg-slate-900 border-neon-400 shadow-[0_0_25px_rgba(210,255,0,0.35)] scale-[1.02]"
                   : "bg-slate-950/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/40"
               }`}
             >
               {/* Active Ambient Glow */}
               {(isSelected || isCurrentlySimulating) && (
-                <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500/20 rounded-full blur-xl pointer-events-none"></div>
+                <div className="absolute -top-10 -right-10 w-24 h-24 bg-neon-500/20 rounded-full blur-xl pointer-events-none"></div>
               )}
 
               <div className="flex justify-between items-start mb-2">
-                <span className="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded border border-cyan-500/20">
+                <span className="text-[10px] font-mono font-bold text-neon-400 bg-neon-500/10 px-1.5 py-0.5 rounded border border-neon-500/20">
                   {node.number}
                 </span>
                 <span className="text-[10px] font-mono text-slate-400">
@@ -212,7 +212,7 @@ export default function WorkflowPipelineVisualizer() {
               <div
                 className={`mt-3 h-1 rounded-full transition-all duration-300 ${
                   isSelected || isCurrentlySimulating
-                    ? "bg-gradient-to-r from-cyan-400 to-blue-500 w-full"
+                    ? "bg-gradient-to-r from-neon-400 to-neon-500 w-full"
                     : "bg-slate-800 w-1/3 group-hover:w-2/3"
                 }`}
               ></div>
@@ -227,10 +227,10 @@ export default function WorkflowPipelineVisualizer() {
         <div className="lg:col-span-6 space-y-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-mono font-bold uppercase text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/30">
+              <span className="text-xs font-mono font-bold uppercase text-neon-400 bg-neon-500/10 px-2.5 py-1 rounded border border-neon-500/30">
                 {activeNode.badge}
               </span>
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+              <span className="text-[11px] font-mono text-neon-400 bg-neon-500/10 px-2 py-0.5 rounded border border-neon-500/20">
                 ● {activeNode.status}
               </span>
               <span className="text-[11px] font-mono text-slate-400">
@@ -241,7 +241,7 @@ export default function WorkflowPipelineVisualizer() {
             <h3 className="font-heading text-xl font-bold text-white flex items-center gap-2">
               <span>{activeNode.name}</span>
             </h3>
-            <p className="text-xs font-mono text-cyan-300">
+            <p className="text-xs font-mono text-neon-300">
               Technology Stack: {activeNode.tech}
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function WorkflowPipelineVisualizer() {
           </div>
 
           <div className="space-y-2 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-            <div className="text-[11px] font-mono text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <div className="text-[11px] font-mono text-neon-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
               🛡️ Fault Tolerance &amp; Recovery
             </div>
             <p className="text-[11px] text-slate-400 leading-relaxed">
@@ -269,19 +269,19 @@ export default function WorkflowPipelineVisualizer() {
         <div className="lg:col-span-6 flex flex-col justify-between space-y-2">
           <div className="flex items-center justify-between pb-1">
             <div className="text-xs font-mono text-slate-300 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span className="w-2 h-2 rounded-full bg-neon-400"></span>
               <span>Live In-Flight JSON Payload</span>
             </div>
             <button
               onClick={handleCopyPayload}
-              className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 bg-slate-950 border border-slate-800 hover:border-cyan-500/40 px-2.5 py-1 rounded transition-colors"
+              className="text-[10px] font-mono text-neon-400 hover:text-neon-300 bg-slate-950 border border-slate-800 hover:border-neon-500/40 px-2.5 py-1 rounded transition-colors"
             >
               {copied ? "Copied ✓" : "Copy Payload"}
             </button>
           </div>
 
           <div className="relative flex-1 bg-slate-950 border border-slate-800/80 rounded-xl p-4 font-mono text-[11px] text-slate-300 overflow-x-auto max-h-[260px] leading-relaxed shadow-inner">
-            <pre className="text-cyan-300 whitespace-pre">
+            <pre className="text-neon-300 whitespace-pre">
               {JSON.stringify(activeNode.payload, null, 2)}
             </pre>
           </div>

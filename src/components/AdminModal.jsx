@@ -290,15 +290,15 @@ export default function AdminModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-slate-900 border border-cyan-500/50 rounded-2xl shadow-[0_0_60px_rgba(6,182,212,0.3)] overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-3xl bg-slate-900 border border-neon-500/50 rounded-2xl shadow-[0_0_60px_rgba(210,255,0,0.3)] overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
         <div className="p-5 bg-slate-950/90 border-b border-slate-800 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+            <div className="w-3 h-3 rounded-full bg-neon-400 animate-pulse shadow-[0_0_10px_rgba(210,255,0,0.8)]"></div>
             <div>
               <h2 className="font-heading font-bold text-white text-base tracking-wide flex items-center gap-2">
                 🔒 Portfolio Control Center
-                <span className="text-[10px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 border border-neon-500/30 px-2 py-0.5 rounded">
                   Admin v2.2
                 </span>
               </h2>
@@ -323,7 +323,7 @@ export default function AdminModal({
               onClick={() => setActiveTab("videos")}
               className={`pb-3 text-xs font-mono font-bold flex items-center gap-2 border-b-2 transition-all ${
                 activeTab === "videos"
-                  ? "border-cyan-400 text-cyan-300"
+                  ? "border-neon-400 text-neon-300"
                   : "border-transparent text-slate-400 hover:text-white"
               }`}
             >
@@ -337,12 +337,12 @@ export default function AdminModal({
               onClick={() => setActiveTab("leads")}
               className={`pb-3 text-xs font-mono font-bold flex items-center gap-2 border-b-2 transition-all ${
                 activeTab === "leads"
-                  ? "border-emerald-400 text-emerald-300"
+                  ? "border-neon-400 text-neon-300"
                   : "border-transparent text-slate-400 hover:text-white"
               }`}
             >
               <span>💬 Chatbot Leads Inbox</span>
-              <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">
+              <span className="text-[10px] bg-neon-500/20 text-neon-400 px-2 py-0.5 rounded-full border border-neon-500/30">
                 {leads.length} Live
               </span>
             </button>
@@ -355,7 +355,7 @@ export default function AdminModal({
             /* Password Authentication Screen */
             <form onSubmit={handleLogin} className="space-y-4 max-w-md mx-auto py-6">
               <div className="text-center space-y-2">
-                <div className="w-12 h-12 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                <div className="w-12 h-12 rounded-full bg-neon-500/10 border border-neon-500/30 text-neon-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_20px_rgba(210,255,0,0.2)]">
                   ⚡
                 </div>
                 <h3 className="text-white font-heading font-bold text-lg">
@@ -367,7 +367,7 @@ export default function AdminModal({
               </div>
 
               {authError && (
-                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs text-center">
+                <div className="p-3 rounded-xl bg-neon-500/10 border border-neon-500/30 text-neon-400 text-xs text-center">
                   {authError}
                 </div>
               )}
@@ -387,7 +387,7 @@ export default function AdminModal({
                   placeholder="Enter admin password..."
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 transition-colors"
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-neon-400 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 transition-colors"
                   autoFocus
                 />
               </div>
@@ -402,7 +402,7 @@ export default function AdminModal({
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                  className="flex-1 bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(210,255,0,0.3)]"
                 >
                   Authenticate →
                 </button>
@@ -414,14 +414,14 @@ export default function AdminModal({
               <div className="flex justify-between items-center">
                 <div>
                   <h3 className="font-heading font-bold text-white text-base flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span className="w-2 h-2 rounded-full bg-neon-400 animate-ping"></span>
                     <span>Live Chatbot Leads ({leads.length})</span>
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
                     Prospect queries captured automatically from your portfolio AI assistant.
                   </p>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">
+                <span className="text-[10px] font-mono text-neon-400 bg-neon-500/10 px-2.5 py-1 rounded border border-neon-500/30">
                   Firestore: chatbot_leads
                 </span>
               </div>
@@ -454,7 +454,7 @@ export default function AdminModal({
                         className="p-4 rounded-xl bg-slate-950/80 border border-slate-800/90 space-y-3 shadow-sm hover:border-slate-700 transition-all"
                       >
                         <div className="flex justify-between items-center text-[10px] font-mono border-b border-slate-800/60 pb-2">
-                          <span className="text-emerald-400 font-bold">
+                          <span className="text-neon-400 font-bold">
                             📅 {timeStr}
                           </span>
                           <span className="text-slate-500 truncate max-w-[180px]">
@@ -464,7 +464,7 @@ export default function AdminModal({
 
                         <div className="space-y-1.5 text-xs">
                           <div>
-                            <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold block mb-0.5">
+                            <span className="text-[10px] font-mono uppercase text-neon-400 font-bold block mb-0.5">
                               Prospect Message:
                             </span>
                             <p className="text-white bg-slate-900/90 p-2.5 rounded-lg border border-slate-800 font-medium">
@@ -487,7 +487,7 @@ export default function AdminModal({
                             href={whatsappFollowup}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold text-[11px]"
+                            className="inline-flex items-center gap-1.5 text-neon-400 hover:text-neon-300 font-semibold text-[11px]"
                           >
                             <span>Open in WhatsApp ↗</span>
                           </a>
@@ -495,7 +495,7 @@ export default function AdminModal({
                           <button
                             onClick={() => handleDeleteLead(lead.id)}
                             disabled={deletingLeadId === lead.id}
-                            className="px-2.5 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[11px] font-semibold border border-red-500/30 transition-all"
+                            className="px-2.5 py-1 rounded bg-neon-500/10 hover:bg-neon-500/20 text-neon-400 text-[11px] font-semibold border border-neon-500/30 transition-all"
                           >
                             {deletingLeadId === lead.id ? "Deleting..." : "Delete Lead"}
                           </button>
@@ -513,7 +513,7 @@ export default function AdminModal({
               <div
                 className={`p-5 rounded-xl border space-y-4 transition-all ${
                   editingId
-                    ? "bg-slate-950/90 border-cyan-500/70 shadow-[0_0_25px_rgba(6,182,212,0.15)]"
+                    ? "bg-slate-950/90 border-neon-500/70 shadow-[0_0_25px_rgba(210,255,0,0.15)]"
                     : "bg-slate-950/60 border-slate-800"
                 }`}
               >
@@ -521,15 +521,15 @@ export default function AdminModal({
                   <h3 className="font-heading font-bold text-sm text-white flex items-center gap-2">
                     {editingId ? (
                       <>
-                        <span className="text-cyan-400">✏️</span>
+                        <span className="text-neon-400">✏️</span>
                         <span>Edit Video Walkthrough</span>
-                        <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/20 px-2 py-0.5 rounded border border-cyan-500/40">
+                        <span className="text-[10px] font-mono text-neon-300 bg-neon-500/20 px-2 py-0.5 rounded border border-neon-500/40">
                           Editing Mode
                         </span>
                       </>
                     ) : (
                       <>
-                        <span className="text-cyan-400">+</span>
+                        <span className="text-neon-400">+</span>
                         <span>Add New Video Walkthrough</span>
                       </>
                     )}
@@ -540,13 +540,13 @@ export default function AdminModal({
                       <button
                         type="button"
                         onClick={handleCancelEdit}
-                        className="text-[11px] font-mono text-amber-400 hover:text-amber-300 underline"
+                        className="text-[11px] font-mono text-neon-400 hover:text-neon-300 underline"
                       >
                         ✕ Cancel Edit
                       </button>
                     )}
                     <span className="text-[10px] font-mono text-slate-400">
-                      Collection: <span className="text-cyan-400">portfolio_videos</span>
+                      Collection: <span className="text-neon-400">portfolio_videos</span>
                     </span>
                   </div>
                 </div>
@@ -555,10 +555,10 @@ export default function AdminModal({
                   <div
                     className={`p-3 rounded-xl text-xs ${
                       formMessage.type === "success"
-                        ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
+                        ? "bg-neon-500/10 border border-neon-500/30 text-neon-400"
                         : formMessage.type === "info"
-                        ? "bg-cyan-500/10 border border-cyan-500/30 text-cyan-300"
-                        : "bg-red-500/10 border border-red-500/30 text-red-400"
+                        ? "bg-neon-500/10 border border-neon-500/30 text-neon-300"
+                        : "bg-neon-500/10 border border-neon-500/30 text-neon-400"
                     }`}
                   >
                     {formMessage.text}
@@ -574,7 +574,7 @@ export default function AdminModal({
                         placeholder="e.g. Multi-Agent Lead Enrichment (n8n)"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full bg-slate-900 border border-slate-800 focus:border-cyan-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
+                        className="w-full bg-slate-900 border border-slate-800 focus:border-neon-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
                         required
                       />
                     </div>
@@ -584,7 +584,7 @@ export default function AdminModal({
                       <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="w-full bg-slate-900 border border-slate-800 focus:border-cyan-400 rounded-lg px-3 py-2 text-white"
+                        className="w-full bg-slate-900 border border-slate-800 focus:border-neon-400 rounded-lg px-3 py-2 text-white"
                       >
                         <option value="Autonomous Agents / n8n">Autonomous Agents / n8n</option>
                         <option value="Voice AI / Retell AI">Voice AI / Retell AI</option>
@@ -605,13 +605,13 @@ export default function AdminModal({
                       placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..."
                       value={youtubeUrl}
                       onChange={(e) => setYoutubeUrl(e.target.value)}
-                      className="w-full bg-slate-900 border border-slate-800 focus:border-cyan-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
+                      className="w-full bg-slate-900 border border-slate-800 focus:border-neon-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
                       required
                     />
                     {youtubeUrl && (
                       <p className="text-[10px] text-slate-400 font-mono">
                         Embed Preview URL:{" "}
-                        <span className="text-cyan-400">
+                        <span className="text-neon-400">
                           {parseYouTubeUrl(youtubeUrl).embedUrl || "Invalid YouTube link"}
                         </span>
                       </p>
@@ -627,7 +627,7 @@ export default function AdminModal({
                       placeholder="e.g. 0:15 Demo Call, 1:30 Architecture, 2:20 CRM Sync"
                       value={timestampsInput}
                       onChange={(e) => setTimestampsInput(e.target.value)}
-                      className="w-full bg-slate-900 border border-slate-800 focus:border-cyan-400 rounded-lg px-3 py-2 text-white placeholder-slate-500 font-mono text-[11px]"
+                      className="w-full bg-slate-900 border border-slate-800 focus:border-neon-400 rounded-lg px-3 py-2 text-white placeholder-slate-500 font-mono text-[11px]"
                     />
                     <p className="text-[10px] text-slate-500">
                       Creates clickable chapter pills on the video card that jump visitors to that exact second.
@@ -641,7 +641,7 @@ export default function AdminModal({
                       placeholder="Technical overview, features demonstrated, integrations covered..."
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="w-full bg-slate-900 border border-slate-800 focus:border-cyan-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
+                      className="w-full bg-slate-900 border border-slate-800 focus:border-neon-400 rounded-lg px-3 py-2 text-white placeholder-slate-500"
                     ></textarea>
                   </div>
 
@@ -658,7 +658,7 @@ export default function AdminModal({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.25)] flex items-center justify-center gap-2"
+                      className="flex-1 bg-neon-500 hover:bg-neon-400 disabled:opacity-50 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(210,255,0,0.25)] flex items-center justify-center gap-2"
                     >
                       {isSubmitting
                         ? "Saving to Firestore..."
@@ -679,7 +679,7 @@ export default function AdminModal({
                   {onSeedDefaults && (
                     <button
                       onClick={onSeedDefaults}
-                      className="text-[11px] font-mono text-cyan-400 hover:underline"
+                      className="text-[11px] font-mono text-neon-400 hover:underline"
                     >
                       Re-seed Default Walkthroughs
                     </button>
@@ -697,27 +697,27 @@ export default function AdminModal({
                         key={v.id || v.url}
                         className={`p-3 rounded-xl bg-slate-950/70 border flex items-center justify-between gap-3 transition-all ${
                           editingId === v.id
-                            ? "border-cyan-500/80 bg-cyan-950/20 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+                            ? "border-neon-500/80 bg-neon-950/20 shadow-[0_0_15px_rgba(210,255,0,0.15)]"
                             : "border-slate-800"
                         }`}
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-mono font-bold uppercase text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">
+                            <span className="text-[10px] font-mono font-bold uppercase text-neon-400 bg-neon-500/10 px-2 py-0.5 rounded">
                               {v.category}
                             </span>
                             {v.id?.startsWith("default-") && (
-                              <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">
+                              <span className="text-[10px] font-mono text-neon-400 bg-neon-500/10 px-1.5 py-0.5 rounded">
                                 Default
                               </span>
                             )}
                             {v.timestamps && v.timestamps.length > 0 && (
-                              <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded">
+                              <span className="text-[10px] font-mono text-neon-400 bg-neon-500/10 px-1.5 py-0.5 rounded">
                                 {v.timestamps.length} Chapters
                               </span>
                             )}
                             {editingId === v.id && (
-                              <span className="text-[10px] font-mono text-cyan-300 font-bold">
+                              <span className="text-[10px] font-mono text-neon-300 font-bold">
                                 (Currently Editing)
                               </span>
                             )}
@@ -729,7 +729,7 @@ export default function AdminModal({
                             href={v.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[11px] text-slate-400 hover:text-cyan-400 truncate block font-mono"
+                            className="text-[11px] text-slate-400 hover:text-neon-400 truncate block font-mono"
                           >
                             {v.url}
                           </a>
@@ -741,8 +741,8 @@ export default function AdminModal({
                             onClick={() => handleStartEdit(v)}
                             className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all ${
                               editingId === v.id
-                                ? "bg-cyan-500 text-slate-950 border-cyan-400 font-bold"
-                                : "bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-300 border-cyan-500/30"
+                                ? "bg-neon-500 text-slate-950 border-neon-400 font-bold"
+                                : "bg-neon-500/10 hover:bg-neon-500/20 text-neon-400 hover:text-neon-300 border-neon-500/30"
                             }`}
                           >
                             {editingId === v.id ? "Editing" : "Edit"}
@@ -751,7 +751,7 @@ export default function AdminModal({
                           <button
                             onClick={() => handleDeleteVideo(v.id)}
                             disabled={deletingId === v.id}
-                            className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 border border-red-500/30 text-xs font-semibold transition-all"
+                            className="px-3 py-1.5 rounded-lg bg-neon-500/10 hover:bg-neon-500/20 text-neon-400 hover:text-neon-300 border border-neon-500/30 text-xs font-semibold transition-all"
                           >
                             {deletingId === v.id ? "Deleting..." : "Delete"}
                           </button>
