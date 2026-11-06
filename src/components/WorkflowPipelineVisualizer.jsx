@@ -4,14 +4,14 @@ const PIPELINE_NODES = [
   {
     id: "ingestion",
     number: "01",
-    name: "Inbound Ingestion",
-    tech: "Webhook & Apollo API",
-    badge: "Gateway Node",
+    name: "New Lead Comes In",
+    tech: "From ads, forms & lists",
+    badge: "Step 1 — Entry",
     latency: "12ms",
-    status: "Active (200 OK)",
+    status: "Working",
     description:
-      "Captures raw lead payloads from Meta Ads, website forms, or Apollo webhooks. Normalizes headers, parses JSON, and passes to security sanitization.",
-    reliability: "Automatic 3x exponential retry on socket timeout with HMAC validation.",
+      "A new lead comes in from a Facebook ad, your website, or a list. The system reads the name, phone number, and where they came from.",
+    reliability: "If the first try fails, it tries again by itself (up to 3 times).",
     payload: {
       event: "lead.created",
       source: "meta_ad_campaign_v4",
@@ -28,14 +28,14 @@ const PIPELINE_NODES = [
   {
     id: "validation",
     number: "02",
-    name: "Validation & Deduplication",
-    tech: "Redis & Custom JS Node",
-    badge: "Security Layer",
+    name: "Check & Clean Up",
+    tech: "Checks for copies",
+    badge: "Step 2 — Safety check",
     latency: "24ms",
-    status: "Verified (HMAC 256)",
+    status: "Checked",
     description:
-      "Cross-references inbound email and phone against Redis cache to prevent duplicate processing. Normalizes international phone codes to E.164.",
-    reliability: "Deduplicates repeat clicks within 60-second window, dropping noisy retries.",
+      "The system checks if this lead is new or a repeat, and fixes the phone number format before anything else happens.",
+    reliability: "Repeat clicks in the same minute are ignored — no double records.",
     payload: {
       status: "validated",
       is_duplicate: false,
@@ -47,14 +47,14 @@ const PIPELINE_NODES = [
   {
     id: "llm-agent",
     number: "03",
-    name: "LLM Neural Intelligence",
-    tech: "Claude 3.5 & Groq",
-    badge: "Autonomous Reasoner",
+    name: "Smart Reply Written",
+    tech: "AI reads & decides",
+    badge: "Step 3 — AI thinks",
     latency: "185ms",
-    status: "Completed (Confidence 98.4%)",
+    status: "Done",
     description:
-      "Autonomous Claude agent parses lead pain points, classifies immediate qualification tier, and drafts customized voice synthesis scripts with dynamic parameters.",
-    reliability: "Fallback channel automatically routes to Groq Llama 3.3 if primary LLM hits rate limits.",
+      "The AI reads what the customer wants, decides how likely they are to buy, and writes a personal reply.",
+    reliability: "If the main AI is busy, a backup AI takes over.",
     payload: {
       agent_decision: "HIGH_INTENT_LEAD",
       priority_score: 9.4,
@@ -66,14 +66,14 @@ const PIPELINE_NODES = [
   {
     id: "voice-ai",
     number: "04",
-    name: "Voice AI Calling Engine",
-    tech: "Retell AI / Vapi",
-    badge: "Voice Infrastructure",
+    name: "AI Phone Call",
+    tech: "Voice calls",
+    badge: "Step 4 — The call",
     latency: "340ms (Sub-second audio)",
-    status: "Dispatched",
+    status: "Calling",
     description:
-      "Initiates ultra-low latency conversational AI phone call within 60 seconds of form submission. Engages the lead in realistic dialogue and captures calendar bookings.",
-    reliability: "Automatic fallback to SMS/WhatsApp escalation if call goes to voicemail.",
+      "The AI calls the customer within a minute, talks naturally, and books the appointment.",
+    reliability: "If nobody picks up, it sends a text or WhatsApp message instead.",
     payload: {
       call_id: "call_retell_82910fbc",
       assistant_id: "asst_shahzaman_booking_v2",
@@ -88,14 +88,14 @@ const PIPELINE_NODES = [
   {
     id: "crm-dispatch",
     number: "05",
-    name: "Dispatch & CRM Sync",
-    tech: "GoHighLevel & WhatsApp",
-    badge: "Pipeline Hub",
+    name: "List Updated & Alert Sent",
+    tech: "Customer list & WhatsApp",
+    badge: "Step 5 — Done",
     latency: "85ms",
-    status: "Synchronized",
+    status: "Updated",
     description:
-      "Updates GHL Opportunity pipeline stage to 'Call Booked', triggers SMS confirmation, and sends real-time WhatsApp alert with full call transcript to sales reps.",
-    reliability: "Idempotent webhook delivery with Telegram & Slack error routing.",
+      "Your customer list updates, the customer gets a confirmation text, and you get a WhatsApp message with the call details.",
+    reliability: "Every update is sent once — no doubles — and errors go to WhatsApp or Telegram.",
     payload: {
       ghl_contact_id: "ghl_cnt_918230",
       stage_updated: "Booked Technical Call",
@@ -149,7 +149,7 @@ export default function WorkflowPipelineVisualizer() {
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-neon-400 animate-pulse"></span>
           <span className="text-xs font-mono text-slate-300">
-            Topology State: <span className="text-neon-400 font-bold">Zero-Loss Orchestrated Mesh</span>
+            System status: <span className="text-neon-400 font-bold">Working — nothing gets lost</span>
           </span>
         </div>
 
@@ -161,11 +161,11 @@ export default function WorkflowPipelineVisualizer() {
           {isSimulating ? (
             <>
               <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
-              <span>Executing Node {simulatedIndex + 1} of 5...</span>
+              <span>Step {simulatedIndex + 1} of 5...</span>
             </>
           ) : (
             <>
-              <span>⚡ Simulate Real-Time Execution</span>
+              <span>⚡ ▶ Watch It Work</span>
             </>
           )}
         </button>
@@ -234,21 +234,21 @@ export default function WorkflowPipelineVisualizer() {
                 ● {activeNode.status}
               </span>
               <span className="text-[11px] font-mono text-slate-400">
-                Latency: <span className="text-white font-bold">{activeNode.latency}</span>
+                Speed: <span className="text-white font-bold">{activeNode.latency}</span>
               </span>
             </div>
 
-            <h3 className="font-heading text-xl font-bold text-white flex items-center gap-2">
+            <h3 className="font-heading text-xl font-normal text-white flex items-center gap-2">
               <span>{activeNode.name}</span>
             </h3>
             <p className="text-xs font-mono text-neon-300">
-              Technology Stack: {activeNode.tech}
+              Tools: {activeNode.tech}
             </p>
           </div>
 
           <div className="space-y-2">
             <h5 className="text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
-              Operational Mechanics
+              What happens here
             </h5>
             <p className="text-xs text-slate-400 leading-relaxed">
               {activeNode.description}
@@ -257,7 +257,7 @@ export default function WorkflowPipelineVisualizer() {
 
           <div className="space-y-2 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
             <div className="text-[11px] font-mono text-neon-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-              🛡️ Fault Tolerance &amp; Recovery
+              🛡️ If Something Goes Wrong
             </div>
             <p className="text-[11px] text-slate-400 leading-relaxed">
               {activeNode.reliability}
@@ -270,7 +270,7 @@ export default function WorkflowPipelineVisualizer() {
           <div className="flex items-center justify-between pb-1">
             <div className="text-xs font-mono text-slate-300 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-neon-400"></span>
-              <span>Live In-Flight JSON Payload</span>
+              <span>Live Example Data</span>
             </div>
             <button
               onClick={handleCopyPayload}
@@ -287,7 +287,7 @@ export default function WorkflowPipelineVisualizer() {
           </div>
 
           <div className="text-[10px] font-mono text-slate-500 text-right">
-            Schema Validation: Strict TypeScript Interface (Pass)
+            Data check: Passed ✓
           </div>
         </div>
       </div>

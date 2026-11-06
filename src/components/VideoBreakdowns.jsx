@@ -11,10 +11,10 @@ export default function VideoBreakdowns({ videos = [] }) {
   // Filter categories available
   const filterCategories = [
     "All",
-    "Voice AI",
-    "n8n Automations",
-    "Autonomous Agents",
-    "Web Apps",
+    "Voice Calls",
+    "Automations",
+    "Smart Helpers",
+    "Websites",
   ];
 
   const filteredVideos = useMemo(() => {
@@ -22,10 +22,10 @@ export default function VideoBreakdowns({ videos = [] }) {
 
     return displayVideos.filter((vid) => {
       const cat = (vid.category || "").toLowerCase();
-      if (activeCategory === "Voice AI") return cat.includes("voice");
-      if (activeCategory === "n8n Automations") return cat.includes("n8n");
-      if (activeCategory === "Autonomous Agents") return cat.includes("agent") || cat.includes("autonomous");
-      if (activeCategory === "Web Apps") return cat.includes("web") || cat.includes("app");
+      if (activeCategory === "Voice Calls") return cat.includes("voice");
+      if (activeCategory === "Automations") return cat.includes("n8n");
+      if (activeCategory === "Smart Helpers") return cat.includes("agent") || cat.includes("autonomous");
+      if (activeCategory === "Websites") return cat.includes("web") || cat.includes("app");
       return cat.includes(activeCategory.toLowerCase());
     });
   }, [displayVideos, activeCategory]);
@@ -46,10 +46,10 @@ export default function VideoBreakdowns({ videos = [] }) {
         <div className="space-y-2">
           <div className="section-label"><b>03</b> From Raw to Real</div>
           <h2 className="section-title text-3xl md:text-5xl text-white">
-            Video Breakdowns &amp; Architecture Walkthroughs
+            Watch How It Works
           </h2>
           <p className="text-slate-400 text-sm max-w-lg">
-            In-depth technical screencasts demonstrating real-world n8n topologies, low-latency Voice AI engines, and automated backend pipelines.
+            Short videos that show real systems working — step by step.
           </p>
         </div>
 
@@ -77,13 +77,13 @@ export default function VideoBreakdowns({ videos = [] }) {
       {filteredVideos.length === 0 ? (
         <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-950/40">
           <p className="text-slate-400 text-sm">
-            No video walkthroughs currently found in the <span className="text-neon-400">{activeCategory}</span> filter.
+            No videos in this group yet.
           </p>
           <button
             onClick={() => setActiveCategory("All")}
             className="mt-3 text-xs text-neon-400 hover:underline font-mono"
           >
-            Reset filter to show all ({displayVideos.length})
+            Show all videos ({displayVideos.length})
           </button>
         </div>
       ) : (
@@ -119,7 +119,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                       ></iframe>
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs p-4 text-center">
-                        <span>Video embed unavailable</span>
+                        <span>Video didn't load</span>
                         <a
                           href={video.url}
                           target="_blank"
@@ -137,7 +137,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                     <div className="space-y-2.5">
                       <div className="flex items-center justify-between gap-2 flex-wrap">
                         <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neon-400 bg-neon-500/10 px-2.5 py-1 rounded-md border border-neon-500/30">
-                          {video.category || "Automation Architecture"}
+                          {video.category || "Smart System"}
                         </span>
                         {videoId && (
                           <span className="text-[10px] font-mono text-slate-500">
@@ -146,7 +146,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                         )}
                       </div>
 
-                      <h3 className="font-heading text-lg md:text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
+                      <h3 className="font-heading text-lg md:text-xl font-normal text-white group-hover:text-neon-300 transition-colors">
                         {video.title}
                       </h3>
 
@@ -159,7 +159,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                         <div className="pt-2 border-t border-slate-800/50 space-y-1.5">
                           <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-neon-400 inline-block"></span>
-                            Chapter Timestamps (Jump to Architecture Phase):
+                            Chapters:
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {video.timestamps.map((ts, idx) => {

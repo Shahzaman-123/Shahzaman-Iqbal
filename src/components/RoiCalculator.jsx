@@ -35,7 +35,7 @@ export default function RoiCalculator() {
   }, [dailyLeads, minutesPerTask, hourlyRate, currency]);
 
   const whatsappUrl = useMemo(() => {
-    const text = `Hi Shahzaman, I audited our workflows with your ROI calculator. We process ~${dailyLeads} leads/operations daily and estimate saving approx ${calculations.hoursSavedPerMonth} hours/month (${calculations.currencySymbol}${calculations.monthlyCostSaved.toLocaleString()}/mo). I'd like to discuss automating our backend pipeline.`;
+    const text = `Hi Shahzaman, I tried your savings calculator. We handle about ${dailyLeads} leads/jobs a day and could save around ${calculations.hoursSavedPerMonth} hours a month (${calculations.currencySymbol}${calculations.monthlyCostSaved.toLocaleString()}/mo). Can we talk about it?`;
     return `https://wa.me/923241736180?text=${encodeURIComponent(text)}`;
   }, [dailyLeads, calculations]);
 
@@ -45,13 +45,13 @@ export default function RoiCalculator() {
         <div className="space-y-2">
           <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-neon-400"></span>
-            Efficiency &amp; Financial Impact
+            Save Time &amp; Money
           </div>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">
-            Agency ROI &amp; Automation Cost Calculator
+          <h2 className="font-heading text-2xl md:text-3xl font-normal text-white">
+            How Much Time &amp; Money Will You Save?
           </h2>
           <p className="text-slate-400 text-sm max-w-lg">
-            Estimate the exact operational hours and capital your agency or enterprise reclaims by replacing manual lead handling with autonomous n8n &amp; AI Voice pipelines.
+            See how many hours and how much money your business gets back when a smart system does the manual work.
           </p>
         </div>
 
@@ -88,9 +88,9 @@ export default function RoiCalculator() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-medium text-slate-300">
-                  Repetitive Tasks / Leads Handled Daily
+                  New leads or repeat jobs each day
                 </label>
-                <span className="text-sm font-heading font-bold text-neon-400">
+                <span className="text-sm font-heading font-normal text-neon-400">
                   {dailyLeads} <span className="text-xs font-normal text-slate-500">leads/day</span>
                 </span>
               </div>
@@ -104,9 +104,9 @@ export default function RoiCalculator() {
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
               <div className="flex justify-between text-[10px] font-mono text-slate-500">
-                <span>5 / day (Boutique)</span>
+                <span>5 / day (small)</span>
                 <span>150 / day</span>
-                <span>300+ / day (High Scale)</span>
+                <span>300+ / day (very busy)</span>
               </div>
             </div>
 
@@ -114,9 +114,9 @@ export default function RoiCalculator() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-medium text-slate-300">
-                  Manual Handling Time per Lead / Task
+                  Minutes you spend on each one by hand
                 </label>
-                <span className="text-sm font-heading font-bold text-neon-400">
+                <span className="text-sm font-heading font-normal text-neon-400">
                   {minutesPerTask} <span className="text-xs font-normal text-slate-500">minutes</span>
                 </span>
               </div>
@@ -130,9 +130,9 @@ export default function RoiCalculator() {
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
               <div className="flex justify-between text-[10px] font-mono text-slate-500">
-                <span>3 mins (Quick CRM Entry)</span>
+                <span>3 mins (a quick note)</span>
                 <span>20 mins</span>
-                <span>45 mins (Call + Qualification)</span>
+                <span>45 mins (call + questions)</span>
               </div>
             </div>
 
@@ -140,9 +140,9 @@ export default function RoiCalculator() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-medium text-slate-300">
-                  Average Hourly Labor / Freelance Cost
+                  What one hour of work costs you
                 </label>
-                <span className="text-sm font-heading font-bold text-neon-400">
+                <span className="text-sm font-heading font-normal text-neon-400">
                   {calculations.currencySymbol}
                   {hourlyRate.toLocaleString()}{" "}
                   <span className="text-xs font-normal text-slate-500">/ hr</span>
@@ -173,7 +173,7 @@ export default function RoiCalculator() {
           <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] text-slate-400 flex items-center gap-2.5">
             <span className="text-neon-400 text-base">⚡</span>
             <span>
-              Automation reduces response time from <b className="text-white">{minutesPerTask} minutes</b> down to <b className="text-neon-300">&lt; 1.2 seconds</b> (99.8% reduction in latency).
+              A smart system replies in under <b className="text-neon-300">1.2 seconds</b> — instead of <b className="text-white">{minutesPerTask} minutes</b> by hand.
             </span>
           </div>
         </div>
@@ -185,36 +185,36 @@ export default function RoiCalculator() {
           <div className="relative p-7 rounded-2xl bg-slate-950 border border-neon-500/40 flex flex-col justify-between h-full space-y-6 shadow-2xl">
             <div className="space-y-1">
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neon-400 bg-neon-500/10 px-2.5 py-1 rounded border border-neon-500/30">
-                Estimated Net Recovery
+                What you get back
               </span>
-              <h3 className="text-white font-heading font-bold text-xl pt-1">
-                Your Monthly Efficiency Surplus
+              <h3 className="text-white font-heading font-normal text-xl pt-1">
+                Your savings every month
               </h3>
             </div>
 
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-xs text-slate-400 font-mono">Hours Saved / Month</div>
-                <div className="text-3xl md:text-4xl font-heading font-bold text-neon-400 mt-1 drop-shadow-[0_0_15px_rgba(255, 42, 42,0.4)]">
+                <div className="text-xs text-slate-400 font-mono">Hours saved each month</div>
+                <div className="text-3xl md:text-4xl font-heading font-normal text-neon-400 mt-1 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">
                   {calculations.hoursSavedPerMonth.toLocaleString()} hrs
                 </div>
                 <div className="text-[11px] text-slate-500 mt-0.5">
-                  Equivalent to ~{Math.round(calculations.hoursSavedPerMonth / 160 * 10) / 10} full-time operators
+                  That's like {Math.round(calculations.hoursSavedPerMonth / 160 * 10) / 10} extra full-time workers
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-mono">Monthly Capital Reclaimed</div>
-                  <div className="text-lg md:text-xl font-heading font-bold text-neon-400 mt-1">
+                  <div className="text-[10px] text-slate-400 font-mono">Money saved each month</div>
+                  <div className="text-lg md:text-xl font-heading font-normal text-neon-400 mt-1">
                     {calculations.currencySymbol}
                     {calculations.monthlyCostSaved.toLocaleString()}
                   </div>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-mono">Annualized Value</div>
-                  <div className="text-lg md:text-xl font-heading font-bold text-neon-400 mt-1">
+                  <div className="text-[10px] text-slate-400 font-mono">Money saved each year</div>
+                  <div className="text-lg md:text-xl font-heading font-normal text-neon-400 mt-1">
                     {calculations.currencySymbol}
                     {calculations.annualCostSaved.toLocaleString()}
                   </div>
@@ -228,7 +228,7 @@ export default function RoiCalculator() {
               rel="noreferrer"
               className="w-full text-center bg-neon-500 hover:bg-neon-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(255, 42, 42,0.3)] hover:shadow-[0_0_40px_rgba(255, 42, 42,0.6)] hover:scale-[1.02] flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
             >
-              <span>Lock In These Savings on WhatsApp →</span>
+              <span>Get These Savings on WhatsApp →</span>
             </a>
           </div>
         </div>

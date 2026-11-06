@@ -90,7 +90,7 @@ export default function App() {
     {
       role: "assistant",
       content:
-        "Hello! I am Shahzaman's AI Assistant. Feel free to ask about his backend automation expertise, verified certifications, live web apps (A2Z FIX, Decoria Store), pricing tiers, or portfolio systems!",
+        "Hello! I'm Shahzaman's AI helper. Ask me what he builds, what it costs, or about his work — A2Z FIX and Decoria Store.",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
@@ -368,24 +368,24 @@ export default function App() {
 
   const faqs = [
     {
-      q: "What tools and platforms do you specialize in?",
-      a: "I specialize in end-to-end backend automation using n8n, GoHighLevel (GHL), Vapi & Retell AI voice agents, REST APIs, Webhooks, React web apps, Python, and JavaScript data scrapers (Apollo, Dripify, Bright Data)."
+      q: "What do you build with?",
+      a: "I build with n8n, GoHighLevel, AI voice helpers (Vapi and Retell), React websites, Python, and lead-finding tools (Apollo, Dripify, Bright Data)."
     },
     {
-      q: "Do you build complete web platforms along with backend automation?",
-      a: "Yes. I engineer full-stack React web applications (such as A2Z FIX Institute and Decoria E-Commerce Store) paired with automated backend pipelines, database integrations, and CRM synchronization."
+      q: "Do you build websites too, or only automations?",
+      a: "Both. I build full websites — like the A2Z FIX school site and the Decoria online shop — with the smart systems behind them."
     },
     {
-      q: "How does the pricing work for custom workflows vs full architecture?",
-      a: "Single workflow builds start at Rs. 10,000 for focused automations or single AI agents. Full system architectures for agencies and enterprise setups are scoped via custom quotes based on complexity and integrations."
+      q: "How much does it cost?",
+      a: "One system starts at Rs. 10,000. A full system for your whole business gets a custom price — we talk first, then I quote."
     },
     {
-      q: "Can you connect AI Voice Agents to my CRM?",
-      a: "Yes. I build real-time voice infrastructure (via Vapi or Retell AI) that triggers instant calendar booking, CRM pipeline updates, and SMS/Email follow-up sequences through webhook logic."
+      q: "Can your voice helper work with my customer list?",
+      a: "Yes. The voice helper can book appointments, update your customer list, and send follow-up messages by itself."
     },
     {
-      q: "How do you ensure workflows don't break when APIs update?",
-      a: "All workflows are engineered with comprehensive error branches, retry nodes, payload normalization, and automatic alerting (via Telegram, WhatsApp, or SMTP) to prevent silent failures."
+      q: "What happens if something breaks?",
+      a: "Every system has safety checks. If something fails, it tries again — and you get an alert on WhatsApp or email, so nothing fails quietly."
     }
   ];
 
@@ -425,9 +425,9 @@ export default function App() {
             <div className="flex items-center gap-2.5">
               <div className="w-2.5 h-2.5 rounded-full bg-neon-400 animate-ping"></div>
               <div>
-                <h3 className="font-heading font-bold text-white text-sm">Shahzaman AI Architect</h3>
+                <h3 className="font-heading font-normal text-white text-sm">Shahzaman's AI Helper</h3>
                 <span className="text-[10px] text-neon-400 font-mono">
-                  Engine · Shahzaman Neural Agent
+                  Ask me anything
                 </span>
               </div>
             </div>
@@ -465,7 +465,7 @@ export default function App() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-slate-800/80 text-neon-400 border border-slate-700 p-3 rounded-2xl rounded-tl-none animate-pulse">
-                  Shahzaman Architecture Core processing...
+                  Thinking...
                 </div>
               </div>
             )}
@@ -481,7 +481,7 @@ export default function App() {
 
             const prefillQuery = lastUserMsg
               ? `Hi Shahzaman, I chatted with your AI about ${lastUserMsg.slice(0, 90).trim()}`
-              : "Hi Shahzaman, I chatted with your AI about building an automated workflow";
+              : "Hi Shahzaman, I chatted with your AI about building a smart system for my business";
 
             const whatsappUrl = `https://wa.me/923241736180?text=${encodeURIComponent(prefillQuery)}`;
 
@@ -489,7 +489,7 @@ export default function App() {
               <div className="px-3.5 py-1.5 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between gap-2 text-[11px]">
                 <span className="text-slate-400 truncate flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-neon-400 animate-pulse shrink-0"></span>
-                  <span className="truncate">Need a custom quote or audit?</span>
+                  <span className="truncate">Want a price for your work?</span>
                 </span>
                 <a
                   href={whatsappUrl}
@@ -508,7 +508,7 @@ export default function App() {
           <form onSubmit={handleSendMessage} className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
             <input
               type="text"
-              placeholder="Ask about n8n workflows, pricing, A2Z Fix, Decoria..."
+              placeholder="Ask what he builds, what it costs, or about his work..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               className="flex-1 bg-slate-900 border border-slate-800 focus:border-neon-500 focus:outline-none rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500"
@@ -526,7 +526,7 @@ export default function App() {
 
       {/* Header — floating pill nav, centred at the top (reference video) */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-3xl px-5 py-3 flex justify-between items-center rounded-full border border-slate-800/80 bg-slate-950/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-        <div className="font-heading text-xl font-bold tracking-tight text-white flex items-center gap-2">
+        <div className="font-heading text-xl font-normal tracking-tight text-white flex items-center gap-2">
           <span>Shahzaman</span>
           <span className="w-2 h-2 rounded-full bg-neon-400 animate-pulse"></span>
         </div>
@@ -560,20 +560,20 @@ export default function App() {
       <section className="metrics-bar border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
         <div className="max-w-6xl w-full mx-auto px-6 py-8 flex flex-wrap justify-center sm:justify-between gap-6 text-center">
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">29+</div>
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">AI Agents &amp; Workflows</div>
+            <div className="font-heading text-2xl md:text-3xl font-normal text-white drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">29+</div>
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Smart Systems Built</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">n8n + GHL</div>
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Core Architecture</div>
+            <div className="font-heading text-2xl md:text-3xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">n8n + GHL</div>
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Main Tools</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">Voice AI</div>
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Retell · Vapi · Apollo</div>
+            <div className="font-heading text-2xl md:text-3xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">Voice AI</div>
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Voice Calls &amp; Leads</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">Triple Certified</div>
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Anthropic · DataCrumbs · UoL</div>
+            <div className="font-heading text-2xl md:text-3xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">Triple Certified</div>
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Certificates</div>
           </div>
         </div>
       </section>
@@ -582,8 +582,8 @@ export default function App() {
       <section id="portfolio" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>01</b> Selected Work</div>
-          <h2 className="glitch-heading section-title text-3xl md:text-5xl text-white" data-text="Live Web Applications & Enterprise Workflows">Live Web Applications &amp; Enterprise Workflows</h2>
-          <p className="text-slate-400 text-sm max-w-md">Real client web apps, data pipelines, and multi-agent backend systems.</p>
+          <h2 className="glitch-heading section-title text-3xl md:text-5xl text-white" data-text="Live Web Applications & Enterprise Workflows">Websites &amp; Systems That Work for You</h2>
+          <p className="text-slate-400 text-sm max-w-md">Real websites and smart systems, built for real clients.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -592,12 +592,12 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE WEB APP · REACT + VERCEL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE WEBSITE</div>
+                <h4 className="font-heading text-white font-normal text-xl group-hover:text-neon-300 transition-colors">
                   A2Z FIX - Mobile Repairing Institute
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  A comprehensive web portal for Chip-Level Mobile Diagnostics &amp; Micro-soldering Institute in Multan. Features dynamic course syllabi, certificate verification system, and student lead capture.
+                  A website for a chip-level mobile repair school in Multan — course details, certificate checks, and a sign-up form for new students.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
@@ -607,7 +607,7 @@ export default function App() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
-                  Visit Live Web App →
+                  Visit the live website →
                 </a>
                 <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">a2zfix.vercel.app</span>
               </div>
@@ -619,12 +619,12 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE E-COMMERCE · REACT + VERCEL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">ONLINE SHOP</div>
+                <h4 className="font-heading text-white font-normal text-xl group-hover:text-neon-300 transition-colors">
                   Decoria Store - Home Decor &amp; Cosmetics
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Modern e-commerce platform engineered with responsive product grids, category filtering (Organizers, Lamps, Home Decor), cart flows, and Meta Commerce catalog synchronization.
+                  An online shop for home decor and cosmetics — browse products, filter by category, and buy in a few clicks.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
@@ -634,7 +634,7 @@ export default function App() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
-                  Visit Live Web App →
+                  Visit the live website →
                 </a>
                 <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">decoria-store.vercel.app</span>
               </div>
@@ -646,24 +646,24 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">DATA PIPELINE · n8n + JAVASCRIPT</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
-                  YouTube Lead Enrichment Pipeline
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">FINDS NEW CUSTOMERS</div>
+                <h4 className="font-heading text-white font-normal text-xl group-hover:text-neon-300 transition-colors">
+                  YouTube Lead Finder
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Automated scraping and data normalization engine executing through n8n workflows with custom JS code blocks, cutting lead enrichment time to near-zero.
+                  Finds new customers from YouTube videos by itself and saves their details — no manual searching.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
                 <a
-                  href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20YouTube%20Pipeline%20case%20study"
+                  href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20YouTube%20Lead%20Finder"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
-                  Request Technical Blueprint →
+                  See how it works →
                 </a>
-                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">n8n Workflow</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">Automatic system</span>
               </div>
             </div>
           </div>
@@ -673,24 +673,24 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
               <div className="space-y-2.5">
-                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">CRM AUTOMATION · n8n + GHL</div>
-                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
-                  AI Sales Closer + CRM Pipeline
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">SALES HELPER</div>
+                <h4 className="font-heading text-white font-normal text-xl group-hover:text-neon-300 transition-colors">
+                  AI Sales Helper
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Instant lead ingestion engine connected to conversational AI nodes and real-time CRM stage transitions with dynamic alerting.
+                  When a new lead comes in, the system replies at once, updates your customer list, and lets you know.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
                 <a
-                  href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20AI%20Sales%20Closer%20architecture"
+                  href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20show%20me%20the%20AI%20Sales%20Helper"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
                 >
-                  Request Live Architecture →
+                  See how it works →
                 </a>
-                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">GHL + Vapi Node</span>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">Automatic system</span>
               </div>
             </div>
           </div>
@@ -701,8 +701,8 @@ export default function App() {
       <section id="certificates" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>02</b> Recognition</div>
-          <h2 className="section-title text-3xl md:text-5xl text-white">Certifications &amp; Technical Masterclasses</h2>
-          <p className="text-slate-400 text-sm max-w-md">Official industry-standard certifications in LLM architecture, advanced workflow orchestration, and research methodology.</p>
+          <h2 className="section-title text-3xl md:text-5xl text-white">My Certificates</h2>
+          <p className="text-slate-400 text-sm max-w-md">Official certificates that prove my skills — in AI, automation, and research.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -715,11 +715,11 @@ export default function App() {
                   <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">Anthropic Academy</span>
                   <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
+                <h3 className="font-heading text-xl font-normal text-white group-hover:text-neon-300 transition-colors">
                   Anthropic Certified AI Engineer
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Claude 101 Foundations and Building with the Claude API. Validating mastery over model context protocols (MCP), advanced prompt engineering, tool use, and enterprise-grade Claude API integrations.
+                  A certificate from Anthropic, the makers of Claude AI, for building AI assistants that answer customers and use tools.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
@@ -745,11 +745,11 @@ export default function App() {
                   <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">DataCrumbs</span>
                   <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
+                <h3 className="font-heading text-xl font-normal text-white group-hover:text-neon-300 transition-colors">
                   DataCrumbs N8N Chatbot Lab Masterclass
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Certified validation of advanced proficiency in n8n Chatbot Lab topologies, nested sub-workflows, vector embeddings, custom code execution, and fault-tolerant reporting systems.
+                  A certificate for building smart chatbots that talk to customers, answer questions, and take bookings on their own.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
@@ -775,11 +775,11 @@ export default function App() {
                   <span className="text-xs font-mono text-neon-400 font-bold uppercase tracking-wider">University of London &amp; SOAS</span>
                   <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded border border-neon-500/30">Verified</span>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
+                <h3 className="font-heading text-xl font-normal text-white group-hover:text-neon-300 transition-colors">
                   Understanding Research Methods
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Research methodology certification covering research design, methods, and evidence evaluation — completed October 2026 via Coursera, authorized by University of London and SOAS University of London.
+                  A certificate in research methods from the University of London and SOAS — finished in October 2026 on Coursera.
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
@@ -801,15 +801,15 @@ export default function App() {
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 rounded-xl bg-slate-900/30 border border-slate-800 flex items-center justify-between">
             <div>
-              <div className="text-xs font-semibold text-white">Open Source n8n Community Contributor</div>
-              <div className="text-[11px] text-slate-400">Active member of Workflow Automation Architects &amp; Custom Nodes Developers</div>
+              <div className="text-xs font-semibold text-white">Automation Community Member</div>
+              <div className="text-[11px] text-slate-400">I help other builders in the automation community.</div>
             </div>
             <span className="text-neon-400 text-xs font-mono font-bold">Active Member</span>
           </div>
           <div className="p-4 rounded-xl bg-slate-900/30 border border-slate-800 flex items-center justify-between">
             <div>
-              <div className="text-xs font-semibold text-white">Full-Stack AI Automation Guild</div>
-              <div className="text-[11px] text-slate-400">Certified Developer &amp; Autonomous Agent Workflow Contributor</div>
+              <div className="text-xs font-semibold text-white">AI Builders' Group</div>
+              <div className="text-[11px] text-slate-400">I build smart systems and share what I learn.</div>
             </div>
             <span className="text-neon-400 text-xs font-mono font-bold">Peer Verified</span>
           </div>
@@ -823,35 +823,35 @@ export default function App() {
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>04</b> Behind the Frames</div>
-          <h2 className="section-title text-3xl md:text-5xl text-white">How Enterprise Workflows Execute</h2>
-          <p className="text-slate-400 text-sm max-w-lg">A zero-touch orchestrated backend lifecycle connecting webhooks, LLM agents, and CRM syncs.</p>
+          <h2 className="section-title text-3xl md:text-5xl text-white">How My Systems Work for You</h2>
+          <p className="text-slate-400 text-sm max-w-lg">Your leads come in, the system replies and follows up — all on its own.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">01. INGESTION &amp; VALIDATION</div>
-            <h4 className="text-white font-semibold text-base mb-2">Multi-Channel Inbound Webhooks</h4>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">01. NEW LEAD COMES IN</div>
+            <h4 className="text-white font-semibold text-base mb-2">Leads from anywhere</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Receives incoming leads from Meta Ads, website forms, or Apollo webhooks. Executes instant schema parsing, deduplication, and HMAC security validation.
+              New leads come in from Facebook ads, your website, or anywhere else. The system checks each one and saves it.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">02. LLM LOGIC &amp; ENRICHMENT</div>
-            <h4 className="text-white font-semibold text-base mb-2">Autonomous Agent Evaluation</h4>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">02. THE SYSTEM READS &amp; DECIDES</div>
+            <h4 className="text-white font-semibold text-base mb-2">A smart reply, ready in seconds</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Triggers Claude / Groq AI nodes to analyze lead intent, classify budget capacity, fetch Bright Data enrichment records, and prepare personalized outbound pitches.
+              The AI reads what the customer wants, checks their details, and writes a personal reply.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">03. DISPATCH &amp; ERROR-PROOFING</div>
-            <h4 className="text-white font-semibold text-base mb-2">CRM Sync &amp; Fallback Alerting</h4>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">03. FOLLOW-UP, DONE FOR YOU</div>
+            <h4 className="text-white font-semibold text-base mb-2">Your customer list, always up to date</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Updates GoHighLevel pipelines in real-time, initiates voice AI outreach calls via Vapi, and routes instantaneous WhatsApp/Telegram alerts to human closers.
+              Your customer list updates by itself, calls go out on time, and you get a WhatsApp message if anything needs you.
             </p>
           </div>
         </div>
@@ -863,36 +863,36 @@ export default function App() {
 
         {/* 4-step build process — part of Behind the Frames */}
         <div className="space-y-2 mt-12">
-          <h3 className="section-title text-2xl md:text-3xl text-white">How I Build &amp; Deploy</h3>
-          <p className="text-slate-400 text-sm max-w-md">A systematic, step-by-step engineering roadmap for bulletproof backend automation.</p>
+          <h3 className="section-title text-2xl md:text-3xl text-white">How I Build It for You</h3>
+          <p className="text-slate-400 text-sm max-w-md">A clear, step-by-step way of working — so your system works from day one.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
             <div className="text-xs font-mono text-neon-400 font-bold">STEP 01</div>
-            <h4 className="text-white font-semibold text-base">Discovery &amp; Topology</h4>
+            <h4 className="text-white font-semibold text-base">Understand your work</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Mapping data touchpoints, APIs, trigger events, error scenarios, and output endpoints into an architectural blueprint.
+              We look at where your customers come from, what you do by hand today, and what the system should do for you.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
             <div className="text-xs font-mono text-neon-400 font-bold">STEP 02</div>
-            <h4 className="text-white font-semibold text-base">Workflow Engineering</h4>
+            <h4 className="text-white font-semibold text-base">Build the system</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Writing custom JS/Python transformation blocks, configuring Webhooks, CRM snapshots, and AI agent logic.
+              I build the automations, connect your tools, and set up the AI replies.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
             <div className="text-xs font-mono text-neon-400 font-bold">STEP 03</div>
-            <h4 className="text-white font-semibold text-base">Stress &amp; Edge Testing</h4>
+            <h4 className="text-white font-semibold text-base">Test everything</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Running rate-limit tests, edge-case payload validation, and automatic failure fallback channels.
+              We test busy days, odd cases, and what happens if something fails — so nothing breaks quietly.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
             <div className="text-xs font-mono text-neon-400 font-bold">STEP 04</div>
-            <h4 className="text-white font-semibold text-base">Production Deployment</h4>
+            <h4 className="text-white font-semibold text-base">Go live</h4>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Deploying live webhooks, syncing CRM databases, and handing over complete architectural documentation.
+              Your system goes live, you get a simple guide, and I stay in touch if you need help.
             </p>
           </div>
         </div>
@@ -901,9 +901,9 @@ export default function App() {
       {/* Technical Stack — red glow */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="section-label"><b>SKILLS</b> The Arsenal</div>
-          <h2 className="section-title text-3xl md:text-4xl text-white">Technical Skillset &amp; Stack</h2>
-          <p className="text-slate-400 text-sm max-w-md">The production-ready technologies I configure, code, and orchestrate.</p>
+          <div className="section-label"><b>SKILLS</b> My Tools</div>
+          <h2 className="section-title text-3xl md:text-4xl text-white">Tools I Use</h2>
+          <p className="text-slate-400 text-sm max-w-md">The tools I use to build your system.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -911,10 +911,10 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
             <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Core Automation</div>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Automation</div>
                 <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">n8n &amp; GoHighLevel</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Advanced workflow topologies, snapshot management, nested looping structures, and multi-channel webhook networks.
+                  Connects your apps so work moves by itself — leads, messages, and bookings, all in one flow.
                 </p>
               </div>
             </div>
@@ -924,10 +924,10 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
             <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Voice AI Architecture</div>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Voice Calls</div>
                 <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Retell AI &amp; Vapi</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Deploying conversational AI voice assistants with hyper-low latency integrations, webhook triggers, and real-time CRM updates.
+                  AI voice helpers that answer calls, book appointments, and update your customer list.
                 </p>
               </div>
             </div>
@@ -937,10 +937,10 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
             <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Outbound &amp; Scraped Data</div>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Finding Customers</div>
                 <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Apollo, Dripify &amp; Bright Data</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Automating scalable lead scraping workflows, cross-referencing targeted lead lists, and scaling automatic LinkedIn outreach systems.
+                  Finds new customers for you and reaches out to them on LinkedIn — automatically.
                 </p>
               </div>
             </div>
@@ -950,10 +950,10 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
             <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
               <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Custom Code &amp; Web Apps</div>
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Websites &amp; Apps</div>
                 <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">React / Vite / Python / APIs</h4>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Building responsive web applications, webhook integrations, normalization layers, and high-performance serverless endpoints.
+                  Custom websites and apps, built to fit your business exactly.
                 </p>
               </div>
             </div>
@@ -966,21 +966,21 @@ export default function App() {
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>05</b> The Journey</div>
           <h2 className="section-title text-3xl md:text-5xl text-white">The Journey So Far</h2>
-          <p className="text-slate-400 text-sm max-w-lg">Every system shipped, every client served — the road that built this portfolio.</p>
+          <p className="text-slate-400 text-sm max-w-lg">Every project and client that built this portfolio.</p>
         </div>
 
         <div className="relative pl-8 md:pl-10 space-y-10 before:absolute before:left-[7px] md:before:left-[9px] before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-neon-500 before:via-slate-700 before:to-transparent">
           {[
-            { step: "01", title: "The First Build — A2Z FIX", text: "A live institute platform for chip-level mobile repairing in Multan: course syllabi, certificate verification, and student lead capture." },
-            { step: "02", title: "The Store — Decoria Store", text: "A live e-commerce platform for home decor & cosmetics: product grids, category filtering, cart flows, and Meta Commerce sync." },
-            { step: "03", title: "The Pipeline — YouTube Lead Enrichment", text: "An automated scraping and data-normalization engine in n8n, cutting lead-enrichment time to near zero." },
-            { step: "04", title: "The Closer — AI Sales Closer + CRM", text: "Instant lead ingestion wired to conversational AI and real-time GoHighLevel pipeline updates." },
-            { step: "05", title: "The Proof — Triple Certified", text: "Anthropic Academy AI Engineer, DataCrumbs N8N Chatbot Lab Masterclass, and University of London & SOAS research methods (Oct 2026)." },
+            { step: "01", title: "The First Build — A2Z FIX", text: "A live website for a mobile repair school in Multan — courses, certificate checks, and student sign-ups." },
+            { step: "02", title: "The Store — Decoria Store", text: "A live online shop for home decor and cosmetics — products, categories, and easy checkout." },
+            { step: "03", title: "The Finder — YouTube Leads", text: "A system that finds new customers from YouTube by itself — in minutes, not hours." },
+            { step: "04", title: "The Helper — AI Sales Replies", text: "New leads get a smart reply at once, and your customer list updates by itself." },
+            { step: "05", title: "The Proof — Triple Certified", text: "Certificates from Anthropic, DataCrumbs, and the University of London & SOAS (Oct 2026)." },
           ].map((m) => (
             <div key={m.step} className="relative">
               <span className="absolute -left-8 md:-left-10 top-1 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full bg-neon-500 shadow-[0_0_16px_rgba(255,42,42,0.7)] ring-4 ring-[#0a0a0a]"></span>
               <div className="text-xs font-mono text-neon-400 font-bold tracking-widest">{m.step}</div>
-              <h3 className="font-heading text-lg md:text-xl font-bold text-white mt-1">{m.title}</h3>
+              <h3 className="font-heading text-lg md:text-xl font-normal text-white mt-1">{m.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xl mt-1">{m.text}</p>
             </div>
           ))}
@@ -991,7 +991,7 @@ export default function App() {
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-4 space-y-3">
-            <div className="section-label"><b>ABOUT</b> The Architect</div>
+            <div className="section-label"><b>ABOUT</b> Me</div>
             <h2 className="section-title text-3xl md:text-4xl text-white">About Me</h2>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
               Anthropic Academy Certified
@@ -1002,13 +1002,13 @@ export default function App() {
           </div>
           <div className="md:col-span-8 space-y-4 text-slate-400 text-sm md:text-base leading-relaxed">
             <p>
-              I am Shahzaman Iqbal, a Backend Automation Engineer designing and architecting high-scale data systems for global agencies and fast-scaling brands. My expertise goes beyond basic visual nodes — I stitch custom code layers, APIs, webhooks, and database logic into reliable, fault-tolerant ecosystems.
+              I am Shahzaman Iqbal, from Multan, Pakistan. I build smart systems for businesses — I connect your apps, your customer list, and your messages, so the repeat work happens by itself, reliably, day after day.
             </p>
             <p>
-              Whether your pipeline demands <b className="text-white font-semibold">Apollo</b> and <b className="text-white font-semibold">Dripify</b> for outbound prospecting, <b className="text-white font-semibold">Bright Data</b> for structured data extraction, or conversational voice engines via <b className="text-white font-semibold">Retell AI</b> and <b className="text-white font-semibold">Vapi</b>, I consolidate everything under unified <b className="text-white font-semibold">n8n</b> workflows and CRM hubs.
+              Whether you need new customers (Apollo, Dripify), clean data (Bright Data), or a voice helper that talks to customers (Retell AI, Vapi), I bring it all together in one system that just works.
             </p>
             <p>
-              Every configuration node and custom script is built with strict error handling and production scalability in mind.
+              Everything I build has safety checks — so if something goes wrong, it fails safely and you get told.
             </p>
           </div>
         </div>
@@ -1018,8 +1018,8 @@ export default function App() {
       <section className="max-w-6xl w-full mx-auto px-6 py-12 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-900/40 border border-slate-800/80 p-6 rounded-2xl shadow-[0_0_30px_rgba(2,6,23,0.8)]">
           <div>
-            <h3 className="font-heading text-white font-bold text-lg">Connect Across All Channels</h3>
-            <p className="text-slate-400 text-xs mt-1">Daily workflow automations, video breakdowns, and technical case studies.</p>
+            <h3 className="font-heading text-white font-normal text-lg">Find Me Online</h3>
+            <p className="text-slate-400 text-xs mt-1">Short videos and posts about the systems I build.</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
@@ -1072,23 +1072,23 @@ export default function App() {
       {/* Engagement Tiers — heavy red accent */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Engagement Tiers</h2>
-          <p className="text-slate-400 text-sm max-w-md">Every project scope is unique; accurate quotes are provided following a discovery session.</p>
+          <h2 className="font-heading text-2xl md:text-3xl font-normal text-white">Ways to Work With Me</h2>
+          <p className="text-slate-400 text-sm max-w-md">Every project is different — you get an exact price after a short chat.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="group relative rounded-2xl transition-all duration-300">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-700 to-neon-800 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col gap-4 h-full">
-              <h4 className="font-heading text-white font-bold text-lg">Single Workflow Build</h4>
-              <div className="text-neon-400 font-bold text-3xl font-heading">
+              <h4 className="font-heading text-white font-normal text-lg">One System, Built for You</h4>
+              <div className="text-neon-400 font-normal text-3xl font-heading">
                 Rs. 10,000 <span className="text-xs text-slate-500 font-normal font-sans">starting</span>
               </div>
               <p className="text-slate-400 text-xs leading-relaxed flex-grow">
-                A targeted integration or standalone automated asset — such as a single n8n workflow, an autonomous AI agent, or a lead qualification pipeline.
+                One automation or AI helper — for example, a WhatsApp reply system or a lead-finding system.
               </p>
               <a
-                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20a%20Single%20Workflow%20Build"
+                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20one%20system%2C%20built%20for%20me"
                 target="_blank"
                 rel="noreferrer"
                 className="text-center bg-slate-800 hover:bg-neon-500 hover:text-slate-950 text-white text-xs font-semibold py-3 rounded-xl transition-all duration-300"
@@ -1102,20 +1102,20 @@ export default function App() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
             <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(255, 42, 42,0.15)]">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(255, 42, 42,0.6)]">
-                For High-Growth Agencies
+                For Growing Businesses
               </div>
-              <h4 className="font-heading text-white font-bold text-lg mt-2">Full System Architecture</h4>
-              <div className="text-neon-400 font-bold text-3xl font-heading">Custom Quote</div>
+              <h4 className="font-heading text-white font-normal text-lg mt-2">Your Whole System, Done for You</h4>
+              <div className="text-neon-400 font-normal text-3xl font-heading">Custom Quote</div>
               <p className="text-slate-400 text-xs leading-relaxed flex-grow">
-                Complete multi-workflow networks, CRM orchestration, custom web portal setups, and AI voice/outreach infrastructure scoped and deployed end-to-end.
+                Everything connected — your website, customer list, AI replies, and voice calls — built and set up end to end.
               </p>
               <a
-                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20Full%20System%20Architecture"
+                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20my%20whole%20system%2C%20done%20for%20you"
                 target="_blank"
                 rel="noreferrer"
                 className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.3)] hover:shadow-[0_0_35px_rgba(255, 42, 42,0.6)]"
               >
-                Request Architecture Quote
+                Ask for a Price
               </a>
             </div>
           </div>
@@ -1125,8 +1125,8 @@ export default function App() {
       {/* Frequently Asked Questions (Accordion) */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
-          <p className="text-slate-400 text-sm max-w-md">Common queries regarding integrations, technical architecture, and turnaround times.</p>
+          <h2 className="font-heading text-2xl md:text-3xl font-normal text-white">Frequently Asked Questions</h2>
+          <p className="text-slate-400 text-sm max-w-md">Short answers to the questions I hear most.</p>
         </div>
 
         <div className="space-y-3">
@@ -1157,15 +1157,15 @@ export default function App() {
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-neon-500 via-neon-600 to-neon-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-700"></div>
           <div className="relative bg-slate-950 border border-neon-500/40 p-8 sm:p-14 rounded-3xl space-y-6 shadow-2xl">
-            <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">
-              Ready to Automate Your Manual Operations?
+            <h2 className="font-heading text-3xl md:text-5xl font-normal text-white">
+              Want Your Boring Work Done for You?
             </h2>
             <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              Let’s discuss your backend requirements, audit your current workflows, and design a custom automation roadmap.
+              Tell me about your work — I'll look at how you do things today and show you what a smart system could do.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <a
-                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20ready%20to%20build%20an%20automation%20system"
+                href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20ready%20to%20build%20a%20smart%20system"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(255, 42, 42,0.4)] hover:scale-105"

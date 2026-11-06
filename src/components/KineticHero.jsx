@@ -3,31 +3,31 @@ import "./KineticHero.css";
 import ParticleIntro from "./ParticleIntro";
 
 const TYPEWRITER_WORDS = [
-  "n8n workflows.",
-  "AI voice agents.",
-  "WhatsApp bots.",
-  "SaaS apps.",
+  "replying to customers.",
+  "booking appointments.",
+  "following up on WhatsApp.",
+  "saving you 10+ hours a week.",
 ];
 
 const MARQUEE_ITEMS = [
-  "N8N",
-  "AI AGENTS",
-  "WHATSAPP AUTOMATION",
-  "GOHIGHLEVEL",
-  "REACT",
+  "SMART REPLIES",
+  "WHATSAPP FOLLOW-UPS",
+  "NEW CUSTOMERS",
+  "BOOKINGS",
   "FIXKHATA",
-  "LEAD SCRAPING",
+  "TIME SAVED",
+  "WEBSITES THAT SELL",
 ];
 
 const STATS = [
-  { value: "35+", label: "SaaS apps live" },
-  { value: "10+ hrs", label: "Saved / week / client" },
+  { value: "35+", label: "Apps live" },
+  { value: "10+ hrs", label: "Saved every week" },
   { value: "3", label: "Paying clients" },
-  { value: "100", label: "App challenge" },
+  { value: "100", label: "100-app challenge" },
 ];
 
 const WHATSAPP_AUDIT_URL =
-  "https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%27d%20like%20to%20book%20a%20free%20automation%20audit";
+  "https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%27d%20like%20to%20book%20a%20free%20audit";
 
 function KineticLine({ text, accent = false, delay = 0 }) {
   return (
@@ -160,7 +160,7 @@ export default function KineticHero() {
 
       <section className={`kinetic-hero${loading ? "" : " kinetic-hero-ready"}`}>
         <div className="kinetic-kicker">
-          AUTOMATION DEVELOPER <em>//</em> AI WORKFLOWS <em>//</em> SAAS BUILDER
+          SMART SYSTEMS <em>//</em> AI HELPERS <em>//</em> WEBSITES THAT WORK
         </div>
 
         <div className="kinetic-main">
@@ -173,8 +173,7 @@ export default function KineticHero() {
             </h1>
 
             <p className="kinetic-sub">
-              I build <b>AI agents, n8n workflows &amp; SaaS apps</b> that save repair shops
-              &amp; realtors <b>10+ hours every week</b>. <span className="kinetic-type">{typed}</span>
+              I build <b>smart helpers and websites</b> that do your boring, repeat work for you — so repair shops &amp; property sellers save <b>10+ hours every week</b>. <span className="kinetic-type">{typed}</span>
             </p>
 
             <div className="kinetic-cta">

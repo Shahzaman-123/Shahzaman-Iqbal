@@ -81,6 +81,9 @@
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.95;
+  /* Big headings must always fit the viewport, never clip at the edge. */
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 /* Glitch entrance for the big Portfolio heading (reference video).
@@ -111,37 +114,37 @@
   animation: glitch-slice-a 1.5s steps(2, end) both;
 }
 .glitch-heading.glitch-active::after {
-  opacity: 0.85;
+  opacity: 0.5;
   color: #ffffff;
   animation: glitch-slice-b 1.5s steps(2, end) both;
 }
 @keyframes glitch-jitter {
   0% { transform: translate(0, 0) skewX(0); }
-  8% { transform: translate(-7px, 1px) skewX(7deg); }
-  16% { transform: translate(6px, -1px) skewX(-6deg); }
-  28% { transform: translate(-9px, 0) skewX(10deg); }
-  40% { transform: translate(8px, 1px) skewX(-8deg); }
-  55% { transform: translate(-5px, 0) skewX(4deg); }
-  70% { transform: translate(3px, 0) skewX(-2deg); }
+  8% { transform: translate(-3px, 1px) skewX(3deg); }
+  16% { transform: translate(3px, -1px) skewX(-3deg); }
+  28% { transform: translate(-4px, 0) skewX(4deg); }
+  40% { transform: translate(4px, 1px) skewX(-4deg); }
+  55% { transform: translate(-2px, 0) skewX(2deg); }
+  70% { transform: translate(2px, 0) skewX(-1deg); }
   85% { transform: translate(-1px, 0) skewX(0); }
   100% { transform: translate(0, 0) skewX(0); }
 }
 @keyframes glitch-slice-a {
-  0% { clip-path: inset(12% 0 62% 0); transform: translate(-10px, 0); }
-  18% { clip-path: inset(58% 0 8% 0); transform: translate(9px, 0); }
-  36% { clip-path: inset(28% 0 42% 0); transform: translate(-12px, 0); }
-  54% { clip-path: inset(72% 0 4% 0); transform: translate(7px, 0); }
-  72% { clip-path: inset(4% 0 78% 0); transform: translate(-6px, 0); }
-  88% { clip-path: inset(44% 0 30% 0); transform: translate(3px, 0); }
+  0% { clip-path: inset(12% 0 62% 0); transform: translate(-5px, 0); }
+  18% { clip-path: inset(58% 0 8% 0); transform: translate(4px, 0); }
+  36% { clip-path: inset(28% 0 42% 0); transform: translate(-6px, 0); }
+  54% { clip-path: inset(72% 0 4% 0); transform: translate(3px, 0); }
+  72% { clip-path: inset(4% 0 78% 0); transform: translate(-3px, 0); }
+  88% { clip-path: inset(44% 0 30% 0); transform: translate(2px, 0); }
   100% { clip-path: inset(50% 0 50% 0); transform: translate(0, 0); opacity: 0; }
 }
 @keyframes glitch-slice-b {
-  0% { clip-path: inset(64% 0 10% 0); transform: translate(10px, 0); }
-  18% { clip-path: inset(8% 0 70% 0); transform: translate(-9px, 0); }
-  36% { clip-path: inset(48% 0 26% 0); transform: translate(12px, 0); }
-  54% { clip-path: inset(18% 0 58% 0); transform: translate(-7px, 0); }
-  72% { clip-path: inset(80% 0 2% 0); transform: translate(6px, 0); }
-  88% { clip-path: inset(32% 0 46% 0); transform: translate(-3px, 0); }
+  0% { clip-path: inset(64% 0 10% 0); transform: translate(5px, 0); }
+  18% { clip-path: inset(8% 0 70% 0); transform: translate(-4px, 0); }
+  36% { clip-path: inset(48% 0 26% 0); transform: translate(6px, 0); }
+  54% { clip-path: inset(18% 0 58% 0); transform: translate(-3px, 0); }
+  72% { clip-path: inset(80% 0 2% 0); transform: translate(3px, 0); }
+  88% { clip-path: inset(32% 0 46% 0); transform: translate(-2px, 0); }
   100% { clip-path: inset(50% 0 50% 0); transform: translate(0, 0); opacity: 0; }
 }
 
@@ -151,7 +154,8 @@ html {
      headings fully below it (fix 3). */
   scroll-padding-top: 112px;
 }
-/* Anchor offset for every section anchor (fix 3). */
-section[id] {
+/* Scroll offset for EVERY section (not just ones with an id), so no
+   section heading ever lands under the sticky pill nav. */
+section {
   scroll-margin-top: 112px;
 }
