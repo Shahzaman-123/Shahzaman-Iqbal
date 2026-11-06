@@ -260,28 +260,6 @@ export default function App() {
         });
       });
 
-      // Glitch entrance for the big Portfolio heading (reference video:
-      // letters slice + offset ghosts, clearly visible ~1.5s, replays on
-      // every scroll-in). Class-driven CSS keyframes (see App.css) — the
-      // previous 0.7s GSAP fromTo was too brief to ever be seen in a still.
-      document.querySelectorAll(".glitch-heading").forEach((el) => {
-        const runGlitch = () => {
-          el.classList.remove("glitch-active");
-          // Force reflow so re-adding the class restarts the keyframes.
-          void el.offsetWidth;
-          el.classList.add("glitch-active");
-          window.clearTimeout(el._glitchTimer);
-          el._glitchTimer = window.setTimeout(() => {
-            el.classList.remove("glitch-active");
-          }, 1600);
-        };
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top 88%",
-          onEnter: runGlitch,
-          onEnterBack: runGlitch,
-        });
-      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -525,7 +503,7 @@ export default function App() {
       )}
 
       {/* Header — floating pill nav, centred at the top (reference video) */}
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-3xl px-5 py-3 flex justify-between items-center rounded-full border border-slate-800/80 bg-slate-950/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-3xl px-5 py-3 flex justify-between items-center rounded-full border border-slate-800/80 bg-slate-950 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
         <div className="font-heading text-xl font-normal tracking-tight text-white flex items-center gap-2">
           <span>Shahzaman</span>
           <span className="w-2 h-2 rounded-full bg-neon-400 animate-pulse"></span>
@@ -582,7 +560,7 @@ export default function App() {
       <section id="portfolio" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>01</b> Selected Work</div>
-          <h2 className="glitch-heading section-title text-3xl md:text-5xl text-white" data-text="Live Web Applications & Enterprise Workflows">Websites &amp; Systems That Work for You</h2>
+          <h2 className="section-title text-3xl md:text-5xl text-white">Websites &amp; Systems That Work for You</h2>
           <p className="text-slate-400 text-sm max-w-md">Real websites and smart systems, built for real clients.</p>
         </div>
 

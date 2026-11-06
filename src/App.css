@@ -86,68 +86,6 @@
   text-wrap: balance;
 }
 
-/* Glitch entrance for the big Portfolio heading (reference video).
-   Two ghost copies (red + white, the site's only accent family) slice
-   across the heading with clip-path jumps while the base text jitters.
-   Runs 1.5s while .glitch-active is present; replayed by ScrollTrigger
-   on every scroll-in. */
-.glitch-heading {
-  position: relative;
-  will-change: transform;
-}
-.glitch-heading::before,
-.glitch-heading::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-  background: transparent;
-}
-.glitch-heading.glitch-active {
-  animation: glitch-jitter 1.5s steps(2, end) both;
-}
-.glitch-heading.glitch-active::before {
-  opacity: 0.85;
-  color: #ff2a2a;
-  animation: glitch-slice-a 1.5s steps(2, end) both;
-}
-.glitch-heading.glitch-active::after {
-  opacity: 0.5;
-  color: #ffffff;
-  animation: glitch-slice-b 1.5s steps(2, end) both;
-}
-@keyframes glitch-jitter {
-  0% { transform: translate(0, 0) skewX(0); }
-  8% { transform: translate(-3px, 1px) skewX(3deg); }
-  16% { transform: translate(3px, -1px) skewX(-3deg); }
-  28% { transform: translate(-4px, 0) skewX(4deg); }
-  40% { transform: translate(4px, 1px) skewX(-4deg); }
-  55% { transform: translate(-2px, 0) skewX(2deg); }
-  70% { transform: translate(2px, 0) skewX(-1deg); }
-  85% { transform: translate(-1px, 0) skewX(0); }
-  100% { transform: translate(0, 0) skewX(0); }
-}
-@keyframes glitch-slice-a {
-  0% { clip-path: inset(12% 0 62% 0); transform: translate(-5px, 0); }
-  18% { clip-path: inset(58% 0 8% 0); transform: translate(4px, 0); }
-  36% { clip-path: inset(28% 0 42% 0); transform: translate(-6px, 0); }
-  54% { clip-path: inset(72% 0 4% 0); transform: translate(3px, 0); }
-  72% { clip-path: inset(4% 0 78% 0); transform: translate(-3px, 0); }
-  88% { clip-path: inset(44% 0 30% 0); transform: translate(2px, 0); }
-  100% { clip-path: inset(50% 0 50% 0); transform: translate(0, 0); opacity: 0; }
-}
-@keyframes glitch-slice-b {
-  0% { clip-path: inset(64% 0 10% 0); transform: translate(5px, 0); }
-  18% { clip-path: inset(8% 0 70% 0); transform: translate(-4px, 0); }
-  36% { clip-path: inset(48% 0 26% 0); transform: translate(6px, 0); }
-  54% { clip-path: inset(18% 0 58% 0); transform: translate(-3px, 0); }
-  72% { clip-path: inset(80% 0 2% 0); transform: translate(3px, 0); }
-  88% { clip-path: inset(32% 0 46% 0); transform: translate(-2px, 0); }
-  100% { clip-path: inset(50% 0 50% 0); transform: translate(0, 0); opacity: 0; }
-}
-
 html {
   scroll-behavior: smooth;
   /* Floating pill nav is ~90px tall incl. its top offset — keep anchored

@@ -312,10 +312,7 @@
   .kinetic-hero-ready .kinetic-badge-enter,
   .kinetic-hero-ready .kinetic-row-inner,
   .kinetic-hero-ready .kinetic-giant-word,
-  .kinetic-hero-ready .kinetic-script,
-  .glitch-heading.glitch-active,
-  .glitch-heading.glitch-active::before,
-  .glitch-heading.glitch-active::after {
+  .kinetic-hero-ready .kinetic-script {
     animation: none !important;
   }
   /* Gated entrances must still land in their final state. */
