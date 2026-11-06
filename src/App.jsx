@@ -392,7 +392,7 @@ export default function App() {
   return (
     <div
       ref={containerRef}
-      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#d2ff00] selection:text-slate-900 bg-[#0a0a0a] font-sans overflow-x-hidden"
+      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#ff2a2a] selection:text-slate-900 bg-[#0a0a0a] font-sans overflow-x-hidden"
     >
       {/* Starfield — twinkling stars + shooting stars behind the whole site */}
       <Starfield />
@@ -402,7 +402,7 @@ export default function App() {
         <button
           onClick={() => setIsChatOpen(!isChatOpen)}
           aria-label="Open AI Assistant"
-          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-neon-600 via-neon-500 to-neon-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(210,255,0,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(210,255,0,0.6)]"
+          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-neon-600 via-neon-500 to-neon-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(255, 42, 42,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(255, 42, 42,0.6)]"
         >
           {isChatOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
@@ -419,7 +419,7 @@ export default function App() {
 
       {/* AI Assistant Interactive Drawer Modal */}
       {isChatOpen && (
-        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-neon-500/40 rounded-2xl shadow-[0_0_50px_rgba(210,255,0,0.25)] z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-neon-500/40 rounded-2xl shadow-[0_0_50px_rgba(255, 42, 42,0.25)] z-50 flex flex-col overflow-hidden">
           {/* Chat Header */}
           <div className="p-4 bg-slate-950/80 border-b border-slate-800 flex justify-between items-center">
             <div className="flex items-center gap-2.5">
@@ -535,7 +535,7 @@ export default function App() {
             href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-neon-500/10 hover:bg-neon-500/20 text-xs font-semibold tracking-wide text-neon-400 uppercase px-4 py-2 rounded-lg border border-neon-500/30 hover:border-neon-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.15)] hover:shadow-[0_0_30px_rgba(210,255,0,0.3)]"
+            className="inline-flex items-center justify-center bg-neon-500/10 hover:bg-neon-500/20 text-xs font-semibold tracking-wide text-neon-400 uppercase px-4 py-2 rounded-lg border border-neon-500/30 hover:border-neon-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.15)] hover:shadow-[0_0_30px_rgba(255, 42, 42,0.3)]"
           >
             LinkedIn
           </a>
@@ -543,7 +543,7 @@ export default function App() {
             href="https://wa.me/923241736180"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.2)] hover:shadow-[0_0_35px_rgba(210,255,0,0.5)]"
+            className="inline-flex items-center justify-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.2)] hover:shadow-[0_0_35px_rgba(255, 42, 42,0.5)]"
           >
             Book a Call
           </a>
@@ -553,193 +553,36 @@ export default function App() {
       {/* Spacer for the fixed floating nav */}
       <div className="h-[76px] shrink-0" aria-hidden="true" />
 
-      {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #D2FF00) */}
+      {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #ff2a2a) */}
       <KineticHero />
 
-      {/* Metrics Bar with Neon Accent */}
+      {/* Metrics Bar — red accent */}
       <section className="metrics-bar border-y border-slate-800/60 bg-slate-900/40 backdrop-blur-md gsap-reveal opacity-0 translate-y-10">
         <div className="max-w-6xl w-full mx-auto px-6 py-8 flex flex-wrap justify-center sm:justify-between gap-6 text-center">
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">29+</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">29+</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">AI Agents &amp; Workflows</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">n8n + GHL</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">n8n + GHL</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Core Architecture</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">Voice AI</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">Voice AI</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Retell · Vapi · Apollo</div>
           </div>
           <div className="metric-item hover:scale-105 transition-transform duration-300">
-            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(210,255,0,0.5)]">Triple Certified</div>
+            <div className="font-heading text-2xl md:text-3xl font-bold text-neon-400 drop-shadow-[0_0_12px_rgba(255, 42, 42,0.5)]">Triple Certified</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mt-1">Anthropic · DataCrumbs · UoL</div>
           </div>
-        </div>
-      </section>
-
-      {/* Social Media Section */}
-      <section className="max-w-6xl w-full mx-auto px-6 py-12 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-900/40 border border-slate-800/80 p-6 rounded-2xl shadow-[0_0_30px_rgba(2,6,23,0.8)]">
-          <div>
-            <h3 className="font-heading text-white font-bold text-lg">Connect Across All Channels</h3>
-            <p className="text-slate-400 text-xs mt-1">Daily workflow automations, video breakdowns, and technical case studies.</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://www.youtube.com/@shahzamaniqbal-v8n"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
-            >
-              YouTube
-            </a>
-            <a
-              href="https://www.instagram.com/n8n_developer/?hl=en"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.tiktok.com/@n8ndeveloper"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
-            >
-              TikTok
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61578748077131"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(210,255,0,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Stack with Neon Glow Effect */}
-      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
-        <div className="space-y-2 mb-10">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Technical Skillset &amp; Stack</h2>
-          <p className="text-slate-400 text-sm max-w-md">The production-ready technologies I configure, code, and orchestrate.</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
-              <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Core Automation</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">n8n &amp; GoHighLevel</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Advanced workflow topologies, snapshot management, nested looping structures, and multi-channel webhook networks.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
-              <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Voice AI Architecture</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Retell AI &amp; Vapi</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Deploying conversational AI voice assistants with hyper-low latency integrations, webhook triggers, and real-time CRM updates.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
-              <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Outbound &amp; Scraped Data</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Apollo, Dripify &amp; Bright Data</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Automating scalable lead scraping workflows, cross-referencing targeted lead lists, and scaling automatic LinkedIn outreach systems.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
-            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
-              <div className="space-y-2">
-                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Custom Code &amp; Web Apps</div>
-                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">React / Vite / Python / APIs</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Building responsive web applications, webhook integrations, normalization layers, and high-performance serverless endpoints.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprise System Architecture Topology */}
-      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
-        <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">System Blueprint</div>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">How Enterprise Workflows Execute</h2>
-          <p className="text-slate-400 text-sm max-w-lg">A zero-touch orchestrated backend lifecycle connecting webhooks, LLM agents, and CRM syncs.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">01. INGESTION &amp; VALIDATION</div>
-            <h4 className="text-white font-semibold text-base mb-2">Multi-Channel Inbound Webhooks</h4>
-            <p className="text-slate-400 text-xs leading-relaxed">
-              Receives incoming leads from Meta Ads, website forms, or Apollo webhooks. Executes instant schema parsing, deduplication, and HMAC security validation.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">02. LLM LOGIC &amp; ENRICHMENT</div>
-            <h4 className="text-white font-semibold text-base mb-2">Autonomous Agent Evaluation</h4>
-            <p className="text-slate-400 text-xs leading-relaxed">
-              Triggers Claude / Groq AI nodes to analyze lead intent, classify budget capacity, fetch Bright Data enrichment records, and prepare personalized outbound pitches.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
-            <div className="text-neon-400 font-mono text-sm font-bold mb-2">03. DISPATCH &amp; ERROR-PROOFING</div>
-            <h4 className="text-white font-semibold text-base mb-2">CRM Sync &amp; Fallback Alerting</h4>
-            <p className="text-slate-400 text-xs leading-relaxed">
-              Updates GoHighLevel pipelines in real-time, initiates voice AI outreach calls via Vapi, and routes instantaneous WhatsApp/Telegram alerts to human closers.
-            </p>
-          </div>
-        </div>
-
-        {/* Interactive Live Automation Node Pipeline Visualizer */}
-        <div className="mt-10">
-          <WorkflowPipelineVisualizer />
         </div>
       </section>
 
       {/* Featured Architecture & Live Web Applications */}
       <section id="portfolio" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">Portfolio &amp; Deployments</div>
-          <h2 className="glitch-heading font-heading text-2xl md:text-3xl font-bold text-white" data-text="Live Web Applications & Enterprise Workflows">Live Web Applications &amp; Enterprise Workflows</h2>
+          <div className="section-label"><b>01</b> Selected Work</div>
+          <h2 className="glitch-heading section-title text-3xl md:text-5xl text-white" data-text="Live Web Applications & Enterprise Workflows">Live Web Applications &amp; Enterprise Workflows</h2>
           <p className="text-slate-400 text-sm max-w-md">Real client web apps, data pipelines, and multi-agent backend systems.</p>
         </div>
 
@@ -854,14 +697,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Video Breakdowns & Architecture Walkthroughs */}
-      <VideoBreakdowns videos={videos} />
-
       {/* SEPARATE SECTION: Verified Certifications & Technical Credentials */}
       <section id="certificates" className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold">Verified Credentials &amp; Societies</div>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Certifications &amp; Technical Masterclasses</h2>
+          <div className="section-label"><b>02</b> Recognition</div>
+          <h2 className="section-title text-3xl md:text-5xl text-white">Certifications &amp; Technical Masterclasses</h2>
           <p className="text-slate-400 text-sm max-w-md">Official industry-standard certifications in LLM architecture, advanced workflow orchestration, and research methodology.</p>
         </div>
 
@@ -976,40 +816,57 @@ export default function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-          <div className="md:col-span-4 space-y-3">
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">About Me</h2>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
-              Anthropic Academy Certified
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
-              N8N Chatbot Lab Graduate
-            </div>
-          </div>
-          <div className="md:col-span-8 space-y-4 text-slate-400 text-sm md:text-base leading-relaxed">
-            <p>
-              I am Shahzaman Iqbal, a Backend Automation Engineer designing and architecting high-scale data systems for global agencies and fast-scaling brands. My expertise goes beyond basic visual nodes — I stitch custom code layers, APIs, webhooks, and database logic into reliable, fault-tolerant ecosystems.
-            </p>
-            <p>
-              Whether your pipeline demands <b className="text-white font-semibold">Apollo</b> and <b className="text-white font-semibold">Dripify</b> for outbound prospecting, <b className="text-white font-semibold">Bright Data</b> for structured data extraction, or conversational voice engines via <b className="text-white font-semibold">Retell AI</b> and <b className="text-white font-semibold">Vapi</b>, I consolidate everything under unified <b className="text-white font-semibold">n8n</b> workflows and CRM hubs.
-            </p>
-            <p>
-              Every configuration node and custom script is built with strict error handling and production scalability in mind.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Video Breakdowns & Architecture Walkthroughs */}
+      <VideoBreakdowns videos={videos} />
 
-      {/* Engineering Process Flow */}
+      {/* Enterprise System Architecture Topology */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">How I Build &amp; Deploy</h2>
-          <p className="text-slate-400 text-sm max-w-md">A systematic, step-by-step engineering roadmap for bulletproof backend automation.</p>
+          <div className="section-label"><b>04</b> Behind the Frames</div>
+          <h2 className="section-title text-3xl md:text-5xl text-white">How Enterprise Workflows Execute</h2>
+          <p className="text-slate-400 text-sm max-w-lg">A zero-touch orchestrated backend lifecycle connecting webhooks, LLM agents, and CRM syncs.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">01. INGESTION &amp; VALIDATION</div>
+            <h4 className="text-white font-semibold text-base mb-2">Multi-Channel Inbound Webhooks</h4>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Receives incoming leads from Meta Ads, website forms, or Apollo webhooks. Executes instant schema parsing, deduplication, and HMAC security validation.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">02. LLM LOGIC &amp; ENRICHMENT</div>
+            <h4 className="text-white font-semibold text-base mb-2">Autonomous Agent Evaluation</h4>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Triggers Claude / Groq AI nodes to analyze lead intent, classify budget capacity, fetch Bright Data enrichment records, and prepare personalized outbound pitches.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-neon-500/40 transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-neon-500/10 rounded-full blur-2xl group-hover:bg-neon-500/20 transition-all"></div>
+            <div className="text-neon-400 font-mono text-sm font-bold mb-2">03. DISPATCH &amp; ERROR-PROOFING</div>
+            <h4 className="text-white font-semibold text-base mb-2">CRM Sync &amp; Fallback Alerting</h4>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Updates GoHighLevel pipelines in real-time, initiates voice AI outreach calls via Vapi, and routes instantaneous WhatsApp/Telegram alerts to human closers.
+            </p>
+          </div>
+        </div>
+
+        {/* Interactive Live Automation Node Pipeline Visualizer */}
+        <div className="mt-10">
+          <WorkflowPipelineVisualizer />
+        </div>
+
+        {/* 4-step build process — part of Behind the Frames */}
+        <div className="space-y-2 mt-12">
+          <h3 className="section-title text-2xl md:text-3xl text-white">How I Build &amp; Deploy</h3>
+          <p className="text-slate-400 text-sm max-w-md">A systematic, step-by-step engineering roadmap for bulletproof backend automation.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
           <div className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/80 space-y-2 hover:border-neon-500/40 transition-colors">
             <div className="text-xs font-mono text-neon-400 font-bold">STEP 01</div>
             <h4 className="text-white font-semibold text-base">Discovery &amp; Topology</h4>
@@ -1041,10 +898,178 @@ export default function App() {
         </div>
       </section>
 
+      {/* Technical Stack — red glow */}
+      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
+        <div className="space-y-2 mb-10">
+          <div className="section-label"><b>SKILLS</b> The Arsenal</div>
+          <h2 className="section-title text-3xl md:text-4xl text-white">Technical Skillset &amp; Stack</h2>
+          <p className="text-slate-400 text-sm max-w-md">The production-ready technologies I configure, code, and orchestrate.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Core Automation</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">n8n &amp; GoHighLevel</h4>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Advanced workflow topologies, snapshot management, nested looping structures, and multi-channel webhook networks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Voice AI Architecture</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Retell AI &amp; Vapi</h4>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Deploying conversational AI voice assistants with hyper-low latency integrations, webhook triggers, and real-time CRM updates.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Outbound &amp; Scraped Data</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">Apollo, Dripify &amp; Bright Data</h4>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Automating scalable lead scraping workflows, cross-referencing targeted lead lists, and scaling automatic LinkedIn outreach systems.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+            <div className="relative p-6 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 space-y-3 h-full flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-neon-400 uppercase tracking-wider font-bold">Custom Code &amp; Web Apps</div>
+                <h4 className="text-white font-semibold text-base group-hover:text-neon-300 transition-colors">React / Vite / Python / APIs</h4>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  Building responsive web applications, webhook integrations, normalization layers, and high-performance serverless endpoints.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 / The Journey — milestones from his own shipped work */}
+      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
+        <div className="space-y-2 mb-10">
+          <div className="section-label"><b>05</b> The Journey</div>
+          <h2 className="section-title text-3xl md:text-5xl text-white">The Journey So Far</h2>
+          <p className="text-slate-400 text-sm max-w-lg">Every system shipped, every client served — the road that built this portfolio.</p>
+        </div>
+
+        <div className="relative pl-8 md:pl-10 space-y-10 before:absolute before:left-[7px] md:before:left-[9px] before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-neon-500 before:via-slate-700 before:to-transparent">
+          {[
+            { step: "01", title: "The First Build — A2Z FIX", text: "A live institute platform for chip-level mobile repairing in Multan: course syllabi, certificate verification, and student lead capture." },
+            { step: "02", title: "The Store — Decoria Store", text: "A live e-commerce platform for home decor & cosmetics: product grids, category filtering, cart flows, and Meta Commerce sync." },
+            { step: "03", title: "The Pipeline — YouTube Lead Enrichment", text: "An automated scraping and data-normalization engine in n8n, cutting lead-enrichment time to near zero." },
+            { step: "04", title: "The Closer — AI Sales Closer + CRM", text: "Instant lead ingestion wired to conversational AI and real-time GoHighLevel pipeline updates." },
+            { step: "05", title: "The Proof — Triple Certified", text: "Anthropic Academy AI Engineer, DataCrumbs N8N Chatbot Lab Masterclass, and University of London & SOAS research methods (Oct 2026)." },
+          ].map((m) => (
+            <div key={m.step} className="relative">
+              <span className="absolute -left-8 md:-left-10 top-1 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full bg-neon-500 shadow-[0_0_16px_rgba(255,42,42,0.7)] ring-4 ring-[#0a0a0a]"></span>
+              <div className="text-xs font-mono text-neon-400 font-bold tracking-widest">{m.step}</div>
+              <h3 className="font-heading text-lg md:text-xl font-bold text-white mt-1">{m.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-xl mt-1">{m.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+          <div className="md:col-span-4 space-y-3">
+            <div className="section-label"><b>ABOUT</b> The Architect</div>
+            <h2 className="section-title text-3xl md:text-4xl text-white">About Me</h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
+              Anthropic Academy Certified
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neon-500/10 border border-neon-500/20 text-neon-400 text-xs font-medium w-full">
+              N8N Chatbot Lab Graduate
+            </div>
+          </div>
+          <div className="md:col-span-8 space-y-4 text-slate-400 text-sm md:text-base leading-relaxed">
+            <p>
+              I am Shahzaman Iqbal, a Backend Automation Engineer designing and architecting high-scale data systems for global agencies and fast-scaling brands. My expertise goes beyond basic visual nodes — I stitch custom code layers, APIs, webhooks, and database logic into reliable, fault-tolerant ecosystems.
+            </p>
+            <p>
+              Whether your pipeline demands <b className="text-white font-semibold">Apollo</b> and <b className="text-white font-semibold">Dripify</b> for outbound prospecting, <b className="text-white font-semibold">Bright Data</b> for structured data extraction, or conversational voice engines via <b className="text-white font-semibold">Retell AI</b> and <b className="text-white font-semibold">Vapi</b>, I consolidate everything under unified <b className="text-white font-semibold">n8n</b> workflows and CRM hubs.
+            </p>
+            <p>
+              Every configuration node and custom script is built with strict error handling and production scalability in mind.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media Section */}
+      <section className="max-w-6xl w-full mx-auto px-6 py-12 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-900/40 border border-slate-800/80 p-6 rounded-2xl shadow-[0_0_30px_rgba(2,6,23,0.8)]">
+          <div>
+            <h3 className="font-heading text-white font-bold text-lg">Connect Across All Channels</h3>
+            <p className="text-slate-400 text-xs mt-1">Daily workflow automations, video breakdowns, and technical case studies.</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://www.youtube.com/@shahzamaniqbal-v8n"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+            >
+              YouTube
+            </a>
+            <a
+              href="https://www.instagram.com/n8n_developer/?hl=en"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.tiktok.com/@n8ndeveloper"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+            >
+              TikTok
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61578748077131"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Agency ROI & Automation Cost Calculator */}
       <RoiCalculator />
 
-      {/* Engagement Tiers with Heavy Neon Accent */}
+      {/* Engagement Tiers — heavy red accent */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">Engagement Tiers</h2>
@@ -1075,8 +1100,8 @@ export default function App() {
 
           <div className="group relative rounded-2xl transition-all duration-300">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(210,255,0,0.15)]">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(210,255,0,0.6)]">
+            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(255, 42, 42,0.15)]">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(255, 42, 42,0.6)]">
                 For High-Growth Agencies
               </div>
               <h4 className="font-heading text-white font-bold text-lg mt-2">Full System Architecture</h4>
@@ -1088,7 +1113,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20Full%20System%20Architecture"
                 target="_blank"
                 rel="noreferrer"
-                className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(210,255,0,0.3)] hover:shadow-[0_0_35px_rgba(210,255,0,0.6)]"
+                className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.3)] hover:shadow-[0_0_35px_rgba(255, 42, 42,0.6)]"
               >
                 Request Architecture Quote
               </a>
@@ -1143,7 +1168,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20ready%20to%20build%20an%20automation%20system"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(210,255,0,0.4)] hover:scale-105"
+                className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(255, 42, 42,0.4)] hover:scale-105"
               >
                 Start Conversation on WhatsApp →
               </a>

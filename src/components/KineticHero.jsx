@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./KineticHero.css";
+import ParticleIntro from "./ParticleIntro";
 
 const TYPEWRITER_WORDS = [
   "n8n workflows.",
@@ -55,7 +56,9 @@ export default function KineticHero() {
   const glowRef = useRef(null);
   const cardRef = useRef(null);
 
-  // Preloader: count 0% -> 100%, then reveal the hero.
+  // Preloader: particles converge into the glowing "S" mark while the
+  // counter runs 0% -> 100%; the hero entrances only start once the
+  // loader lifts, so nothing finishes behind the loader.
   useEffect(() => {
     let n = 0;
     const iv = setInterval(() => {
@@ -63,7 +66,7 @@ export default function KineticHero() {
       if (n >= 100) {
         n = 100;
         clearInterval(iv);
-        setTimeout(() => setLoading(false), 250);
+        setTimeout(() => setLoading(false), 700);
       }
       setProgress(n);
     }, 90);
@@ -138,24 +141,31 @@ export default function KineticHero() {
 
   return (
     <>
-      {/* Preloader — near-black, spinner, big % counter (like the reference video) */}
+      {/* Preloader — particles converge into the glowing "S" mark
+          (Renando-style opening), thin red progress bar + % counter */}
       <div className={`kinetic-loader${loading ? "" : " kinetic-loader-done"}`} aria-hidden={!loading}>
-        <div className="kinetic-loader-spinner" aria-hidden="true" />
-        <div className="kinetic-loader-num">{progress}%</div>
+        <ParticleIntro />
         <div className="kinetic-loader-lbl">LOADING PORTFOLIO</div>
+        <div className="kinetic-loader-num">{progress}%</div>
+        <div
+          className="kinetic-loader-bar"
+          style={{ width: `${progress}%` }}
+          aria-hidden="true"
+        />
       </div>
 
       {/* Film grain + cursor glow (fixed overlays) */}
       <div className="kinetic-grain" aria-hidden="true" />
       <div className="kinetic-glow" ref={glowRef} aria-hidden="true" />
 
-      <section className="kinetic-hero">
+      <section className={`kinetic-hero${loading ? "" : " kinetic-hero-ready"}`}>
         <div className="kinetic-kicker">
           AUTOMATION DEVELOPER <em>//</em> AI WORKFLOWS <em>//</em> SAAS BUILDER
         </div>
 
         <div className="kinetic-main">
           <div className="kinetic-copy">
+            <div className="kinetic-script">Hello, I&rsquo;m</div>
             <h1 className="kinetic-title">
               <KineticLine text="SHAHZAMAN" delay={0} />
               <KineticLine text="AUTOMATES" accent delay={0.12} />
@@ -191,6 +201,8 @@ export default function KineticHero() {
 
           {/* ID badge on a lanyard — flies/tumbles in, then swings (reference video) */}
           <div className="kinetic-photo-wrap">
+            {/* Giant red PORTFOLIO behind the portrait (Renando hero) */}
+            <div className="kinetic-giant-word" aria-hidden="true">PORTFOLIO</div>
             <div className="kinetic-badge-swing">
               <div className="kinetic-badge-enter">
               <div className="kinetic-lanyard" aria-hidden="true" />

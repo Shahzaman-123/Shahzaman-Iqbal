@@ -44,11 +44,8 @@ export default function VideoBreakdowns({ videos = [] }) {
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div className="space-y-2">
-          <div className="text-xs font-mono text-neon-400 uppercase tracking-widest font-bold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-neon-400 animate-ping inline-block"></span>
-            Live Architecture Breakdowns
-          </div>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">
+          <div className="section-label"><b>03</b> From Raw to Real</div>
+          <h2 className="section-title text-3xl md:text-5xl text-white">
             Video Breakdowns &amp; Architecture Walkthroughs
           </h2>
           <p className="text-slate-400 text-sm max-w-lg">
@@ -66,7 +63,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                 onClick={() => setActiveCategory(cat)}
                 className={`text-xs font-mono px-3 py-1.5 rounded-lg border transition-all duration-300 ${
                   isActive
-                    ? "bg-neon-500/20 border-neon-400 text-neon-300 shadow-[0_0_20px_rgba(210,255,0,0.35)] font-bold scale-105"
+                    ? "bg-neon-500/20 border-neon-400 text-neon-300 shadow-[0_0_20px_rgba(255, 42, 42,0.35)] font-bold scale-105"
                     : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
                 }`}
               >
@@ -173,7 +170,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                                   onClick={() => handleTimestampClick(video.id, ts.seconds)}
                                   className={`text-[11px] font-mono px-2.5 py-1 rounded-md transition-all duration-200 border flex items-center gap-1 ${
                                     isJumpActive
-                                      ? "bg-neon-500 text-slate-950 font-bold border-neon-300 shadow-[0_0_15px_rgba(210,255,0,0.5)]"
+                                      ? "bg-neon-500 text-slate-950 font-bold border-neon-300 shadow-[0_0_15px_rgba(255, 42, 42,0.5)]"
                                       : "bg-slate-950/80 text-neon-400 border-neon-500/20 hover:border-neon-500/60 hover:bg-neon-500/10"
                                   }`}
                                   title={`Seek video to ${ts.label}`}

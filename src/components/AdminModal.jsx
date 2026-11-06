@@ -290,11 +290,11 @@ export default function AdminModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-slate-900 border border-neon-500/50 rounded-2xl shadow-[0_0_60px_rgba(210,255,0,0.3)] overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-3xl bg-slate-900 border border-neon-500/50 rounded-2xl shadow-[0_0_60px_rgba(255, 42, 42,0.3)] overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
         <div className="p-5 bg-slate-950/90 border-b border-slate-800 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-neon-400 animate-pulse shadow-[0_0_10px_rgba(210,255,0,0.8)]"></div>
+            <div className="w-3 h-3 rounded-full bg-neon-400 animate-pulse shadow-[0_0_10px_rgba(255, 42, 42,0.8)]"></div>
             <div>
               <h2 className="font-heading font-bold text-white text-base tracking-wide flex items-center gap-2">
                 🔒 Portfolio Control Center
@@ -355,7 +355,7 @@ export default function AdminModal({
             /* Password Authentication Screen */
             <form onSubmit={handleLogin} className="space-y-4 max-w-md mx-auto py-6">
               <div className="text-center space-y-2">
-                <div className="w-12 h-12 rounded-full bg-neon-500/10 border border-neon-500/30 text-neon-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_20px_rgba(210,255,0,0.2)]">
+                <div className="w-12 h-12 rounded-full bg-neon-500/10 border border-neon-500/30 text-neon-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_20px_rgba(255, 42, 42,0.2)]">
                   ⚡
                 </div>
                 <h3 className="text-white font-heading font-bold text-lg">
@@ -402,7 +402,7 @@ export default function AdminModal({
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(210,255,0,0.3)]"
+                  className="flex-1 bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255, 42, 42,0.3)]"
                 >
                   Authenticate →
                 </button>
@@ -513,7 +513,7 @@ export default function AdminModal({
               <div
                 className={`p-5 rounded-xl border space-y-4 transition-all ${
                   editingId
-                    ? "bg-slate-950/90 border-neon-500/70 shadow-[0_0_25px_rgba(210,255,0,0.15)]"
+                    ? "bg-slate-950/90 border-neon-500/70 shadow-[0_0_25px_rgba(255, 42, 42,0.15)]"
                     : "bg-slate-950/60 border-slate-800"
                 }`}
               >
@@ -658,7 +658,7 @@ export default function AdminModal({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 bg-neon-500 hover:bg-neon-400 disabled:opacity-50 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(210,255,0,0.25)] flex items-center justify-center gap-2"
+                      className="flex-1 bg-neon-500 hover:bg-neon-400 disabled:opacity-50 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255, 42, 42,0.25)] flex items-center justify-center gap-2"
                     >
                       {isSubmitting
                         ? "Saving to Firestore..."
@@ -697,7 +697,7 @@ export default function AdminModal({
                         key={v.id || v.url}
                         className={`p-3 rounded-xl bg-slate-950/70 border flex items-center justify-between gap-3 transition-all ${
                           editingId === v.id
-                            ? "border-neon-500/80 bg-neon-950/20 shadow-[0_0_15px_rgba(210,255,0,0.15)]"
+                            ? "border-neon-500/80 bg-neon-950/20 shadow-[0_0_15px_rgba(255, 42, 42,0.15)]"
                             : "border-slate-800"
                         }`}
                       >

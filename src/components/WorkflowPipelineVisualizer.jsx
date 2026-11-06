@@ -156,7 +156,7 @@ export default function WorkflowPipelineVisualizer() {
         <button
           onClick={handleSimulateRun}
           disabled={isSimulating}
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-neon-500 to-neon-600 hover:from-neon-400 hover:to-neon-500 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow-[0_0_20px_rgba(210,255,0,0.3)] hover:scale-105"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-neon-500 to-neon-600 hover:from-neon-400 hover:to-neon-500 disabled:opacity-50 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow-[0_0_20px_rgba(255, 42, 42,0.3)] hover:scale-105"
         >
           {isSimulating ? (
             <>
@@ -183,7 +183,7 @@ export default function WorkflowPipelineVisualizer() {
               onClick={() => setActiveNodeId(node.id)}
               className={`p-4 rounded-xl text-left border transition-all duration-300 relative group overflow-hidden ${
                 isSelected || isCurrentlySimulating
-                  ? "bg-slate-900 border-neon-400 shadow-[0_0_25px_rgba(210,255,0,0.35)] scale-[1.02]"
+                  ? "bg-slate-900 border-neon-400 shadow-[0_0_25px_rgba(255, 42, 42,0.35)] scale-[1.02]"
                   : "bg-slate-950/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/40"
               }`}
             >

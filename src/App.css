@@ -13,11 +13,11 @@
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 4px;
-  border: 1px solid rgba(210,255,0, 0.2);
+  border: 1px solid rgba(255, 42, 42, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d2ff00;
+  background: #ff2a2a;
 }
 
 /* Subtle glow animations */
@@ -36,7 +36,7 @@
 
 /* Text selection & smooth scrolling */
 ::selection {
-  background: rgba(210, 255, 0, 0.35);
+  background: rgba(255, 42, 42, 0.35);
   color: #ffffff;
 }
 
@@ -48,8 +48,43 @@
   pointer-events: none;
 }
 
+/* Renando-style numbered section labels: small uppercase mono,
+   red number + white eyebrow, animating in with the section heading. */
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 10px;
+}
+.section-label b {
+  color: #ff2a2a;
+  font-weight: 700;
+}
+.section-label::after {
+  content: "";
+  flex: 0 0 48px;
+  height: 1px;
+  background: #ff2a2a;
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+/* Cinematic editorial headings — oversized condensed caps (Anton). */
+.section-title {
+  font-family: "Anton", "Arial Narrow", "Impact", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
 /* Glitch entrance for the big Portfolio heading (reference video).
-   Two ghost copies (neon + white, the site's only accent family) slice
+   Two ghost copies (red + white, the site's only accent family) slice
    across the heading with clip-path jumps while the base text jitters.
    Runs 1.5s while .glitch-active is present; replayed by ScrollTrigger
    on every scroll-in. */
@@ -72,7 +107,7 @@
 }
 .glitch-heading.glitch-active::before {
   opacity: 0.85;
-  color: #d2ff00;
+  color: #ff2a2a;
   animation: glitch-slice-a 1.5s steps(2, end) both;
 }
 .glitch-heading.glitch-active::after {

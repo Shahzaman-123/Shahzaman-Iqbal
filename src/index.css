@@ -1,15 +1,21 @@
 @import "tailwindcss";
 
-/* Single site accent — neon green #D2FF00 on near-black #0a0a0a.
+/* Single site accent — vivid red #FF2A2A on near-black #0a0a0a.
+   Renando-style cinematic editorial: black, white, one red.
    All accent utilities across the site use the `neon-*` scale so the
-   whole site reads as one theme (no blue/cyan/category colours). */
+   whole site reads as one theme (no green/cyan/blue/category colours). */
 @theme {
-  --color-neon-200: #efff8a;
-  --color-neon-300: #e2ff4d;
-  --color-neon-400: #d2ff00;
-  --color-neon-500: #b8e600;
-  --color-neon-600: #97bd00;
-  --color-neon-700: #759200;
-  --color-neon-800: #5d7500;
-  --color-neon-950: #3d4d00;
+  --color-neon-200: #ffd6d6;
+  --color-neon-300: #ff9a9a;
+  --color-neon-400: #ff2a2a;
+  --color-neon-500: #e60000;
+  --color-neon-600: #b30000;
+  --color-neon-700: #8a0000;
+  --color-neon-800: #660000;
+  --color-neon-950: #330000;
+
+  /* Cinematic editorial type: oversized condensed caps for headlines,
+     handwritten script for the hero intro line. */
+  --font-heading: "Anton", "Arial Narrow", "Impact", sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
 }
