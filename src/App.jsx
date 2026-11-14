@@ -371,7 +371,7 @@ export default function App() {
   return (
     <div
       ref={containerRef}
-      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#22d3ee] selection:text-slate-900 bg-[#050505] font-sans overflow-x-hidden"
+      className="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-[#ff2a2a] selection:text-slate-900 bg-[#050505] font-sans overflow-x-hidden"
     >
       {/* Starfield — twinkling stars + shooting stars behind the whole site */}
       <Starfield />
@@ -381,7 +381,7 @@ export default function App() {
         <button
           onClick={() => setIsChatOpen(!isChatOpen)}
           aria-label="Open AI Assistant"
-          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-neon-600 via-neon-500 to-neon-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(34, 211, 238,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(34, 211, 238,0.6)]"
+          className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-neon-600 via-neon-500 to-neon-400 text-slate-950 flex items-center justify-center shadow-[0_0_30px_rgba(255, 42, 42,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(255, 42, 42,0.6)]"
         >
           {isChatOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
@@ -398,7 +398,7 @@ export default function App() {
 
       {/* AI Assistant Interactive Drawer Modal */}
       {isChatOpen && (
-        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-neon-500/40 rounded-2xl shadow-[0_0_50px_rgba(34, 211, 238,0.25)] z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[460px] h-[min(540px,85vh)] max-h-[85vh] bg-slate-900/95 backdrop-blur-xl border border-neon-500/40 rounded-2xl shadow-[0_0_50px_rgba(255, 42, 42,0.25)] z-50 flex flex-col overflow-hidden">
           {/* Chat Header */}
           <div className="p-4 bg-slate-950/80 border-b border-slate-800 flex justify-between items-center">
             <div className="flex items-center gap-2.5">
@@ -514,7 +514,7 @@ export default function App() {
             href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-neon-500/10 hover:bg-neon-500/20 text-xs font-semibold tracking-wide text-neon-400 uppercase px-3 sm:px-4 py-2 rounded-lg border border-neon-500/30 hover:border-neon-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(34, 211, 238,0.15)] hover:shadow-[0_0_30px_rgba(34, 211, 238,0.3)] whitespace-nowrap"
+            className="inline-flex items-center justify-center bg-neon-500/10 hover:bg-neon-500/20 text-xs font-semibold tracking-wide text-neon-400 uppercase px-3 sm:px-4 py-2 rounded-lg border border-neon-500/30 hover:border-neon-500/60 transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.15)] hover:shadow-[0_0_30px_rgba(255, 42, 42,0.3)] whitespace-nowrap"
           >
             LinkedIn
           </a>
@@ -522,7 +522,7 @@ export default function App() {
             href="https://wa.me/923241736180"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(34, 211, 238,0.2)] hover:shadow-[0_0_35px_rgba(34, 211, 238,0.5)] whitespace-nowrap"
+            className="inline-flex items-center justify-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold uppercase tracking-wide px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.2)] hover:shadow-[0_0_35px_rgba(255, 42, 42,0.5)] whitespace-nowrap"
           >
             Book a Call
           </a>
@@ -532,7 +532,7 @@ export default function App() {
       {/* Spacer for the fixed floating nav */}
       <div className="h-[76px] shrink-0" aria-hidden="true" />
 
-      {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #22d3ee) */}
+      {/* Kinetic Hero — approved Nov 5, 2026 (dark luxury, neon #ff2a2a) */}
       <KineticHero />
 
       {/* Metrics Bar — spec callouts, like the video's 3.8L / 480 HP callouts:
@@ -545,22 +545,22 @@ export default function App() {
           </div>
           <div className="flex flex-wrap justify-center sm:justify-between gap-8">
             <div className="metric-item hover:scale-105 transition-transform duration-300 min-w-[150px]">
-              <div className="font-heading text-3xl md:text-4xl font-normal text-white drop-shadow-[0_0_6px_rgba(34, 211, 238,0.25)]">29+</div>
+              <div className="font-heading text-3xl md:text-4xl font-normal text-white drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">29+</div>
               <div className="spec-leader my-2.5"></div>
               <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono">Smart Systems Built</div>
             </div>
             <div className="metric-item hover:scale-105 transition-transform duration-300 min-w-[150px]">
-              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(34, 211, 238,0.25)]">n8n + GHL</div>
+              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">n8n + GHL</div>
               <div className="spec-leader my-2.5"></div>
               <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono">Main Tools</div>
             </div>
             <div className="metric-item hover:scale-105 transition-transform duration-300 min-w-[150px]">
-              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(34, 211, 238,0.25)]">Voice AI</div>
+              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">Voice AI</div>
               <div className="spec-leader my-2.5"></div>
               <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono">Voice Calls &amp; Leads</div>
             </div>
             <div className="metric-item hover:scale-105 transition-transform duration-300 min-w-[150px]">
-              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(34, 211, 238,0.25)]">Triple Certified</div>
+              <div className="font-heading text-3xl md:text-4xl font-normal text-neon-400 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">Triple Certified</div>
               <div className="spec-leader my-2.5"></div>
               <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono">Certificates</div>
             </div>
@@ -892,7 +892,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Technical Stack — cyan glow */}
+      {/* Technical Stack — red glow */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <div className="section-label"><b>SKILLS</b> My Tools</div>
@@ -972,7 +972,7 @@ export default function App() {
             { step: "05", title: "The Proof — Triple Certified", text: "Certificates from Anthropic, DataCrumbs, and the University of London & SOAS (Oct 2026)." },
           ].map((m) => (
             <div key={m.step} className="relative">
-              <span className="absolute -left-8 md:-left-10 top-1 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full bg-neon-500 shadow-[0_0_16px_rgba(34,211,238,0.7)] ring-4 ring-[#050505]"></span>
+              <span className="absolute -left-8 md:-left-10 top-1 w-[15px] h-[15px] md:w-[19px] md:h-[19px] rounded-full bg-neon-500 shadow-[0_0_16px_rgba(255,42,42,0.7)] ring-4 ring-[#050505]"></span>
               <div className="text-xs font-mono text-neon-400 font-bold tracking-widest">{m.step}</div>
               <h3 className="font-heading text-lg md:text-xl font-normal text-white mt-1">{m.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xl mt-1">{m.text}</p>
@@ -1020,7 +1020,7 @@ export default function App() {
               href="https://www.youtube.com/@shahzamaniqbal-v8n"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(34, 211, 238,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               YouTube
             </a>
@@ -1028,7 +1028,7 @@ export default function App() {
               href="https://www.instagram.com/n8n_developer/?hl=en"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(34, 211, 238,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               Instagram
             </a>
@@ -1036,7 +1036,7 @@ export default function App() {
               href="https://www.tiktok.com/@n8ndeveloper"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(34, 211, 238,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               TikTok
             </a>
@@ -1044,7 +1044,7 @@ export default function App() {
               href="https://www.facebook.com/profile.php?id=61578748077131"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(34, 211, 238,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               Facebook
             </a>
@@ -1052,7 +1052,7 @@ export default function App() {
               href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(34, 211, 238,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
             >
               LinkedIn
             </a>
@@ -1063,7 +1063,7 @@ export default function App() {
       {/* Agency ROI & Automation Cost Calculator */}
       <RoiCalculator />
 
-      {/* Engagement Tiers — cyan accent */}
+      {/* Engagement Tiers — red accent */}
       <section className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10">
         <div className="space-y-2 mb-10">
           <h2 className="font-heading text-2xl md:text-3xl font-normal text-white">Ways to Work With Me</h2>
@@ -1094,8 +1094,8 @@ export default function App() {
 
           <div className="group relative rounded-2xl transition-all duration-300">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
-            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(34, 211, 238,0.15)]">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(34, 211, 238,0.6)]">
+            <div className="relative p-7 rounded-2xl bg-slate-900/95 border border-neon-500/50 flex flex-col gap-4 h-full shadow-[0_0_35px_rgba(255, 42, 42,0.15)]">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-500 to-neon-500 text-slate-950 text-[10px] font-bold uppercase px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(255, 42, 42,0.6)]">
                 For Growing Businesses
               </div>
               <h4 className="font-heading text-white font-normal text-lg mt-2">Your Whole System, Done for You</h4>
@@ -1107,7 +1107,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20interested%20in%20my%20whole%20system%2C%20done%20for%20you"
                 target="_blank"
                 rel="noreferrer"
-                className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34, 211, 238,0.3)] hover:shadow-[0_0_35px_rgba(34, 211, 238,0.6)]"
+                className="text-center bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-3 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(255, 42, 42,0.3)] hover:shadow-[0_0_35px_rgba(255, 42, 42,0.6)]"
               >
                 Ask for a Price
               </a>
@@ -1156,18 +1156,18 @@ export default function App() {
               viewBox="0 0 520 64"
               fill="none"
               className="mx-auto w-full max-w-md"
-              style={{ filter: "drop-shadow(0 0 8px rgba(34,211,238,0.55))" }}
+              style={{ filter: "drop-shadow(0 0 8px rgba(255,42,42,0.55))" }}
               aria-hidden="true"
             >
-              <rect x="6" y="14" width="72" height="36" rx="8" stroke="#22d3ee" strokeWidth="1.5" />
-              <rect x="124" y="14" width="72" height="36" rx="8" stroke="#22d3ee" strokeWidth="1.5" />
-              <rect x="242" y="14" width="72" height="36" rx="8" stroke="#22d3ee" strokeWidth="1.5" />
-              <rect x="360" y="14" width="72" height="36" rx="8" stroke="#22d3ee" strokeWidth="1.5" />
-              <rect x="442" y="14" width="72" height="36" rx="8" stroke="#22d3ee" strokeWidth="1.5" />
-              <line x1="78" y1="32" x2="124" y2="32" stroke="#22d3ee" strokeWidth="1.5" />
-              <line x1="196" y1="32" x2="242" y2="32" stroke="#22d3ee" strokeWidth="1.5" />
-              <line x1="314" y1="32" x2="360" y2="32" stroke="#22d3ee" strokeWidth="1.5" />
-              <line x1="432" y1="32" x2="442" y2="32" stroke="#22d3ee" strokeWidth="1.5" />
+              <rect x="6" y="14" width="72" height="36" rx="8" stroke="#ff2a2a" strokeWidth="1.5" />
+              <rect x="124" y="14" width="72" height="36" rx="8" stroke="#ff2a2a" strokeWidth="1.5" />
+              <rect x="242" y="14" width="72" height="36" rx="8" stroke="#ff2a2a" strokeWidth="1.5" />
+              <rect x="360" y="14" width="72" height="36" rx="8" stroke="#ff2a2a" strokeWidth="1.5" />
+              <rect x="442" y="14" width="72" height="36" rx="8" stroke="#ff2a2a" strokeWidth="1.5" />
+              <line x1="78" y1="32" x2="124" y2="32" stroke="#ff2a2a" strokeWidth="1.5" />
+              <line x1="196" y1="32" x2="242" y2="32" stroke="#ff2a2a" strokeWidth="1.5" />
+              <line x1="314" y1="32" x2="360" y2="32" stroke="#ff2a2a" strokeWidth="1.5" />
+              <line x1="432" y1="32" x2="442" y2="32" stroke="#ff2a2a" strokeWidth="1.5" />
             </svg>
             <h2 className="font-heading text-3xl md:text-5xl font-normal text-white">
               Want Your Boring Work Done for You?
@@ -1183,7 +1183,7 @@ export default function App() {
                 href="https://wa.me/923241736180?text=Hi%20Shahzaman%2C%20I%20am%20ready%20to%20build%20a%20smart%20system"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(34, 211, 238,0.4)] hover:scale-105"
+                className="inline-flex items-center gap-2 bg-neon-500 hover:bg-neon-400 text-slate-950 text-sm font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(255, 42, 42,0.4)] hover:scale-105"
               >
                 Start Conversation on WhatsApp →
               </a>

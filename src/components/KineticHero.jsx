@@ -142,7 +142,7 @@ export default function KineticHero() {
   return (
     <>
       {/* Preloader — particles converge into the glowing "S" mark
-          (Cinematic opening), thin cyan progress bar + % counter */}
+          (Cinematic opening), thin red progress bar + % counter */}
       <div className={`kinetic-loader${loading ? "" : " kinetic-loader-done"}`} aria-hidden={!loading}>
         <ParticleIntro />
         <div className="kinetic-loader-lbl">LOADING PORTFOLIO</div>
@@ -233,16 +233,16 @@ export default function KineticHero() {
         <div className={`kinetic-linedraw${loading ? "" : " line-draw-on"}`} aria-hidden="true">
           <svg viewBox="0 0 1000 120" fill="none" role="img">
             {/* Node outlines (drawn left to right) */}
-            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.15s" }} x="30" y="30" width="140" height="56" rx="10" stroke="#22d3ee" strokeWidth="1.5" />
-            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.45s" }} x="230" y="30" width="140" height="56" rx="10" stroke="#22d3ee" strokeWidth="1.5" />
-            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.75s" }} x="430" y="30" width="140" height="56" rx="10" stroke="#22d3ee" strokeWidth="1.5" />
-            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.05s" }} x="630" y="30" width="140" height="56" rx="10" stroke="#22d3ee" strokeWidth="1.5" />
-            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.35s" }} x="830" y="30" width="140" height="56" rx="10" stroke="#22d3ee" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.15s" }} x="30" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.45s" }} x="230" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.75s" }} x="430" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.05s" }} x="630" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.35s" }} x="830" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
             {/* Connectors */}
-            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.3s" }} x1="170" y1="58" x2="230" y2="58" stroke="#22d3ee" strokeWidth="1.5" />
-            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.6s" }} x1="370" y1="58" x2="430" y2="58" stroke="#22d3ee" strokeWidth="1.5" />
-            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.9s" }} x1="570" y1="58" x2="630" y2="58" stroke="#22d3ee" strokeWidth="1.5" />
-            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.2s" }} x1="770" y1="58" x2="830" y2="58" stroke="#22d3ee" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.3s" }} x1="170" y1="58" x2="230" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.6s" }} x1="370" y1="58" x2="430" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.9s" }} x1="570" y1="58" x2="630" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.2s" }} x1="770" y1="58" x2="830" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
             {/* Node names */}
             <text className="line-draw-label" style={{ "--draw-delay": "0.7s" }} x="100" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="600">New Lead</text>
             <text className="line-draw-label" style={{ "--draw-delay": "1s" }} x="300" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="600">Check</text>

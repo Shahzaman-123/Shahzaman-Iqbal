@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 /**
  * ParticleIntro — Cinematic opening: white particles and small
  * triangles drift in from random positions and converge to form a
- * glowing "S" (Shahzaman's mark), which then glows cyan.
+ * glowing "S" (Shahzaman's mark), which then glows red.
  * Runs inside the preloader; honours prefers-reduced-motion
  * (static glowing S, no drift). Canvas only, no libraries.
  */
@@ -82,9 +82,9 @@ export default function ParticleIntro() {
       const size = Math.min(w, h) * 0.62;
       ctx.save();
       ctx.globalAlpha = alpha;
-      ctx.shadowColor = "#22d3ee";
+      ctx.shadowColor = "#ff2a2a";
       ctx.shadowBlur = 32;
-      ctx.fillStyle = "#22d3ee";
+      ctx.fillStyle = "#ff2a2a";
       ctx.font = `900 ${size * 0.92}px Anton, "Arial Narrow", sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -133,7 +133,7 @@ export default function ParticleIntro() {
       }
       ctx.globalAlpha = 1;
 
-      // Once converged, the glowing cyan S fades in over the particles.
+      // Once converged, the glowing red S fades in over the particles.
       if (elapsed > DURATION * 0.75) {
         drawS(Math.min((elapsed - DURATION * 0.75) / 0.5, 1));
       }

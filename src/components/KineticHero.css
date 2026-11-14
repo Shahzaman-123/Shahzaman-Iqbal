@@ -1,15 +1,15 @@
 /* Kinetic Hero — Cinematic Deconstruction restyle.
-   Dark editorial theme: near-black #050505, brand cyan accent #22d3ee,
+   Dark editorial theme: near-black #050505, brand red accent #ff2a2a,
    film grain, cursor glow, particle intro, line-draw workflow diagram,
    giant outlined PORTFOLIO behind the portrait. CSS/GSAP-free motion
    (keyframes + pointer handlers). */
 
 :root {
-  --kinetic-acc: #22d3ee;
+  --kinetic-acc: #ff2a2a;
   --kinetic-bg: #050505;
 }
 
-/* ---------- Preloader: particle "S" + thin cyan progress bar ---------- */
+/* ---------- Preloader: particle "S" + thin red progress bar ---------- */
 .kinetic-loader {
   position: fixed;
   inset: 0;
@@ -52,7 +52,7 @@
   height: 3px;
   background: var(--kinetic-acc);
   transition: width 0.2s ease;
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.8);
+  box-shadow: 0 0 12px rgba(255, 42, 42, 0.8);
 }
 
 /* ---------- Fixed overlays ---------- */
@@ -78,7 +78,7 @@
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(255, 42, 42, 0.14), transparent 65%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -159,7 +159,7 @@
   line-height: 0.8;
   letter-spacing: 0.01em;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(34, 211, 238, 0.5);
+  -webkit-text-stroke: 1.5px rgba(255, 42, 42, 0.5);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -263,7 +263,7 @@
   color: #111;
 }
 .kinetic-btn-acc:hover {
-  background: #67e8f9;
+  background: #ff5c5c;
 }
 .kinetic-btn-ghost {
   background: transparent;
@@ -402,7 +402,7 @@
 .kinetic-badge-sub {
   font-size: 11px;
   letter-spacing: 3px;
-  color: #0e7490;
+  color: #a30000;
   font-weight: 800;
   margin-top: 2px;
 }
@@ -449,7 +449,7 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
   letter-spacing: 2px;
-  color: #22d3ee;
+  color: #ff2a2a;
   text-align: center;
 }
 @media (max-width: 640px) {

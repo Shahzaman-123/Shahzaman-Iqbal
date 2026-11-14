@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
-/* Cinematic Deconstruction redesign — brand CYAN (#22d3ee family) on
-   near-black #050505, with blueprint-grid overlays.
+/* Cinematic Deconstruction redesign — single site accent, vivid red
+   #FF2A2A on near-black #050505, with blueprint-grid overlays.
    All accent utilities across the site use the `neon-*` scale so the
-   whole site reads as one theme (no red/green/blue/category colours). */
+   whole site reads as one theme (no green/cyan/blue/category colours). */
 @theme {
-  --color-neon-200: #a5f3fc;
-  --color-neon-300: #67e8f9;
-  --color-neon-400: #22d3ee;
-  --color-neon-500: #06b6d4;
-  --color-neon-600: #0891b2;
-  --color-neon-700: #0e7490;
-  --color-neon-800: #155e75;
-  --color-neon-950: #083344;
+  --color-neon-200: #ffd6d6;
+  --color-neon-300: #ff9a9a;
+  --color-neon-400: #ff2a2a;
+  --color-neon-500: #e60000;
+  --color-neon-600: #b30000;
+  --color-neon-700: #8a0000;
+  --color-neon-800: #660000;
+  --color-neon-950: #330000;
 
   /* Cinematic editorial type: oversized condensed caps for headlines,
      handwritten script for the hero intro line. */

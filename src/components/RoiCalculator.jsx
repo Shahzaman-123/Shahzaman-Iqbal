@@ -61,7 +61,7 @@ export default function RoiCalculator() {
             onClick={() => handleCurrencyChange("USD")}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
               currency === "USD"
-                ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(34, 211, 238,0.4)]"
+                ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(255, 42, 42,0.4)]"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -71,7 +71,7 @@ export default function RoiCalculator() {
             onClick={() => handleCurrencyChange("PKR")}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
               currency === "PKR"
-                ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(34, 211, 238,0.4)]"
+                ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(255, 42, 42,0.4)]"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -195,7 +195,7 @@ export default function RoiCalculator() {
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
                 <div className="text-xs text-slate-400 font-mono">Hours saved each month</div>
-                <div className="text-3xl md:text-4xl font-heading font-normal text-neon-400 mt-1 drop-shadow-[0_0_6px_rgba(34, 211, 238,0.25)]">
+                <div className="text-3xl md:text-4xl font-heading font-normal text-neon-400 mt-1 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">
                   {calculations.hoursSavedPerMonth.toLocaleString()} hrs
                 </div>
                 <div className="text-[11px] text-slate-500 mt-0.5">
@@ -226,7 +226,7 @@ export default function RoiCalculator() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-full text-center bg-neon-500 hover:bg-neon-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(34, 211, 238,0.3)] hover:shadow-[0_0_40px_rgba(34, 211, 238,0.6)] hover:scale-[1.02] flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
+              className="w-full text-center bg-neon-500 hover:bg-neon-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(255, 42, 42,0.3)] hover:shadow-[0_0_40px_rgba(255, 42, 42,0.6)] hover:scale-[1.02] flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
             >
               <span>Get These Savings on WhatsApp →</span>
             </a>

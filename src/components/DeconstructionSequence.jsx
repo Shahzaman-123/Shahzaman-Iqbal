@@ -157,12 +157,12 @@ export default function DeconstructionSequence() {
           vertically centred, so the exploded chips never slide under it. */}
       <div className="decon-pin relative md:min-h-[calc(100vh-96px)] md:flex md:flex-col md:justify-center">
         <div className="decon-stage relative max-w-6xl w-full mx-auto px-6 pb-16 pt-2 md:pt-6">
-          {/* Teal grid floor, like the video's exploded-view floor. */}
+          {/* Grid floor, like the video's exploded-view floor. */}
           <div className="decon-floor absolute inset-x-6 top-0 bottom-0 pointer-events-none" aria-hidden="true" />
-          {/* Cyan glow behind the reassembled chain. */}
+          {/* Red glow behind the reassembled chain. */}
           <div
             className="decon-glow absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[55%] rounded-full pointer-events-none opacity-0 hidden md:block"
-            style={{ background: "radial-gradient(ellipse, rgba(34,211,238,0.16), transparent 65%)" }}
+            style={{ background: "radial-gradient(ellipse, rgba(255,42,42,0.16), transparent 65%)" }}
             aria-hidden="true"
           />
 
@@ -235,7 +235,7 @@ export default function DeconstructionSequence() {
             className="decon-reborn-word relative mt-2 md:mt-4 text-center opacity-0 hidden md:block select-none"
             aria-hidden="true"
           >
-            <span className="font-heading uppercase leading-none text-[clamp(64px,10vw,150px)] text-transparent [-webkit-text-stroke:1.5px_rgba(34,211,238,0.55)]">
+            <span className="font-heading uppercase leading-none text-[clamp(64px,10vw,150px)] text-transparent [-webkit-text-stroke:1.5px_rgba(255,42,42,0.55)]">
               Reborn.
             </span>
           </div>
