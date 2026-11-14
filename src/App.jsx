@@ -64,7 +64,7 @@ Shahzaman's Technical Profile:
 - Direct Channels:
   - WhatsApp: +92 324 1736180
   - LinkedIn: https://www.linkedin.com/in/shahzaman-iqbal-76172836a
-  - YouTube: https://www.youtube.com/@shahzamaniqbal-v8n
+  - YouTube: https://www.youtube.com/@automatewithshahzaman
   - Instagram: https://www.instagram.com/n8n_developer/?hl=en
   - TikTok: https://www.tiktok.com/@n8ndeveloper
   - Facebook: https://www.facebook.com/profile.php?id=61578748077131
@@ -993,7 +993,7 @@ export default function App() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://www.youtube.com/@shahzamaniqbal-v8n"
+              href="https://www.youtube.com/@automatewithshahzaman"
               target="_blank"
               rel="noreferrer"
               className="px-4 py-2 rounded-xl bg-neon-500/10 border border-neon-500/20 hover:border-neon-500/70 hover:shadow-[0_0_20px_rgba(255, 42, 42,0.4)] text-neon-400 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300 hover:scale-105"
@@ -1188,7 +1188,7 @@ export default function App() {
         <div className="flex gap-6">
           <a href="https://wa.me/923241736180" className="hover:text-neon-400 transition-colors">WhatsApp</a>
           <a href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a" className="hover:text-neon-400 transition-colors">LinkedIn</a>
-          <a href="https://www.youtube.com/@shahzamaniqbal-v8n" className="hover:text-neon-400 transition-colors">YouTube</a>
+          <a href="https://www.youtube.com/@automatewithshahzaman" className="hover:text-neon-400 transition-colors">YouTube</a>
           <a href="https://www.instagram.com/n8n_developer/?hl=en" className="hover:text-neon-400 transition-colors">Instagram</a>
         </div>
       </footer>
