@@ -69,7 +69,7 @@ const PIPELINE_NODES = [
     name: "AI Phone Call",
     tech: "Voice calls",
     badge: "Step 4 — The call",
-    latency: "340ms (Sub-second audio)",
+    latency: "340ms",
     status: "Calling",
     description:
       "The AI calls the customer within a minute, talks naturally, and books the appointment.",
@@ -196,7 +196,7 @@ export default function WorkflowPipelineVisualizer() {
                 <span className="text-[10px] font-mono font-bold text-neon-400 bg-neon-500/10 px-1.5 py-0.5 rounded border border-neon-500/20">
                   {node.number}
                 </span>
-                <span className="text-[10px] font-mono text-slate-400">
+                <span className="text-[10px] font-mono text-slate-300">
                   {node.latency}
                 </span>
               </div>
@@ -204,7 +204,7 @@ export default function WorkflowPipelineVisualizer() {
               <h4 className="text-white font-semibold text-xs truncate mb-1">
                 {node.name}
               </h4>
-              <p className="text-[11px] font-mono text-slate-400 truncate">
+              <p className="text-[11px] font-mono text-slate-300 truncate">
                 {node.tech}
               </p>
 
@@ -233,12 +233,12 @@ export default function WorkflowPipelineVisualizer() {
               <span className="text-[11px] font-mono text-neon-400 bg-neon-500/10 px-2 py-0.5 rounded border border-neon-500/20">
                 ● {activeNode.status}
               </span>
-              <span className="text-[11px] font-mono text-slate-400">
+              <span className="text-[11px] font-mono text-slate-300">
                 Speed: <span className="text-white font-bold">{activeNode.latency}</span>
               </span>
             </div>
 
-            <h3 className="font-heading text-xl font-normal text-white flex items-center gap-2">
+            <h3 className="font-heading text-xl font-bold text-white flex items-center gap-2">
               <span>{activeNode.name}</span>
             </h3>
             <p className="text-xs font-mono text-neon-300">
@@ -250,7 +250,7 @@ export default function WorkflowPipelineVisualizer() {
             <h5 className="text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
               What happens here
             </h5>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               {activeNode.description}
             </p>
           </div>
@@ -259,7 +259,7 @@ export default function WorkflowPipelineVisualizer() {
             <div className="text-[11px] font-mono text-neon-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
               🛡️ If Something Goes Wrong
             </div>
-            <p className="text-[11px] text-slate-400 leading-relaxed">
+            <p className="text-[11px] text-slate-300 leading-relaxed">
               {activeNode.reliability}
             </p>
           </div>
@@ -286,7 +286,7 @@ export default function WorkflowPipelineVisualizer() {
             </pre>
           </div>
 
-          <div className="text-[10px] font-mono text-slate-500 text-right">
+          <div className="text-[10px] font-mono text-slate-400 text-right">
             Data check: Passed ✓
           </div>
         </div>

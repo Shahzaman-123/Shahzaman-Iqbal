@@ -8,6 +8,20 @@ export default function VideoBreakdowns({ videos = [] }) {
 
   const displayVideos = videos && videos.length > 0 ? videos : DEFAULT_VIDEOS;
 
+  // DEDUPE FIX: Firestore holds the same 2 videos seeded 3x (6 docs), so
+  // the section used to show each video three times. Collapse to one card
+  // per unique YouTube video — the stored docs are untouched.
+  const uniqueVideos = useMemo(() => {
+    const seen = new Set();
+    return displayVideos.filter((vid) => {
+      const { videoId } = parseYouTubeUrl(vid.url);
+      const key = videoId || vid.url;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [displayVideos]);
+
   // Filter categories available
   const filterCategories = [
     "All",
@@ -18,9 +32,9 @@ export default function VideoBreakdowns({ videos = [] }) {
   ];
 
   const filteredVideos = useMemo(() => {
-    if (activeCategory === "All") return displayVideos;
+    if (activeCategory === "All") return uniqueVideos;
 
-    return displayVideos.filter((vid) => {
+    return uniqueVideos.filter((vid) => {
       const cat = (vid.category || "").toLowerCase();
       if (activeCategory === "Voice Calls") return cat.includes("voice");
       if (activeCategory === "Automations") return cat.includes("n8n");
@@ -28,7 +42,7 @@ export default function VideoBreakdowns({ videos = [] }) {
       if (activeCategory === "Websites") return cat.includes("web") || cat.includes("app");
       return cat.includes(activeCategory.toLowerCase());
     });
-  }, [displayVideos, activeCategory]);
+  }, [uniqueVideos, activeCategory]);
 
   const handleTimestampClick = (videoId, seconds) => {
     setActiveTimestamps((prev) => ({
@@ -40,7 +54,7 @@ export default function VideoBreakdowns({ videos = [] }) {
   return (
     <section
       id="video-breakdowns"
-      className="max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10"
+      className="blueprint-grid relative max-w-6xl w-full mx-auto px-6 py-16 border-b border-slate-800/60 gsap-reveal opacity-0 translate-y-10"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div className="space-y-2">
@@ -48,7 +62,7 @@ export default function VideoBreakdowns({ videos = [] }) {
           <h2 className="section-title text-3xl md:text-5xl text-white">
             Watch How It Works
           </h2>
-          <p className="text-slate-400 text-sm max-w-lg">
+          <p className="text-slate-300 text-sm max-w-lg">
             Short videos that show real systems working — step by step.
           </p>
         </div>
@@ -64,7 +78,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                 className={`text-xs font-mono px-3 py-1.5 rounded-lg border transition-all duration-300 ${
                   isActive
                     ? "bg-neon-500/20 border-neon-400 text-neon-300 shadow-[0_0_20px_rgba(255, 42, 42,0.35)] font-bold scale-105"
-                    : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                    : "bg-slate-900/60 border-slate-800 text-slate-300 hover:text-slate-200 hover:border-slate-700"
                 }`}
               >
                 {cat}
@@ -76,14 +90,14 @@ export default function VideoBreakdowns({ videos = [] }) {
 
       {filteredVideos.length === 0 ? (
         <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-950/40">
-          <p className="text-slate-400 text-sm">
+          <p className="text-slate-300 text-sm">
             No videos in this group yet.
           </p>
           <button
             onClick={() => setActiveCategory("All")}
             className="mt-3 text-xs text-neon-400 hover:underline font-mono"
           >
-            Show all videos ({displayVideos.length})
+            Show all videos ({uniqueVideos.length})
           </button>
         </div>
       ) : (
@@ -118,7 +132,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                         loading="lazy"
                       ></iframe>
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs p-4 text-center">
+                      <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 text-xs p-4 text-center">
                         <span>Video didn't load</span>
                         <a
                           href={video.url}
@@ -140,24 +154,24 @@ export default function VideoBreakdowns({ videos = [] }) {
                           {video.category || "Smart System"}
                         </span>
                         {videoId && (
-                          <span className="text-[10px] font-mono text-slate-500">
+                          <span className="text-[10px] font-mono text-slate-400">
                             ID: {videoId}
                           </span>
                         )}
                       </div>
 
-                      <h3 className="font-heading text-lg md:text-xl font-normal text-white group-hover:text-neon-300 transition-colors">
+                      <h3 className="font-heading text-lg md:text-xl font-bold text-white group-hover:text-neon-300 transition-colors">
                         {video.title}
                       </h3>
 
-                      <p className="text-xs text-slate-400 leading-relaxed">
+                      <p className="text-sm text-slate-300 leading-relaxed">
                         {video.description}
                       </p>
 
                       {/* Timestamp Quick-Links */}
                       {video.timestamps && video.timestamps.length > 0 && (
                         <div className="pt-2 border-t border-slate-800/50 space-y-1.5">
-                          <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                          <div className="text-[10px] font-mono text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-neon-400 inline-block"></span>
                             Chapters:
                           </div>
@@ -204,7 +218,7 @@ export default function VideoBreakdowns({ videos = [] }) {
                         Watch on YouTube ↗
                       </a>
 
-                      <span className="text-[10px] font-mono text-slate-500 bg-slate-800/60 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">
                         1080p HD
                       </span>
                     </div>

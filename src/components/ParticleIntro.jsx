@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * ParticleIntro — Renando-style opening: white particles and small
+ * ParticleIntro — Cinematic opening: white particles and small
  * triangles drift in from random positions and converge to form a
  * glowing "S" (Shahzaman's mark), which then glows red.
  * Runs inside the preloader; honours prefers-reduced-motion

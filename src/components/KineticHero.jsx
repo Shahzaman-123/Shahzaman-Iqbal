@@ -2,13 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import "./KineticHero.css";
 import ParticleIntro from "./ParticleIntro";
 
-const TYPEWRITER_WORDS = [
-  "replying to customers.",
-  "booking appointments.",
-  "following up on WhatsApp.",
-  "saving you 10+ hours a week.",
-];
-
 const MARQUEE_ITEMS = [
   "SMART REPLIES",
   "WHATSAPP FOLLOW-UPS",
@@ -52,7 +45,6 @@ function KineticLine({ text, accent = false, delay = 0 }) {
 export default function KineticHero() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [typed, setTyped] = useState("");
   const glowRef = useRef(null);
   const cardRef = useRef(null);
 
@@ -71,35 +63,6 @@ export default function KineticHero() {
       setProgress(n);
     }, 90);
     return () => clearInterval(iv);
-  }, []);
-
-  // Typewriter cycling through the service lines.
-  useEffect(() => {
-    let word = 0;
-    let char = 0;
-    let deleting = false;
-    let timer;
-    const tick = () => {
-      const current = TYPEWRITER_WORDS[word];
-      setTyped(current.slice(0, char));
-      if (!deleting) {
-        char += 1;
-        if (char > current.length) {
-          deleting = true;
-          timer = setTimeout(tick, 1400);
-          return;
-        }
-      } else {
-        char -= 1;
-        if (char === 0) {
-          deleting = false;
-          word = (word + 1) % TYPEWRITER_WORDS.length;
-        }
-      }
-      timer = setTimeout(tick, deleting ? 35 : 70);
-    };
-    timer = setTimeout(tick, 400);
-    return () => clearTimeout(timer);
   }, []);
 
   // Cursor glow follower (pointer only; harmless on touch).
@@ -142,7 +105,7 @@ export default function KineticHero() {
   return (
     <>
       {/* Preloader — particles converge into the glowing "S" mark
-          (Renando-style opening), thin red progress bar + % counter */}
+          (Cinematic opening), thin red progress bar + % counter */}
       <div className={`kinetic-loader${loading ? "" : " kinetic-loader-done"}`} aria-hidden={!loading}>
         <ParticleIntro />
         <div className="kinetic-loader-lbl">LOADING PORTFOLIO</div>
@@ -159,8 +122,9 @@ export default function KineticHero() {
       <div className="kinetic-glow" ref={glowRef} aria-hidden="true" />
 
       <section className={`kinetic-hero${loading ? "" : " kinetic-hero-ready"}`}>
+        {/* 5-second rule: who it's for, in the first line a visitor reads. */}
         <div className="kinetic-kicker">
-          SMART SYSTEMS <em>//</em> AI HELPERS <em>//</em> WEBSITES THAT WORK
+          SMART SYSTEMS FOR REPAIR SHOPS &amp; PROPERTY SELLERS
         </div>
 
         <div className="kinetic-main">
@@ -168,12 +132,13 @@ export default function KineticHero() {
             <div className="kinetic-script">Hello, I&rsquo;m</div>
             <h1 className="kinetic-title">
               <KineticLine text="SHAHZAMAN" delay={0} />
-              <KineticLine text="AUTOMATES" accent delay={0.12} />
-              <KineticLine text="THE BORING." delay={0.24} />
+              <KineticLine text="BUILDS" accent delay={0.12} />
+              <KineticLine text="SYSTEMS." delay={0.24} />
             </h1>
 
+            {/* One short line: what it does + the result. Plain words only. */}
             <p className="kinetic-sub">
-              I build <b>smart helpers and websites</b> that do your boring, repeat work for you — so repair shops &amp; property sellers save <b>10+ hours every week</b>. <span className="kinetic-type">{typed}</span>
+              They <b>reply to customers, book, and follow up</b> — saving you <b>10+ hours a week</b>.
             </p>
 
             <div className="kinetic-cta">
@@ -200,7 +165,7 @@ export default function KineticHero() {
 
           {/* ID badge on a lanyard — flies/tumbles in, then swings (reference video) */}
           <div className="kinetic-photo-wrap">
-            {/* Giant red PORTFOLIO behind the portrait (Renando hero) */}
+            {/* Giant outlined PORTFOLIO behind the portrait */}
             <div className="kinetic-giant-word" aria-hidden="true">PORTFOLIO</div>
             <div className="kinetic-badge-swing">
               <div className="kinetic-badge-enter">
@@ -225,6 +190,39 @@ export default function KineticHero() {
             </div>
             <div className="kinetic-tag">&#9733; AVAILABLE FOR WORK</div>
           </div>
+        </div>
+
+        {/* Line-draw workflow diagram — the video's stroke draw-on moment:
+            the automation pipeline draws itself (Trigger -> AI Agent ->
+            CRM -> WhatsApp) once the loader lifts. */}
+        <div className={`kinetic-linedraw${loading ? "" : " line-draw-on"}`} aria-hidden="true">
+          <svg viewBox="0 0 1000 120" fill="none" role="img">
+            {/* Node outlines (drawn left to right) */}
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.15s" }} x="30" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.45s" }} x="230" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.75s" }} x="430" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.05s" }} x="630" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            <rect className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.35s" }} x="830" y="30" width="140" height="56" rx="10" stroke="#ff2a2a" strokeWidth="1.5" />
+            {/* Connectors */}
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.3s" }} x1="170" y1="58" x2="230" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.6s" }} x1="370" y1="58" x2="430" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "0.9s" }} x1="570" y1="58" x2="630" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            <line className="line-draw-shape" pathLength="1" style={{ "--draw-delay": "1.2s" }} x1="770" y1="58" x2="830" y2="58" stroke="#ff2a2a" strokeWidth="1.5" />
+            {/* Node names */}
+            <text className="line-draw-label" style={{ "--draw-delay": "0.7s" }} x="100" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="700">New Lead</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1s" }} x="300" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="700">Check</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.3s" }} x="500" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="700">AI Reply</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.6s" }} x="700" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="700">Voice Call</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.9s" }} x="900" y="63" textAnchor="middle" fontSize="14" fill="#e2e8f0" fontFamily="inherit" fontWeight="700">List Updated</text>
+            {/* Micro-labels under the nodes */}
+            <text className="line-draw-label" style={{ "--draw-delay": "0.9s" }} x="100" y="108" textAnchor="middle" fontSize="10" letterSpacing="2" fill="#94a3b8" fontFamily="ui-monospace, monospace">TRIGGER</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.2s" }} x="300" y="108" textAnchor="middle" fontSize="10" letterSpacing="2" fill="#94a3b8" fontFamily="ui-monospace, monospace">CHECK</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.5s" }} x="500" y="108" textAnchor="middle" fontSize="10" letterSpacing="2" fill="#94a3b8" fontFamily="ui-monospace, monospace">AI REPLY</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "1.8s" }} x="700" y="108" textAnchor="middle" fontSize="10" letterSpacing="2" fill="#94a3b8" fontFamily="ui-monospace, monospace">VOICE CALL</text>
+            <text className="line-draw-label" style={{ "--draw-delay": "2.1s" }} x="900" y="108" textAnchor="middle" fontSize="10" letterSpacing="2" fill="#94a3b8" fontFamily="ui-monospace, monospace">WHATSAPP</text>
+          </svg>
+          {/* Mobile: the diagram is too small to read at 360px — one line instead. */}
+          <p className="kinetic-linedraw-mobile">NEW LEAD &rarr; AI REPLY &rarr; CALL &rarr; WHATSAPP</p>
         </div>
 
         <div className="kinetic-stats">

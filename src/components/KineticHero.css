@@ -1,11 +1,12 @@
-/* Kinetic Hero — Renando cinematic restyle, Nov 6, 2026.
-   Dark editorial theme: near-black #0a0a0a, one vivid red accent #FF2A2A,
-   film grain, cursor glow, particle intro, giant PORTFOLIO behind the
-   portrait. CSS/GSAP-free motion (keyframes + pointer handlers). */
+/* Kinetic Hero — Cinematic Deconstruction restyle.
+   Dark editorial theme: near-black #050505, brand red accent #ff2a2a,
+   film grain, cursor glow, particle intro, line-draw workflow diagram,
+   giant outlined PORTFOLIO behind the portrait. CSS/GSAP-free motion
+   (keyframes + pointer handlers). */
 
 :root {
   --kinetic-acc: #ff2a2a;
-  --kinetic-bg: #0a0a0a;
+  --kinetic-bg: #050505;
 }
 
 /* ---------- Preloader: particle "S" + thin red progress bar ---------- */
@@ -42,7 +43,8 @@
   bottom: 58px;
   font-size: 11px;
   letter-spacing: 4px;
-  color: #888;
+  color: #c0c0c0;
+  font-weight: 700;
 }
 .kinetic-loader-bar {
   position: absolute;
@@ -101,7 +103,7 @@
   margin-top: 9vh;
   font-size: 12px;
   letter-spacing: 5px;
-  color: #999;
+  color: #d4d4d4;
   font-weight: 700;
 }
 .kinetic-kicker em {
@@ -123,7 +125,7 @@
   z-index: 1;
 }
 
-/* Handwritten script intro above the name (Renando hero). */
+/* Handwritten script intro above the name (cinematic hero). */
 .kinetic-script {
   font-family: "Caveat", "Segoe Script", cursive;
   font-size: clamp(30px, 4.5vw, 48px);
@@ -141,7 +143,7 @@
   to { opacity: 1; transform: rotate(-3deg) translateY(0); }
 }
 
-/* Giant red PORTFOLIO next to the portrait — placed in the empty gap
+/* Giant outlined PORTFOLIO next to the portrait — placed in the empty gap
    between the headline and the badge (right-anchored to the photo
    column), so all nine letters are visible inside the viewport. The
    badge never covers it; it stays a decorative layer (z-index 0).
@@ -157,7 +159,8 @@
   font-size: clamp(64px, 7.2vw, 140px);
   line-height: 0.8;
   letter-spacing: 0.01em;
-  color: #ff2a2a;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 42, 42, 0.5);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -173,9 +176,11 @@
 /* ---------- Kinetic headline (condensed caps, Anton) ---------- */
 .kinetic-title {
   font-family: "Anton", "Arial Narrow", "Impact", sans-serif;
-  font-size: clamp(52px, 13vw, 150px);
+  font-size: clamp(44px, 11vw, 132px);
   line-height: 0.92;
-  font-weight: 400;
+  /* Anton ships only weight 400 — 700 makes browsers render it heavier
+     (synthetic bold), so the headline feels heavy and punchy. */
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   margin-top: 10px;
@@ -190,6 +195,8 @@
 .kinetic-row-inner {
   display: inline-block;
   transform: translateY(110%);
+  /* Never break a word across lines — the title is three lines, always. */
+  white-space: nowrap;
 }
 .kinetic-hero-ready .kinetic-row-inner {
   animation: kinetic-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
@@ -213,26 +220,18 @@
   color: #fff;
 }
 
-/* ---------- Sub copy + typewriter ---------- */
+/* ---------- Sub copy: one short line, bold and bright ---------- */
 .kinetic-sub {
   margin-top: 18px;
-  font-size: clamp(15px, 2vw, 20px);
-  color: #bbb;
-  max-width: 560px;
+  font-size: clamp(16px, 2vw, 21px);
+  font-weight: 500;
+  color: #e6e6e6;
+  /* Wide enough for the one short sub line to sit on a single line. */
+  max-width: 800px;
   line-height: 1.5;
 }
 .kinetic-sub b {
   color: #fff;
-}
-.kinetic-type {
-  color: var(--kinetic-acc);
-  font-weight: 800;
-  border-right: 3px solid var(--kinetic-acc);
-  padding-right: 3px;
-  animation: kinetic-blink 1s steps(1) infinite;
-}
-@keyframes kinetic-blink {
-  50% { border-color: transparent; }
 }
 
 /* ---------- Magnetic CTA buttons ---------- */
@@ -427,6 +426,37 @@
   z-index: 2;
 }
 
+/* ---------- Line-draw workflow diagram ---------- */
+.kinetic-linedraw {
+  margin-top: 34px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.kinetic-linedraw svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+}
+.kinetic-linedraw-mobile {
+  display: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff2a2a;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .kinetic-linedraw svg {
+    display: none;
+  }
+  .kinetic-linedraw-mobile {
+    display: block;
+  }
+}
+
 /* ---------- Stats row ---------- */
 .kinetic-stats {
   display: flex;
@@ -434,6 +464,10 @@
   padding: 26px 0 20px;
   border-top: 1px solid #222;
   flex-wrap: wrap;
+  /* Paint above the decorative giant word (z-index 0) so the stat
+     numbers stay readable even if the word's box ever reaches here. */
+  position: relative;
+  z-index: 1;
 }
 .kinetic-stats div {
   flex: 1;
@@ -447,8 +481,9 @@
 }
 .kinetic-stats span {
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 2px;
-  color: #888;
+  color: #c0c0c0;
   text-transform: uppercase;
 }
 
@@ -491,7 +526,8 @@
     right: auto;
     top: calc(100% + 16px);
     transform: translate(-50%, 0);
-    font-size: clamp(56px, 8vw, 120px);
+    /* Small enough to fit even in the wide fallback font (no Anton). */
+    font-size: clamp(44px, 5vw, 72px);
   }
   @keyframes kinetic-word-in {
     from { opacity: 0; transform: translate(-50%, 0) translateY(60px) scale(1.12); }
@@ -501,7 +537,12 @@
 
 @media (max-width: 768px) {
   .kinetic-photo-wrap {
-    margin: 32px auto 0;
+    /* Reserve room for the giant word below the badge: it is absolutely
+       positioned at top: calc(100% + 16px) with no layout space of its
+       own, so without this bottom margin it lands on the stats row
+       (on real phones it covered "10+ hrs"). 96px clears the word
+       (~51px) with breathing room, pushing the line-draw + stats down. */
+    margin: 32px auto 96px;
   }
   .kinetic-kicker {
     margin-top: 5vh;

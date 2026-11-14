@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* Single site accent — vivid red #FF2A2A on near-black #0a0a0a.
-   Renando-style cinematic editorial: black, white, one red.
+/* Cinematic Deconstruction redesign — single site accent, vivid red
+   #FF2A2A on near-black #050505, with blueprint-grid overlays.
    All accent utilities across the site use the `neon-*` scale so the
    whole site reads as one theme (no green/cyan/blue/category colours). */
 @theme {
@@ -18,4 +18,17 @@
      handwritten script for the hero intro line. */
   --font-heading: "Anton", "Arial Narrow", "Impact", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
+}
+
+/* BOLD pass (owner feedback: "font bhot hi patla ha") — no thin type
+   anywhere on the site. Body text defaults to 500, never 400; headings
+   are 700+ (see .kinetic-title / .section-title / font-heading uses). */
+@layer base {
+  body {
+    font-weight: 500;
+  }
+  strong,
+  b {
+    font-weight: 700;
+  }
 }
