@@ -1,14 +1,15 @@
-/* Kinetic Hero — Renando cinematic restyle, Nov 6, 2026.
-   Dark editorial theme: near-black #0a0a0a, one vivid red accent #FF2A2A,
-   film grain, cursor glow, particle intro, giant PORTFOLIO behind the
-   portrait. CSS/GSAP-free motion (keyframes + pointer handlers). */
+/* Kinetic Hero — Cinematic Deconstruction restyle.
+   Dark editorial theme: near-black #050505, brand cyan accent #22d3ee,
+   film grain, cursor glow, particle intro, line-draw workflow diagram,
+   giant outlined PORTFOLIO behind the portrait. CSS/GSAP-free motion
+   (keyframes + pointer handlers). */
 
 :root {
-  --kinetic-acc: #ff2a2a;
-  --kinetic-bg: #0a0a0a;
+  --kinetic-acc: #22d3ee;
+  --kinetic-bg: #050505;
 }
 
-/* ---------- Preloader: particle "S" + thin red progress bar ---------- */
+/* ---------- Preloader: particle "S" + thin cyan progress bar ---------- */
 .kinetic-loader {
   position: fixed;
   inset: 0;
@@ -51,7 +52,7 @@
   height: 3px;
   background: var(--kinetic-acc);
   transition: width 0.2s ease;
-  box-shadow: 0 0 12px rgba(255, 42, 42, 0.8);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.8);
 }
 
 /* ---------- Fixed overlays ---------- */
@@ -77,7 +78,7 @@
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 42, 42, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.14), transparent 65%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -123,7 +124,7 @@
   z-index: 1;
 }
 
-/* Handwritten script intro above the name (Renando hero). */
+/* Handwritten script intro above the name (cinematic hero). */
 .kinetic-script {
   font-family: "Caveat", "Segoe Script", cursive;
   font-size: clamp(30px, 4.5vw, 48px);
@@ -141,7 +142,7 @@
   to { opacity: 1; transform: rotate(-3deg) translateY(0); }
 }
 
-/* Giant red PORTFOLIO next to the portrait — placed in the empty gap
+/* Giant outlined PORTFOLIO next to the portrait — placed in the empty gap
    between the headline and the badge (right-anchored to the photo
    column), so all nine letters are visible inside the viewport. The
    badge never covers it; it stays a decorative layer (z-index 0).
@@ -157,7 +158,8 @@
   font-size: clamp(64px, 7.2vw, 140px);
   line-height: 0.8;
   letter-spacing: 0.01em;
-  color: #ff2a2a;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(34, 211, 238, 0.5);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -173,7 +175,7 @@
 /* ---------- Kinetic headline (condensed caps, Anton) ---------- */
 .kinetic-title {
   font-family: "Anton", "Arial Narrow", "Impact", sans-serif;
-  font-size: clamp(52px, 13vw, 150px);
+  font-size: clamp(44px, 11vw, 132px);
   line-height: 0.92;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -190,6 +192,8 @@
 .kinetic-row-inner {
   display: inline-block;
   transform: translateY(110%);
+  /* Never break a word across lines — the title is three lines, always. */
+  white-space: nowrap;
 }
 .kinetic-hero-ready .kinetic-row-inner {
   animation: kinetic-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
@@ -259,7 +263,7 @@
   color: #111;
 }
 .kinetic-btn-acc:hover {
-  background: #ff5c5c;
+  background: #67e8f9;
 }
 .kinetic-btn-ghost {
   background: transparent;
@@ -398,7 +402,7 @@
 .kinetic-badge-sub {
   font-size: 11px;
   letter-spacing: 3px;
-  color: #a30000;
+  color: #0e7490;
   font-weight: 800;
   margin-top: 2px;
 }
@@ -425,6 +429,36 @@
   transform: rotate(-4deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 2;
+}
+
+/* ---------- Line-draw workflow diagram ---------- */
+.kinetic-linedraw {
+  margin-top: 34px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.kinetic-linedraw svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+}
+.kinetic-linedraw-mobile {
+  display: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #22d3ee;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .kinetic-linedraw svg {
+    display: none;
+  }
+  .kinetic-linedraw-mobile {
+    display: block;
+  }
 }
 
 /* ---------- Stats row ---------- */
@@ -491,7 +525,8 @@
     right: auto;
     top: calc(100% + 16px);
     transform: translate(-50%, 0);
-    font-size: clamp(56px, 8vw, 120px);
+    /* Small enough to fit even in the wide fallback font (no Anton). */
+    font-size: clamp(44px, 5vw, 72px);
   }
   @keyframes kinetic-word-in {
     from { opacity: 0; transform: translate(-50%, 0) translateY(60px) scale(1.12); }
