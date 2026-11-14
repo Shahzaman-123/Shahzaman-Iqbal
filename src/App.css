@@ -56,9 +56,10 @@
   gap: 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #888;
+  color: #c0c0c0;
   margin-bottom: 10px;
 }
 .section-label b {
@@ -74,10 +75,11 @@
   transform: translateY(-2px);
 }
 
-/* Cinematic editorial headings — oversized condensed caps (Anton). */
+/* Cinematic editorial headings — oversized condensed caps (Anton).
+   700 = synthetic bold on Anton (ships 400 only) — heavy, punchy. */
 .section-title {
   font-family: "Anton", "Arial Narrow", "Impact", sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.95;

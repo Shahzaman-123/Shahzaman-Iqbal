@@ -43,7 +43,8 @@
   bottom: 58px;
   font-size: 11px;
   letter-spacing: 4px;
-  color: #888;
+  color: #c0c0c0;
+  font-weight: 700;
 }
 .kinetic-loader-bar {
   position: absolute;
@@ -102,7 +103,7 @@
   margin-top: 9vh;
   font-size: 12px;
   letter-spacing: 5px;
-  color: #999;
+  color: #d4d4d4;
   font-weight: 700;
 }
 .kinetic-kicker em {
@@ -177,7 +178,9 @@
   font-family: "Anton", "Arial Narrow", "Impact", sans-serif;
   font-size: clamp(44px, 11vw, 132px);
   line-height: 0.92;
-  font-weight: 400;
+  /* Anton ships only weight 400 — 700 makes browsers render it heavier
+     (synthetic bold), so the headline feels heavy and punchy. */
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   margin-top: 10px;
@@ -217,26 +220,18 @@
   color: #fff;
 }
 
-/* ---------- Sub copy + typewriter ---------- */
+/* ---------- Sub copy: one short line, bold and bright ---------- */
 .kinetic-sub {
   margin-top: 18px;
-  font-size: clamp(15px, 2vw, 20px);
-  color: #bbb;
-  max-width: 560px;
+  font-size: clamp(16px, 2vw, 21px);
+  font-weight: 500;
+  color: #e6e6e6;
+  /* Wide enough for the one short sub line to sit on a single line. */
+  max-width: 800px;
   line-height: 1.5;
 }
 .kinetic-sub b {
   color: #fff;
-}
-.kinetic-type {
-  color: var(--kinetic-acc);
-  font-weight: 800;
-  border-right: 3px solid var(--kinetic-acc);
-  padding-right: 3px;
-  animation: kinetic-blink 1s steps(1) infinite;
-}
-@keyframes kinetic-blink {
-  50% { border-color: transparent; }
 }
 
 /* ---------- Magnetic CTA buttons ---------- */
@@ -448,6 +443,7 @@
   display: none;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
+  font-weight: 700;
   letter-spacing: 2px;
   color: #ff2a2a;
   text-align: center;
@@ -485,8 +481,9 @@
 }
 .kinetic-stats span {
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 2px;
-  color: #888;
+  color: #c0c0c0;
   text-transform: uppercase;
 }
 

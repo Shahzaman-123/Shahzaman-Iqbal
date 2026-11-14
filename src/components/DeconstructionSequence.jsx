@@ -13,10 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const NODES = [
   { number: "01", name: "New Lead", sub: "Trigger", latency: "12ms", ex: { x: -130, y: -36, rotation: -8 } },
-  { number: "02", name: "Check & Clean", sub: "Validate", latency: "24ms", ex: { x: -70, y: 94, rotation: 6 } },
-  { number: "03", name: "Smart Reply", sub: "AI Agent", latency: "185ms", ex: { x: 0, y: -72, rotation: -4 } },
-  { number: "04", name: "AI Phone Call", sub: "Voice", latency: "340ms", ex: { x: 80, y: 86, rotation: 7 } },
-  { number: "05", name: "List Updated", sub: "CRM + WhatsApp", latency: "85ms", ex: { x: 160, y: -52, rotation: -6 } },
+  { number: "02", name: "Check & Clean", sub: "Check", latency: "24ms", ex: { x: -70, y: 94, rotation: 6 } },
+  { number: "03", name: "Smart Reply", sub: "AI Reply", latency: "185ms", ex: { x: 0, y: -72, rotation: -4 } },
+  { number: "04", name: "AI Phone Call", sub: "Voice Call", latency: "340ms", ex: { x: 80, y: 86, rotation: 7 } },
+  { number: "05", name: "List Updated", sub: "WhatsApp", latency: "85ms", ex: { x: 160, y: -52, rotation: -6 } },
 ];
 
 export default function DeconstructionSequence() {
@@ -140,14 +140,13 @@ export default function DeconstructionSequence() {
       <div className="relative max-w-6xl w-full mx-auto px-6 pt-16 pb-8">
         <div className="space-y-2">
           <div className="section-label">
-            <b>INTERLUDE</b> The Machine, Taken Apart
+            <b>INTERLUDE</b> How It Works
           </div>
           <h2 className="section-title text-3xl md:text-5xl text-white">
-            Deconstructed. Then Reborn.
+            Taken Apart. Then Reborn.
           </h2>
-          <p className="text-slate-400 text-sm max-w-lg">
-            Every system I build comes apart into five parts — then back
-            together as one machine that never sleeps. Scroll to pull it apart.
+          <p className="text-slate-300 text-sm max-w-lg">
+            Every system has five parts. Scroll to pull it apart — then watch it come back together.
           </p>
         </div>
       </div>
@@ -170,25 +169,25 @@ export default function DeconstructionSequence() {
           <div className="relative h-12 md:h-16 mb-2 md:mb-10 hidden md:block" aria-hidden="true">
             <div className="decon-phase-decon absolute left-0 top-0 opacity-0">
               <div className="font-mono text-[11px] tracking-[0.3em] text-neon-400 uppercase">
-                01 / Deconstruction
+                01 / Taken Apart
               </div>
-              <div className="text-slate-400 text-xs mt-1">
-                Five parts, floating free. Every part, a purpose.
+              <div className="text-slate-300 text-xs mt-1">
+                Five parts. Every part has a job.
               </div>
             </div>
             <div className="decon-phase-reborn absolute left-0 top-0 opacity-0">
               <div className="font-mono text-[11px] tracking-[0.3em] text-neon-400 uppercase">
                 02 / Reborn
               </div>
-              <div className="text-slate-400 text-xs mt-1">
-                Reassembled — one system, running on its own.
+              <div className="text-slate-300 text-xs mt-1">
+                Back together — one system, working on its own.
               </div>
             </div>
           </div>
 
           {/* Mobile caption (the phase labels are desktop-only). */}
           <p className="md:hidden font-mono text-[11px] tracking-[0.25em] text-neon-400 uppercase mb-4">
-            01 / Deconstruction &rarr; 02 / Reborn
+            01 / Taken Apart &rarr; 02 / Reborn
           </p>
 
           {/* The workflow chain — explodes apart on scroll (desktop). */}
@@ -198,10 +197,10 @@ export default function DeconstructionSequence() {
                 <div className="decon-chip relative shrink-0 w-full md:w-[168px] rounded-xl border border-slate-700/80 bg-[#0a0a0a]/90 backdrop-blur px-4 py-3.5 shadow-[0_0_24px_rgba(0,0,0,0.6)] will-change-transform">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] font-bold text-neon-400">{node.number}</span>
-                    <span className="font-mono text-[10px] text-slate-500">{node.latency}</span>
+                    <span className="font-mono text-[10px] text-slate-400">{node.latency}</span>
                   </div>
                   <div className="text-white font-semibold text-sm mt-1.5 leading-tight">{node.name}</div>
-                  <div className="font-mono text-[10px] text-slate-400 mt-0.5">{node.sub}</div>
+                  <div className="font-mono text-[10px] text-slate-300 mt-0.5">{node.sub}</div>
                   <div className="mt-2.5 h-px bg-gradient-to-r from-neon-400/70 to-transparent" />
                 </div>
                 {i < NODES.length - 1 && (
@@ -240,7 +239,7 @@ export default function DeconstructionSequence() {
             </span>
           </div>
 
-          <p className="relative text-center font-mono text-[10px] tracking-[0.3em] text-slate-500 uppercase mt-6 hidden md:block">
+          <p className="relative text-center font-mono text-[10px] tracking-[0.3em] text-slate-400 uppercase mt-6 hidden md:block">
             Scroll — the workflow comes apart, then back together
           </p>
         </div>

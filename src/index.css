@@ -19,3 +19,16 @@
   --font-heading: "Anton", "Arial Narrow", "Impact", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
 }
+
+/* BOLD pass (owner feedback: "font bhot hi patla ha") — no thin type
+   anywhere on the site. Body text defaults to 500, never 400; headings
+   are 700+ (see .kinetic-title / .section-title / font-heading uses). */
+@layer base {
+  body {
+    font-weight: 500;
+  }
+  strong,
+  b {
+    font-weight: 700;
+  }
+}

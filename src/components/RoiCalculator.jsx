@@ -47,11 +47,11 @@ export default function RoiCalculator() {
             <span className="w-2 h-2 rounded-full bg-neon-400"></span>
             Save Time &amp; Money
           </div>
-          <h2 className="font-heading text-2xl md:text-3xl font-normal text-white">
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-white">
             How Much Time &amp; Money Will You Save?
           </h2>
-          <p className="text-slate-400 text-sm max-w-lg">
-            See how many hours and how much money your business gets back when a smart system does the manual work.
+          <p className="text-slate-300 text-sm max-w-lg">
+            Move the sliders. See what you save.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function RoiCalculator() {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
               currency === "USD"
                 ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(255, 42, 42,0.4)]"
-                : "text-slate-400 hover:text-white"
+                : "text-slate-300 hover:text-white"
             }`}
           >
             USD ($)
@@ -72,7 +72,7 @@ export default function RoiCalculator() {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
               currency === "PKR"
                 ? "bg-neon-500 text-slate-950 shadow-[0_0_15px_rgba(255, 42, 42,0.4)]"
-                : "text-slate-400 hover:text-white"
+                : "text-slate-300 hover:text-white"
             }`}
           >
             PKR (Rs.)
@@ -90,8 +90,8 @@ export default function RoiCalculator() {
                 <label className="text-xs font-medium text-slate-300">
                   New leads or repeat jobs each day
                 </label>
-                <span className="text-sm font-heading font-normal text-neon-400">
-                  {dailyLeads} <span className="text-xs font-normal text-slate-500">leads/day</span>
+                <span className="text-sm font-heading font-bold text-neon-400">
+                  {dailyLeads} <span className="text-xs font-medium text-slate-400">leads/day</span>
                 </span>
               </div>
               <input
@@ -103,7 +103,7 @@ export default function RoiCalculator() {
                 onChange={(e) => setDailyLeads(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
-              <div className="flex justify-between text-[10px] font-mono text-slate-500">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400">
                 <span>5 / day (small)</span>
                 <span>150 / day</span>
                 <span>300+ / day (very busy)</span>
@@ -116,8 +116,8 @@ export default function RoiCalculator() {
                 <label className="text-xs font-medium text-slate-300">
                   Minutes you spend on each one by hand
                 </label>
-                <span className="text-sm font-heading font-normal text-neon-400">
-                  {minutesPerTask} <span className="text-xs font-normal text-slate-500">minutes</span>
+                <span className="text-sm font-heading font-bold text-neon-400">
+                  {minutesPerTask} <span className="text-xs font-medium text-slate-400">minutes</span>
                 </span>
               </div>
               <input
@@ -129,7 +129,7 @@ export default function RoiCalculator() {
                 onChange={(e) => setMinutesPerTask(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
-              <div className="flex justify-between text-[10px] font-mono text-slate-500">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400">
                 <span>3 mins (a quick note)</span>
                 <span>20 mins</span>
                 <span>45 mins (call + questions)</span>
@@ -142,10 +142,10 @@ export default function RoiCalculator() {
                 <label className="text-xs font-medium text-slate-300">
                   What one hour of work costs you
                 </label>
-                <span className="text-sm font-heading font-normal text-neon-400">
+                <span className="text-sm font-heading font-bold text-neon-400">
                   {calculations.currencySymbol}
                   {hourlyRate.toLocaleString()}{" "}
-                  <span className="text-xs font-normal text-slate-500">/ hr</span>
+                  <span className="text-xs font-medium text-slate-400">/ hr</span>
                 </span>
               </div>
               <input
@@ -157,7 +157,7 @@ export default function RoiCalculator() {
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
-              <div className="flex justify-between text-[10px] font-mono text-slate-500">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400">
                 <span>
                   {calculations.currencySymbol}
                   {currency === "USD" ? "15/hr" : "1,000/hr"}
@@ -170,7 +170,7 @@ export default function RoiCalculator() {
             </div>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] text-slate-400 flex items-center gap-2.5">
+          <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] text-slate-300 flex items-center gap-2.5">
             <span className="text-neon-400 text-base">⚡</span>
             <span>
               A smart system replies in under <b className="text-neon-300">1.2 seconds</b> — instead of <b className="text-white">{minutesPerTask} minutes</b> by hand.
@@ -187,34 +187,34 @@ export default function RoiCalculator() {
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neon-400 bg-neon-500/10 px-2.5 py-1 rounded border border-neon-500/30">
                 What you get back
               </span>
-              <h3 className="text-white font-heading font-normal text-xl pt-1">
+              <h3 className="text-white font-heading font-bold text-xl pt-1">
                 Your savings every month
               </h3>
             </div>
 
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-xs text-slate-400 font-mono">Hours saved each month</div>
-                <div className="text-3xl md:text-4xl font-heading font-normal text-neon-400 mt-1 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">
+                <div className="text-xs text-slate-300 font-mono">Hours saved each month</div>
+                <div className="text-3xl md:text-4xl font-heading font-bold text-neon-400 mt-1 drop-shadow-[0_0_6px_rgba(255, 42, 42,0.25)]">
                   {calculations.hoursSavedPerMonth.toLocaleString()} hrs
                 </div>
-                <div className="text-[11px] text-slate-500 mt-0.5">
+                <div className="text-[11px] text-slate-400 mt-0.5">
                   That's like {Math.round(calculations.hoursSavedPerMonth / 160 * 10) / 10} extra full-time workers
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-mono">Money saved each month</div>
-                  <div className="text-lg md:text-xl font-heading font-normal text-neon-400 mt-1">
+                  <div className="text-[10px] text-slate-300 font-mono">Money saved each month</div>
+                  <div className="text-lg md:text-xl font-heading font-bold text-neon-400 mt-1">
                     {calculations.currencySymbol}
                     {calculations.monthlyCostSaved.toLocaleString()}
                   </div>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-mono">Money saved each year</div>
-                  <div className="text-lg md:text-xl font-heading font-normal text-neon-400 mt-1">
+                  <div className="text-[10px] text-slate-300 font-mono">Money saved each year</div>
+                  <div className="text-lg md:text-xl font-heading font-bold text-neon-400 mt-1">
                     {calculations.currencySymbol}
                     {calculations.annualCostSaved.toLocaleString()}
                   </div>

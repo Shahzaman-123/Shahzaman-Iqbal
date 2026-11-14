@@ -1,28 +1,28 @@
 export const DEFAULT_VIDEOS = [
   {
     id: "default-1",
-    title: "YouTube Content Automation Agent (n8n + AI)",
+    title: "YouTube Videos, Made by a Smart System",
     url: "https://www.youtube.com/watch?v=8EpwrMJLmDw",
-    category: "Autonomous Agents / n8n",
+    category: "Smart Helpers",
     description:
-      "Walkthrough of an end-to-end autonomous script-generation pipeline. Deconstructs competitor video topics into multi-chapter narrative scripts, triggers voiceover audio generation, packages binary outputs, and dispatches to delivery channels in one click.",
+      "A system that writes video scripts, makes the voiceover, and sends the finished video — all by itself.",
     timestamps: [
-      { label: "0:20 Pipeline Overview", seconds: 20 },
-      { label: "1:05 Multi-Chapter Scripting", seconds: 65 },
-      { label: "2:10 Voiceover & Packaging", seconds: 130 },
+      { label: "0:20 How it works", seconds: 20 },
+      { label: "1:05 Writing the script", seconds: 65 },
+      { label: "2:10 Voiceover & finish", seconds: 130 },
     ],
   },
   {
     id: "default-2",
-    title: "Ultra-Fast Voice AI Agent (Retell AI + Webhook Backend)",
+    title: "AI Voice Helper — Live Demo Call",
     url: "https://www.youtube.com/watch?v=DLXGPGpyzg8",
-    category: "Voice AI / Retell AI",
+    category: "Voice Calls",
     description:
-      "Live test call walkthrough of an ultra-low latency Retell AI voice assistant. Demonstrates real-time conversational booking, dynamic timezone alignment, email/contact capture, and immediate backend CRM synchronization.",
+      "A live call with an AI helper that books appointments, takes details, and updates your customer list.",
     timestamps: [
       { label: "0:15 Live Demo Call", seconds: 15 },
-      { label: "1:30 Webhook Architecture", seconds: 90 },
-      { label: "2:20 CRM Sync", seconds: 140 },
+      { label: "1:30 How it's built", seconds: 90 },
+      { label: "2:20 List updated", seconds: 140 },
     ],
   },
 ];
