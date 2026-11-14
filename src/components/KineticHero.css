@@ -468,6 +468,10 @@
   padding: 26px 0 20px;
   border-top: 1px solid #222;
   flex-wrap: wrap;
+  /* Paint above the decorative giant word (z-index 0) so the stat
+     numbers stay readable even if the word's box ever reaches here. */
+  position: relative;
+  z-index: 1;
 }
 .kinetic-stats div {
   flex: 1;
@@ -536,7 +540,12 @@
 
 @media (max-width: 768px) {
   .kinetic-photo-wrap {
-    margin: 32px auto 0;
+    /* Reserve room for the giant word below the badge: it is absolutely
+       positioned at top: calc(100% + 16px) with no layout space of its
+       own, so without this bottom margin it lands on the stats row
+       (on real phones it covered "10+ hrs"). 96px clears the word
+       (~51px) with breathing room, pushing the line-draw + stats down. */
+    margin: 32px auto 96px;
   }
   .kinetic-kicker {
     margin-top: 5vh;
