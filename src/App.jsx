@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ReactMarkdown from "react-markdown";
@@ -7,7 +7,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
 import VideoBreakdowns from "./components/VideoBreakdowns";
 import { DEFAULT_VIDEOS } from "./constants/videos";
-import AdminModal from "./components/AdminModal";
+// Lazy-loaded: the admin panel (and firebase/auth) only downloads when the
+// hidden triple-click opens it, keeping the initial bundle lean.
+const AdminModal = lazy(() => import("./components/AdminModal"));
 import { parseYouTubeUrl } from "./utils/youtube";
 import WorkflowPipelineVisualizer from "./components/WorkflowPipelineVisualizer";
 import DeconstructionSequence from "./components/DeconstructionSequence";
@@ -117,23 +119,9 @@ export default function App() {
         colRef,
         async (snapshot) => {
           if (snapshot.empty) {
-            console.log("portfolio_videos is empty in Firestore. Auto-seeding initial walkthroughs...");
-            for (const defVid of DEFAULT_VIDEOS) {
-              try {
-                const { embedUrl, watchUrl, videoId } = parseYouTubeUrl(defVid.url);
-                await addDoc(collection(db, "portfolio_videos"), {
-                  title: defVid.title,
-                  url: watchUrl || defVid.url,
-                  embedUrl,
-                  videoId,
-                  category: defVid.category,
-                  description: defVid.description,
-                  createdAt: serverTimestamp(),
-                });
-              } catch (seedErr) {
-                console.warn("Failed to auto-seed video to Firestore:", seedErr);
-              }
-            }
+            // No Firestore records: show the built-in defaults locally.
+            // Writes now require the Firebase admin account, so public
+            // visitors no longer auto-seed (re-seed from the admin panel).
             setVideos(DEFAULT_VIDEOS);
           } else {
             const loaded = snapshot.docs.map((docSnap) => ({
@@ -487,6 +475,7 @@ export default function App() {
           <form onSubmit={handleSendMessage} className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
             <input
               type="text"
+              aria-label="Ask the AI assistant about Shahzaman's work"
               placeholder="Ask what he builds, what it costs, or about his work..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
@@ -1171,6 +1160,12 @@ export default function App() {
               >
                 Connect on LinkedIn
               </a>
+              <a
+                href="mailto:shahzamaniqbal701@gmail.com"
+                className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 hover:border-neon-500/50 text-white text-sm font-semibold px-7 py-3.5 rounded-xl transition-all duration-300 hover:scale-105"
+              >
+                Email Me
+              </a>
             </div>
           </div>
         </div>
@@ -1185,7 +1180,8 @@ export default function App() {
         >
           &copy; 2026 Shahzaman Iqbal. All rights reserved.
         </div>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
+          <a href="mailto:shahzamaniqbal701@gmail.com" className="hover:text-neon-400 transition-colors">shahzamaniqbal701@gmail.com</a>
           <a href="https://wa.me/923241736180" className="hover:text-neon-400 transition-colors">WhatsApp</a>
           <a href="https://www.linkedin.com/in/shahzaman-iqbal-76172836a" className="hover:text-neon-400 transition-colors">LinkedIn</a>
           <a href="https://www.youtube.com/@automatewithshahzaman" className="hover:text-neon-400 transition-colors">YouTube</a>
@@ -1195,13 +1191,15 @@ export default function App() {
 
       {/* Hidden Triple-Click Admin Manager Modal */}
       {isAdminModalOpen && (
-        <AdminModal
-          isOpen={isAdminModalOpen}
-          onClose={() => setIsAdminModalOpen(false)}
-          db={db}
-          videos={videos}
-          onSeedDefaults={handleSeedDefaults}
-        />
+        <Suspense fallback={null}>
+          <AdminModal
+            isOpen={isAdminModalOpen}
+            onClose={() => setIsAdminModalOpen(false)}
+            db={db}
+            videos={videos}
+            onSeedDefaults={handleSeedDefaults}
+          />
+        </Suspense>
       )}
     </div>
   );

@@ -8,7 +8,18 @@ import {
   serverTimestamp,
   onSnapshot,
 } from "firebase/firestore";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { parseYouTubeUrl } from "../utils/youtube";
+
+// The only Firebase Authentication account allowed to manage this portfolio.
+// Must match the admin email in firestore.rules. Create this user in the
+// Firebase console (Authentication -> Users) with a strong password.
+const ADMIN_EMAIL = "shahzamaniqbal701@gmail.com";
 
 function parseTimestampsInput(raw) {
   if (!raw || typeof raw !== "string") return [];
@@ -34,9 +45,15 @@ export default function AdminModal({
   videos = [],
   onSeedDefaults,
 }) {
+  // Auth for the default Firebase app (initialized in App.jsx). Kept inside
+  // this lazy-loaded modal so firebase/auth stays out of the main bundle.
+  const auth = getAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [authError, setAuthError] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Tab State: "videos" or "leads"
   const [activeTab, setActiveTab] = useState("videos");
@@ -55,6 +72,28 @@ export default function AdminModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formMessage, setFormMessage] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
+
+  // Firebase Authentication state: only the admin account unlocks the panel.
+  // A signed-in session persists across modal opens until explicit logout.
+  useEffect(() => {
+    if (!auth) return;
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser && currentUser.email === ADMIN_EMAIL) {
+        setUser(currentUser);
+        setIsAuthenticated(true);
+        setAuthError("");
+      } else {
+        if (currentUser) {
+          // Signed in, but not the admin account.
+          setAuthError("This account is not an administrator.");
+          signOut(auth).catch(() => {});
+        }
+        setUser(null);
+        setIsAuthenticated(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
   // Real-time listener for Chatbot Leads
   useEffect(() => {
@@ -92,27 +131,43 @@ export default function AdminModal({
 
   if (!isOpen) return null;
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e?.preventDefault();
-    const expectedPassword =
-      import.meta.env.VITE_ADMIN_PASSWORD || "SHAHzaman123*";
-
-    if (!passwordInput.trim()) {
-      setAuthError("Please enter the admin password.");
+    if (!emailInput.trim() || !passwordInput.trim()) {
+      setAuthError("Please enter your admin email and password.");
+      return;
+    }
+    if (!auth) {
+      setAuthError("Authentication is not available. Please try again later.");
       return;
     }
 
-    if (passwordInput.trim() === expectedPassword.trim()) {
-      setIsAuthenticated(true);
-      setAuthError("");
+    setIsLoggingIn(true);
+    setAuthError("");
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        emailInput.trim(),
+        passwordInput
+      );
+      // onAuthStateChanged unlocks the panel for the admin account.
       setPasswordInput("");
-    } else {
-      setAuthError("Invalid admin access key. Access denied.");
+    } catch {
+      setAuthError("Invalid email or password. Access denied.");
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      if (auth) await signOut(auth);
+    } catch (err) {
+      console.warn("Sign-out error:", err);
+    }
     setIsAuthenticated(false);
+    setUser(null);
+    setEmailInput("");
     setPasswordInput("");
     setAuthError("");
     setEditingId(null);
@@ -120,6 +175,13 @@ export default function AdminModal({
     setYoutubeUrl("");
     setDescription("");
     setTimestampsInput("");
+    onClose();
+  };
+
+  const handleClose = () => {
+    setEmailInput("");
+    setPasswordInput("");
+    setAuthError("");
     onClose();
   };
 
@@ -308,7 +370,7 @@ export default function AdminModal({
             </div>
           </div>
           <button
-            onClick={handleLogout}
+            onClick={handleClose}
             className="text-slate-400 hover:text-white text-xl p-1 transition-colors"
             aria-label="Close"
           >
@@ -352,7 +414,7 @@ export default function AdminModal({
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto flex-1 space-y-6">
           {!isAuthenticated ? (
-            /* Password Authentication Screen */
+            /* Firebase Authentication Screen */
             <form onSubmit={handleLogin} className="space-y-4 max-w-md mx-auto py-6">
               <div className="text-center space-y-2">
                 <div className="w-12 h-12 rounded-full bg-neon-500/10 border border-neon-500/30 text-neon-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_20px_rgba(255, 42, 42,0.2)]">
@@ -362,7 +424,7 @@ export default function AdminModal({
                   Restricted Access Verification
                 </h3>
                 <p className="text-slate-400 text-xs">
-                  Enter master credentials to access video deployment &amp; chatbot leads inbox.
+                  Sign in with your Firebase admin account to access video deployment &amp; chatbot leads inbox.
                 </p>
               </div>
 
@@ -373,38 +435,52 @@ export default function AdminModal({
               )}
 
               <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300">
-                  Master Password
+                <label htmlFor="admin_email" className="text-xs font-mono text-slate-300">
+                  Admin Email
+                </label>
+                <input
+                  type="email"
+                  name="admin_email"
+                  id="admin_email"
+                  autoComplete="username"
+                  placeholder="you@example.com"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-neon-400 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 transition-colors"
+                  autoFocus
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="admin_password" className="text-xs font-mono text-slate-300">
+                  Password
                 </label>
                 <input
                   type="password"
-                  name="admin_pass_key"
-                  id="admin_pass_key"
-                  autoComplete="new-password"
-                  data-lpignore="true"
-                  data-1p-ignore="true"
-                  data-bwignore="true"
+                  name="admin_password"
+                  id="admin_password"
+                  autoComplete="current-password"
                   placeholder="Enter admin password..."
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-700 focus:border-neon-400 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 transition-colors"
-                  autoFocus
                 />
               </div>
 
               <div className="pt-2 flex gap-3">
                 <button
                   type="button"
-                  onClick={handleLogout}
+                  onClick={handleClose}
                   className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2.5 rounded-xl transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-neon-500 hover:bg-neon-400 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255, 42, 42,0.3)]"
+                  disabled={isLoggingIn}
+                  className="flex-1 bg-neon-500 hover:bg-neon-400 disabled:opacity-50 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255, 42, 42,0.3)]"
                 >
-                  Authenticate →
+                  {isLoggingIn ? "Signing in..." : "Sign In →"}
                 </button>
               </div>
             </form>
@@ -768,10 +844,10 @@ export default function AdminModal({
         {/* Modal Footer */}
         <div className="p-4 bg-slate-950/90 border-t border-slate-800 flex justify-between items-center text-xs">
           <div className="text-slate-500 font-mono">
-            {isAuthenticated ? "Session: Active Administrator" : "Session: Locked"}
+            {isAuthenticated ? `Session: ${user?.email || "Active Administrator"}` : "Session: Locked"}
           </div>
           <button
-            onClick={handleLogout}
+            onClick={isAuthenticated ? handleLogout : handleClose}
             className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition-colors"
           >
             {isAuthenticated ? "Logout & Close" : "Close"}

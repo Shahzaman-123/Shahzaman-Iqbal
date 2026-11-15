@@ -100,6 +100,8 @@ export default function RoiCalculator() {
                 max="300"
                 step="5"
                 value={dailyLeads}
+                aria-label="New leads or repeat jobs each day"
+                aria-valuetext={`${dailyLeads} leads per day`}
                 onChange={(e) => setDailyLeads(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
@@ -126,6 +128,8 @@ export default function RoiCalculator() {
                 max="45"
                 step="1"
                 value={minutesPerTask}
+                aria-label="Minutes you spend on each one by hand"
+                aria-valuetext={`${minutesPerTask} minutes`}
                 onChange={(e) => setMinutesPerTask(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />
@@ -154,6 +158,8 @@ export default function RoiCalculator() {
                 max={currency === "USD" ? 150 : 15000}
                 step={currency === "USD" ? 5 : 500}
                 value={hourlyRate}
+                aria-label="What one hour of work costs you"
+                aria-valuetext={`${calculations.currencySymbol}${hourlyRate.toLocaleString()} per hour`}
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
                 className="w-full accent-neon-400 bg-slate-950 rounded-lg cursor-pointer h-2"
               />

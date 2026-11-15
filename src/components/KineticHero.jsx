@@ -178,7 +178,23 @@ export default function KineticHero() {
                 onPointerLeave={handleCardLeave}
               >
                 <div className="kinetic-badge-role">DEVELOPER</div>
-                <img src="/profile-suit.png" alt="Shahzaman Iqbal" />
+                <picture>
+                  <source
+                    srcSet="/profile-suit-640.webp 640w, /profile-suit-960.webp 960w"
+                    sizes="(max-width: 480px) 72vw, 320px"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/profile-suit.png"
+                    srcSet="/profile-suit.png 640w"
+                    sizes="(max-width: 480px) 72vw, 320px"
+                    alt="Shahzaman Iqbal"
+                    width="640"
+                    height="798"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </picture>
                 <div className="kinetic-badge-name">SHAH ZAMAN IQBAL</div>
                 <div className="kinetic-badge-sub">AUTOMATION DEVELOPER</div>
                 <div className="kinetic-badge-foot">
