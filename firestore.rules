@@ -1,19 +1,30 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Public can view videos; writes are restricted
-    match /portfolio_videos/{videoId} {
-      allow read: if true;
-      allow write: if request.resource.data.title is string
-                   && request.resource.data.url is string;
+
+    // The only account allowed to manage portfolio content. This must match
+    // the Firebase Authentication user created in the Firebase console.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'shahzamaniqbal701@gmail.com';
     }
 
-    // Chatbot leads: public can only append new leads, never read or delete past leads
+    // Public can view videos; only the admin can create, update or delete.
+    match /portfolio_videos/{videoId} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.data.title is string
+        && request.resource.data.url is string;
+      allow delete: if isAdmin();
+    }
+
+    // Chatbot leads: public can only append new leads. Only the admin can
+    // read or delete them; nobody can update a submitted lead.
     match /chatbot_leads/{leadId} {
       allow create: if request.resource.data.userMessage is string
                     && request.resource.data.sessionId is string;
-      allow read, update, delete: if false;
+      allow read, delete: if isAdmin();
+      allow update: if false;
     }
   }
 }
