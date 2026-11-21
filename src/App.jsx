@@ -566,6 +566,43 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card: Solar Copilot */}
+          <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative p-7 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-neon-500/50 flex flex-col justify-between gap-4 h-full">
+              <div className="aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border border-slate-800/90 relative shadow-inner">
+                <iframe
+                  src="https://www.youtube.com/embed/H4jwKUegKvg"
+                  title="Solar Copilot — showcase video"
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div className="space-y-2.5">
+                <div className="text-xs font-mono text-neon-400 tracking-wider font-bold">LIVE WEB APP</div>
+                <h4 className="font-heading text-white font-bold text-xl group-hover:text-neon-300 transition-colors">
+                  Solar Copilot — Solar Feasibility &amp; Net Billing Quotes
+                </h4>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  A workspace for solar installers in Pakistan — it checks whether the grid can take a new system before any quote is made, then builds a clean PKR quote and tracks it from lead to NEPRA approval.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <a
+                  href="https://solar-feasibility-net-billing-quote-copilot.fan-technosaurus.workers.dev/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neon-400 hover:text-neon-300 transition-colors"
+                >
+                  Visit the live website →
+                </a>
+                <span className="text-[10px] font-mono bg-neon-500/10 text-neon-400 px-2.5 py-1 rounded">Live web app</span>
+              </div>
+            </div>
+          </div>
+
           {/* Card: A2Z FIX */}
           <div className="group relative rounded-2xl transition-all duration-300 hover:-translate-y-1.5">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-500 to-neon-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
