@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Firebase Configuration Setup
 const firebaseConfig = {
-  apiKey: "AIzaSyDA5zaoMGEhN1S8_fghbWD_Rz5WBnE07ZU",
+  apiKey: "AIzaSyDASzaoMGEhM1S0_fghbWD_Rz5WBmE07ZU",
   authDomain: "shahzaman-3a4cd.firebaseapp.com",
   projectId: "shahzaman-3a4cd",
   storageBucket: "shahzaman-3a4cd.firebasestorage.app",
